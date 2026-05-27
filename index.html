@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Toxicity Calculator</title>
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --clr-bg:          #f5f7fa;
+      --clr-surface:     #ffffff;
+      --clr-border:      #e2e8f0;
+      --clr-text:        #1e293b;
+      --clr-muted:       #64748b;
+      --clr-primary:     #4f46e5;
+      --clr-primary-h:   #4338ca;
+      --clr-green:       #16a34a;
+      --clr-green-bg:    #f0fdf4;
+      --clr-green-bdr:   #bbf7d0;
+      --clr-yellow:      #b45309;
+      --clr-yellow-bg:   #fffbeb;
+      --clr-yellow-bdr:  #fde68a;
+      --clr-red:         #dc2626;
+      --clr-red-bg:      #fef2f2;
+      --clr-red-bdr:     #fecaca;
+      --radius-sm:       8px;
+      --radius-md:       12px;
+      --radius-lg:       16px;
+      --shadow-sm:       0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md:       0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+      --transition:      0.18s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ───────────────────────────────────────── */
+    .page-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    /* ── Header ───────────────────────────────────────── */
+    header {
+      text-align: center;
+      padding: 40px 16px 32px;
+    }
+
+    .header-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 26px;
+    }
+
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--clr-text);
+    }
+
+    header p {
+      margin-top: 8px;
+      color: var(--clr-muted);
+      font-size: 0.95rem;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Card ─────────────────────────────────────────── */
+    .card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    /* ── Field Group ──────────────────────────────────── */
+    .field { display: flex; flex-direction: column; gap: 8px; }
+
+    label.field-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--clr-muted);
+    }
+
+    /* ── Pet Type Toggle Cards ────────────────────────── */
+    .pet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pet-card {
+      cursor: pointer;
+      border: 2px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 18px 12px;
+      text-align: center;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pet-card:hover {
+      border-color: #a5b4fc;
+      background: #f5f3ff;
+      transform: translateY(-1px);
+    }
+
+    .pet-card.selected {
+      border-color: var(--clr-primary);
+      background: #eef2ff;
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
+    }
+
+    .pet-card .pet-emoji { font-size: 2.2rem; display: block; }
+    .pet-card .pet-name {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--clr-text);
+    }
+
+    /* ── Input with Unit Toggle ───────────────────────── */
+    .input-row {
+      display: flex;
+      gap: 0;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .input-row:focus-within {
+      border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
+    }
+
+    .input-row input[type="number"] {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--clr-text);
+      background: transparent;
+      -moz-appearance: textfield;
+    }
+
+    .input-row input[type="number"]::-webkit-inner-spin-button,
+    .input-row input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+    .unit-toggle {
+      display: flex;
+      background: var(--clr-bg);
+      border-left: 1.5px solid var(--clr-border);
+    }
+
+    .unit-btn {
+      cursor: pointer;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--clr-muted);
+      background: transparent;
+      border: none;
+      outline: none;
+      transition: background var(--transition), color var(--transition);
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+    }
+
+    .unit-btn:first-child { border-right: 1px solid var(--clr-border); }
+
+    .unit-btn.active {
+      background: var(--clr-primary);
+      color: #fff;
+    }
+
+    /* ── Dropdown ─────────────────────────────────────── */
+    select.field-select {
+      width: 100%;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.97rem;
+      font-family: inherit;
+      color: var(--clr-text);
+      background: var(--clr-surface);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    select.field-select:focus {
+      border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
+    }
+
+    /* ── Calculate Button ─────────────────────────────── */
+    .btn-calculate {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+      letter-spacing: 0.01em;
+      box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+    }
+
+    .btn-calculate:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79,70,229,0.40);
+    }
+
+    .btn-calculate:active { transform: translateY(0); opacity: 1; }
+
+    /* ── Result Card ──────────────────────────────────── */
+    #result-section { display: none; }
+
+    .result-card {
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      border: 1.5px solid transparent;
+      animation: slideUp 0.25s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    .result-card.green  { background: var(--clr-green-bg);  border-color: var(--clr-green-bdr);  }
+    .result-card.yellow { background: var(--clr-yellow-bg); border-color: var(--clr-yellow-bdr); }
+    .result-card.red    { background: var(--clr-red-bg);    border-color: var(--clr-red-bdr);    }
+
+    .result-icon { font-size: 2rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+
+    .result-body { flex: 1; }
+
+    .result-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .green  .result-badge { background: #dcfce7; color: var(--clr-green);  }
+    .yellow .result-badge { background: #fef3c7; color: var(--clr-yellow); }
+    .red    .result-badge { background: #fee2e2; color: var(--clr-red);    }
+
+    .result-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .green  .result-title { color: var(--clr-green);  }
+    .yellow .result-title { color: var(--clr-yellow); }
+    .red    .result-title { color: var(--clr-red);    }
+
+    .result-desc {
+      margin-top: 6px;
+      font-size: 0.88rem;
+      color: var(--clr-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Emergency Banner ─────────────────────────────── */
+    .emergency-bar {
+      display: none;
+      margin-top: 12px;
+      background: var(--clr-red);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: center;
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.78; }
+    }
+
+    .emergency-bar a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 800;
+    }
+
+    /* ── Disclaimer ───────────────────────────────────── */
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: var(--clr-muted);
+      text-align: center;
+      line-height: 1.6;
+      padding: 0 8px;
+    }
+
+    /* ── Validation ───────────────────────────────────── */
+    .error-msg {
+      font-size: 0.78rem;
+      color: var(--clr-red);
+      font-weight: 600;
+      display: none;
+      padding-top: 2px;
+    }
+
+    .field.has-error .input-row,
+    .field.has-error select { border-color: var(--clr-red); }
+
+    /* ── Divider ──────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--clr-border);
+      border: none;
+      margin: 0;
+    }
+
+    /* ── Language Switcher ──────────────────────────────── */
+    .lang-switcher {
+      display: flex;
+      justify-content: flex-end;
+      padding: 14px 16px 0;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      border: 1.5px solid var(--clr-border);
+      border-radius: 99px;
+      overflow: hidden;
+      background: var(--clr-surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lang-btn {
+      cursor: pointer;
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--clr-muted);
+      background: transparent;
+      border: none;
+      outline: none;
+      transition: background var(--transition), color var(--transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .lang-btn:first-child {
+      border-right: 1.5px solid var(--clr-border);
+    }
+
+    .lang-btn.active {
+      background: var(--clr-primary);
+      color: #fff;
+    }
+
+    /* ── Ad Slots ───────────────────────────────────────── */
+    .ad-slot {
+      width: 100%;
+      background: var(--clr-surface);
+      border: 1.5px dashed var(--clr-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      min-height: 90px;
+      transition: min-height var(--transition);
+    }
+
+    .ad-slot:empty { min-height: 0; border: none; padding: 0; }
+
+    .ad-slot--tall { min-height: 250px; }
+
+    @media (min-width: 640px) {
+      .ad-slot--tall { min-height: 250px; }
+    }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    .site-footer {
+      margin-top: 40px;
+      padding: 24px 16px 40px;
+      text-align: center;
+    }
+
+    .btn-support {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 26px;
+      background: var(--clr-surface);
+      border: 1.5px solid var(--clr-border);
+      border-radius: 99px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--clr-text);
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-support:hover {
+      background: #fffbeb;
+      border-color: #fde68a;
+      box-shadow: 0 4px 16px rgba(251,191,36,0.22);
+      transform: translateY(-2px);
+    }
+
+    .btn-support:active { transform: translateY(0); }
+
+    .btn-support .support-icon { font-size: 1.2rem; line-height: 1; }
+
+    .footer-tagline {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--clr-muted);
+    }
+
+    /* ── Responsive tweaks ────────────────────────────── */
+    @media (max-width: 360px) {
+      .card { padding: 20px 16px; }
+      .unit-btn { padding: 10px 10px; font-size: 0.72rem; }
+    }
+
+    @media (min-width: 640px) {
+      .page-wrap { padding: 40px 16px 80px; }
+      header { padding: 56px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <div class="lang-toggle" role="group" aria-label="Language selector">
+      <button class="lang-btn active" id="btn-en" onclick="switchLanguage('en')" aria-pressed="true">EN</button>
+      <button class="lang-btn"        id="btn-fr" onclick="switchLanguage('fr')" aria-pressed="false">FR</button>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- Header -->
+    <header>
+      <div class="header-icon">🐾</div>
+      <h1 data-i18n="pageTitle">Pet Toxicity Calculator</h1>
+      <p data-i18n="pageSubtitle">Quickly assess the risk level when your pet has ingested a potentially toxic substance.</p>
+    </header>
+
+    <!-- Ad Slot 1: Above the fold (below header, above calculator) -->
+    <div class="ad-slot" id="ad-slot-1">
+      <span data-i18n="adLabel">Advertisement</span>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card" style="margin-top:20px;">
+
+      <!-- Pet Type -->
+      <div class="field" id="field-pet">
+        <label class="field-label" data-i18n="labelPetType">Pet Type</label>
+        <div class="pet-grid">
+          <div class="pet-card" id="card-dog" role="button" tabindex="0" aria-pressed="false" onclick="selectPet('dog')">
+            <span class="pet-emoji">🐶</span>
+            <span class="pet-name" data-i18n="petDog">Dog</span>
+          </div>
+          <div class="pet-card" id="card-cat" role="button" tabindex="0" aria-pressed="false" onclick="selectPet('cat')">
+            <span class="pet-emoji">🐱</span>
+            <span class="pet-name" data-i18n="petCat">Cat</span>
+          </div>
+        </div>
+        <span class="error-msg" id="err-pet" data-i18n="errPet">Please select a pet type.</span>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Pet Weight -->
+      <div class="field" id="field-weight">
+        <label class="field-label" for="pet-weight" data-i18n="labelWeight">Pet Weight</label>
+        <div class="input-row">
+          <input type="number" id="pet-weight" data-i18n-placeholder="placeholderWeight" placeholder="e.g. 12" min="0" step="any" />
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btn-lbs" onclick="setWeightUnit('lbs')">lbs</button>
+            <button class="unit-btn"        id="btn-kg"  onclick="setWeightUnit('kg')">kg</button>
+          </div>
+        </div>
+        <span class="error-msg" id="err-weight" data-i18n="errWeight">Please enter a valid weight.</span>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Substance -->
+      <div class="field" id="field-substance">
+        <label class="field-label" for="substance" data-i18n="labelSubstance">Substance Ingested</label>
+        <select class="field-select" id="substance">
+          <option value="" data-i18n="substancePlaceholder">— Select a substance —</option>
+          <option value="dark-chocolate" data-i18n="substanceDarkChoc">Dark Chocolate</option>
+          <option value="milk-chocolate" data-i18n="substanceMilkChoc">Milk Chocolate</option>
+          <option value="grapes-raisins" data-i18n="substanceGrapes">Grapes / Raisins</option>
+          <option value="onion-garlic"   data-i18n="substanceOnion">Onion / Garlic</option>
+          <option value="xylitol"        data-i18n="substanceXylitol">Xylitol</option>
+        </select>
+        <span class="error-msg" id="err-substance" data-i18n="errSubstance">Please select a substance.</span>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Amount Ingested -->
+      <div class="field" id="field-amount">
+        <label class="field-label" for="amount" data-i18n="labelAmount">Amount Ingested</label>
+        <div class="input-row">
+          <input type="number" id="amount" data-i18n-placeholder="placeholderAmount" placeholder="e.g. 50" min="0" step="any" />
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btn-grams" onclick="setAmountUnit('grams')">grams</button>
+            <button class="unit-btn"        id="btn-oz"    onclick="setAmountUnit('oz')">oz</button>
+          </div>
+        </div>
+        <span class="error-msg" id="err-amount" data-i18n="errAmount">Please enter a valid amount.</span>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Calculate Button -->
+      <button class="btn-calculate" id="btn-calculate" data-i18n="btnCalculate" onclick="calculate()">🔍 Calculate Risk</button>
+
+    </div><!-- /.card -->
+
+    <!-- Result Section -->
+    <div id="result-section" style="margin-top:20px;">
+      <div class="result-card" id="result-card">
+        <div class="result-icon" id="result-icon"></div>
+        <div class="result-body">
+          <span class="result-badge" id="result-badge"></span>
+          <div class="result-title" id="result-title"></div>
+          <div class="result-desc"  id="result-desc"></div>
+        </div>
+      </div>
+      <div class="emergency-bar" id="emergency-bar">
+        <span id="emergency-text">🚨 Emergency Vet Hotline (US): <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK: <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a></span>
+      </div>
+    </div>
+
+    <!-- Ad Slot 2: Below the fold (below result, above disclaimer) -->
+    <div class="ad-slot ad-slot--tall" id="ad-slot-2" style="margin-top:20px;">
+      <span data-i18n="adLabel">Advertisement</span>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="disclaimer" id="disclaimer">⚠️ This tool provides general guidance only and is <strong>not</strong> a substitute for professional veterinary advice. Always consult a licensed veterinarian for medical decisions.</p>
+
+  </div><!-- /.page-wrap -->
+
+  <!-- Footer: Support Button -->
+  <footer class="site-footer">
+    <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" class="btn-support" id="btn-support">
+      <span class="support-icon">☕</span>
+      <span data-i18n="supportBtn">Support this tool</span>
+    </a>
+    <p class="footer-tagline" data-i18n="supportTagline">Free forever. Powered by pet lovers.</p>
+  </footer>
+
+  <script>
+    // ── State ────────────────────────────────────────────
+    let selectedPet  = null;
+    let weightUnit   = 'lbs';
+    let amountUnit   = 'grams';
+    let currentLang  = 'en';
+    let lastRisk     = null;
+
+    // ── Translations ─────────────────────────────────────
+    const translations = {
+      en: {
+        // Page
+        pageTitle:            'Pet Toxicity Calculator',
+        pageSubtitle:         'Quickly assess the risk level when your pet has ingested a potentially toxic substance.',
+        // Form labels
+        labelPetType:         'Pet Type',
+        labelWeight:          'Pet Weight',
+        labelSubstance:       'Substance Ingested',
+        labelAmount:          'Amount Ingested',
+        // Pet names
+        petDog:               'Dog',
+        petCat:               'Cat',
+        // Placeholders
+        placeholderWeight:    'e.g. 12',
+        placeholderAmount:    'e.g. 50',
+        // Substance dropdown
+        substancePlaceholder: '— Select a substance —',
+        substanceDarkChoc:    'Dark Chocolate',
+        substanceMilkChoc:    'Milk Chocolate',
+        substanceGrapes:      'Grapes / Raisins',
+        substanceOnion:       'Onion / Garlic',
+        substanceXylitol:     'Xylitol',
+        // Calculate button
+        btnCalculate:         '🔍 Calculate Risk',
+        // Validation errors
+        errPet:               'Please select a pet type.',
+        errWeight:            'Please enter a valid weight.',
+        errSubstance:         'Please select a substance.',
+        errAmount:            'Please enter a valid amount.',
+        // Result cards
+        result: {
+          green:  { icon: '✅', badge: 'Low Risk',           title: 'Low Risk — Monitor at Home',                    desc: 'Based on the information provided, the ingested amount appears to be below typical toxic thresholds. Monitor your pet closely for any unusual symptoms such as vomiting, lethargy, or loss of appetite. Contact your vet if anything changes.' },
+          yellow: { icon: '⚠️', badge: 'Moderate Risk',      title: 'Moderate Risk — Call Your Vet for Advice',      desc: 'The amount ingested may cause mild to moderate symptoms. We recommend calling your veterinarian or a pet poison helpline right away for guidance. Do not wait for symptoms to appear.' },
+          red:    { icon: '🚨', badge: 'High Risk / Critical', title: 'High Risk — Go to the Emergency Vet Immediately!', desc: 'The dose ingested is potentially life-threatening. Do not wait for symptoms. Take your pet to the nearest emergency veterinary clinic NOW and bring the substance packaging if possible.' },
+        },
+        // Emergency hotline
+        emergencyHTML: '🚨 Emergency Vet Hotline (US): <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK: <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a>',
+        // Disclaimer
+        disclaimerHTML: '⚠️ This tool provides general guidance only and is <strong>not</strong> a substitute for professional veterinary advice. Always consult a licensed veterinarian for medical decisions.',
+        // Monetization
+        adLabel:        'Advertisement',
+        supportBtn:     'Support this tool',
+        supportTagline: 'Free forever. Powered by pet lovers.',
+      },
+
+      fr: {
+        // Page
+        pageTitle:            'Calculateur de Toxicité pour Animaux',
+        pageSubtitle:         'Évaluez rapidement le niveau de risque lorsque votre animal a ingéré une substance potentiellement toxique.',
+        // Form labels
+        labelPetType:         'Type d\'animal',
+        labelWeight:          'Poids de l\'animal',
+        labelSubstance:       'Substance ingérée',
+        labelAmount:          'Quantité ingérée',
+        // Pet names
+        petDog:               'Chien',
+        petCat:               'Chat',
+        // Placeholders
+        placeholderWeight:    'ex. 12',
+        placeholderAmount:    'ex. 50',
+        // Substance dropdown
+        substancePlaceholder: '— Sélectionner une substance —',
+        substanceDarkChoc:    'Chocolat noir',
+        substanceMilkChoc:    'Chocolat au lait',
+        substanceGrapes:      'Raisins / Raisins secs',
+        substanceOnion:       'Oignon / Ail',
+        substanceXylitol:     'Xylitol',
+        // Calculate button
+        btnCalculate:         '🔍 Calculer le risque',
+        // Validation errors
+        errPet:               'Veuillez sélectionner un type d\'animal.',
+        errWeight:            'Veuillez entrer un poids valide.',
+        errSubstance:         'Veuillez sélectionner une substance.',
+        errAmount:            'Veuillez entrer une quantité valide.',
+        // Result cards
+        result: {
+          green:  { icon: '✅', badge: 'Risque faible',          title: 'Risque faible — Surveiller à domicile',                      desc: 'D\'après les informations fournies, la quantité ingérée semble être en dessous des seuils toxiques habituels. Surveillez attentivement votre animal pour tout symptôme inhabituel : vomissements, léthargie ou perte d\'appétit. Contactez votre vétérinaire si quoi que ce soit change.' },
+          yellow: { icon: '⚠️', badge: 'Risque modéré',          title: 'Risque modéré — Appelez votre vétérinaire',                  desc: 'La quantité ingérée pourrait entraîner des symptômes légers à modérés. Nous vous recommandons d\'appeler immédiatement votre vétérinaire ou une ligne d\'assistance pour les intoxications animales. N\'attendez pas l\'apparition des symptômes.' },
+          red:    { icon: '🚨', badge: 'Risque élevé / Critique', title: 'Risque élevé — Rendez-vous immédiatement chez le vétérinaire d\'urgence !', desc: 'La dose ingérée est potentiellement mortelle. N\'attendez pas l\'apparition des symptômes. Emmenez votre animal dans la clinique vétérinaire d\'urgence la plus proche MAINTENANT et apportez l\'emballage de la substance si possible.' },
+        },
+        // Emergency hotline
+        emergencyHTML: '🚨 Ligne d\'urgence vétérinaire (US) : <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK : <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a>',
+        // Disclaimer
+        disclaimerHTML: '⚠️ Cet outil fournit des indications générales uniquement et ne remplace <strong>pas</strong> l\'avis d\'un vétérinaire professionnel. Consultez toujours un vétérinaire agréé pour toute décision médicale.',
+        // Monetization
+        adLabel:        'Publicité',
+        supportBtn:     'Soutenir ce projet',
+        supportTagline: 'Gratuit pour toujours. Par des amoureux des animaux.',
+      },
+    };
+
+    // ── Language Switcher ─────────────────────────────────
+    function switchLanguage(lang) {
+      currentLang = lang;
+      const t = translations[lang];
+
+      document.documentElement.setAttribute('lang', lang);
+
+      // Toggle button active states
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+      document.getElementById('btn-fr').setAttribute('aria-pressed', lang === 'fr');
+
+      // Update all elements with data-i18n attribute (textContent)
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Update placeholder attributes
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+
+      // Update page <title>
+      document.title = t.pageTitle;
+
+      // Update emergency bar (innerHTML to preserve links)
+      document.getElementById('emergency-text').innerHTML = t.emergencyHTML;
+
+      // Update disclaimer (innerHTML to preserve <strong>)
+      document.getElementById('disclaimer').innerHTML = t.disclaimerHTML;
+
+      // Re-render result card if a result is currently shown
+      if (lastRisk) renderResult(lastRisk);
+    }
+
+    // ── Pet Selection ─────────────────────────────────────
+    function selectPet(pet) {
+      selectedPet = pet;
+      document.getElementById('card-dog').classList.toggle('selected', pet === 'dog');
+      document.getElementById('card-cat').classList.toggle('selected', pet === 'cat');
+      document.getElementById('card-dog').setAttribute('aria-pressed', pet === 'dog');
+      document.getElementById('card-cat').setAttribute('aria-pressed', pet === 'cat');
+      clearError('field-pet', 'err-pet');
+    }
+
+    // Keyboard support for pet cards
+    document.querySelectorAll('.pet-card').forEach(card => {
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
+
+    // ── Unit Toggles ──────────────────────────────────────
+    function setWeightUnit(unit) {
+      weightUnit = unit;
+      document.getElementById('btn-lbs').classList.toggle('active', unit === 'lbs');
+      document.getElementById('btn-kg').classList.toggle('active',  unit === 'kg');
+    }
+
+    function setAmountUnit(unit) {
+      amountUnit = unit;
+      document.getElementById('btn-grams').classList.toggle('active', unit === 'grams');
+      document.getElementById('btn-oz').classList.toggle('active',    unit === 'oz');
+    }
+
+    // ── Validation helpers ────────────────────────────────
+    function showError(fieldId, errId) {
+      document.getElementById(fieldId).classList.add('has-error');
+      document.getElementById(errId).style.display = 'block';
+    }
+
+    function clearError(fieldId, errId) {
+      document.getElementById(fieldId).classList.remove('has-error');
+      document.getElementById(errId).style.display = 'none';
+    }
+
+    function validate() {
+      let ok = true;
+
+      if (!selectedPet) {
+        showError('field-pet', 'err-pet'); ok = false;
+      } else {
+        clearError('field-pet', 'err-pet');
+      }
+
+      const weight = parseFloat(document.getElementById('pet-weight').value);
+      if (!weight || weight <= 0) {
+        showError('field-weight', 'err-weight'); ok = false;
+      } else {
+        clearError('field-weight', 'err-weight');
+      }
+
+      const substance = document.getElementById('substance').value;
+      if (!substance) {
+        showError('field-substance', 'err-substance'); ok = false;
+      } else {
+        clearError('field-substance', 'err-substance');
+      }
+
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (!amount || amount <= 0) {
+        showError('field-amount', 'err-amount'); ok = false;
+      } else {
+        clearError('field-amount', 'err-amount');
+      }
+
+      return ok;
+    }
+
+    // ── Veterinary Toxicology Risk Logic ─────────────────
+    // Sources: ASPCA, Merck Veterinary Manual, peer-reviewed thresholds.
+    // Inputs must already be normalised to kg (weight) and grams (amount).
+    function computeRisk(pet, weightKg, substance, amountG) {
+
+      switch (substance) {
+
+        // ── Chocolate (Theobromine + Caffeine = methylxanthines) ──
+        // Milk chocolate  ~2.4 mg methylxanthines / g
+        // Dark chocolate ~16.0 mg methylxanthines / g
+        // Thresholds (mg toxin / kg body weight):
+        //   < 20  → GREEN | 20–40 → YELLOW | > 40 → RED
+        case 'milk-chocolate': {
+          const mgPerG    = 2.4;
+          const dosePerKg = (amountG * mgPerG) / weightKg;
+          if (dosePerKg < 20) return 'green';
+          if (dosePerKg < 40) return 'yellow';
+          return 'red';
+        }
+
+        case 'dark-chocolate': {
+          const mgPerG    = 16.0;
+          const dosePerKg = (amountG * mgPerG) / weightKg;
+          if (dosePerKg < 20) return 'green';
+          if (dosePerKg < 40) return 'yellow';
+          return 'red';
+        }
+
+        // ── Grapes / Raisins ──────────────────────────────────────
+        // Idiosyncratic nephrotoxin — NO established safe dose for
+        // dogs or cats. Any ingestion > 0 g is treated as RED.
+        case 'grapes-raisins':
+          return amountG > 0 ? 'red' : 'green';
+
+        // ── Onion / Garlic (Thiosulfate — Heinz body anemia) ─────
+        // Dogs:  < 15 g/kg GREEN | 15–30 g/kg YELLOW | > 30 g/kg RED
+        // Cats:  <  5 g/kg GREEN |  5–10 g/kg YELLOW | > 10 g/kg RED
+        case 'onion-garlic': {
+          const gPerKg = amountG / weightKg;
+          if (pet === 'cat') {
+            if (gPerKg <  5) return 'green';
+            if (gPerKg < 10) return 'yellow';
+            return 'red';
+          } else {
+            if (gPerKg < 15) return 'green';
+            if (gPerKg < 30) return 'yellow';
+            return 'red';
+          }
+        }
+
+        // ── Xylitol ───────────────────────────────────────────────
+        // Hypoglycemia onset ~0.1 g/kg; liver failure ~0.5 g/kg.
+        // Thresholds (g xylitol / kg body weight):
+        //   < 0.05 → GREEN | 0.05–0.1 → YELLOW | > 0.1 → RED
+        case 'xylitol': {
+          const gPerKg = amountG / weightKg;
+          if (gPerKg < 0.05) return 'green';
+          if (gPerKg < 0.1)  return 'yellow';
+          return 'red';
+        }
+
+        default:
+          return 'yellow';
+      }
+    }
+
+    // ── Render Result ─────────────────────────────────────
+    function renderResult(risk) {
+      const copy = translations[currentLang].result[risk];
+      const card = document.getElementById('result-card');
+      card.className = 'result-card ' + risk;
+      document.getElementById('result-icon').textContent  = copy.icon;
+      document.getElementById('result-badge').textContent = copy.badge;
+      document.getElementById('result-title').textContent = copy.title;
+      document.getElementById('result-desc').textContent  = copy.desc;
+    }
+
+    // ── Calculate ─────────────────────────────────────────
+    function calculate() {
+      if (!validate()) return;
+
+      const pet       = selectedPet;
+      let   weight    = parseFloat(document.getElementById('pet-weight').value);
+      const substance = document.getElementById('substance').value;
+      let   amount    = parseFloat(document.getElementById('amount').value);
+
+      // Normalise to kg / grams
+      if (weightUnit === 'lbs') weight = weight * 0.453592;
+      if (amountUnit === 'oz')  amount = amount * 28.3495;
+
+      lastRisk = computeRisk(pet, weight, substance, amount);
+      renderResult(lastRisk);
+
+      // Show emergency bar only for red
+      const bar = document.getElementById('emergency-bar');
+      bar.style.display = lastRisk === 'red' ? 'block' : 'none';
+
+      // Reveal section and scroll
+      const section = document.getElementById('result-section');
+      section.style.display = 'block';
+      section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>
