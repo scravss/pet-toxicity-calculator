@@ -560,6 +560,11 @@
           <option value="grapes-raisins" data-i18n="substanceGrapes">Grapes / Raisins</option>
           <option value="onion-garlic"   data-i18n="substanceOnion">Onion / Garlic</option>
           <option value="xylitol"        data-i18n="substanceXylitol">Xylitol</option>
+          <option value="ibuprofen"       data-i18n="substanceIbuprofen">Ibuprofen</option>
+          <option value="acetaminophen"   data-i18n="substanceAcetaminophen">Acetaminophen (Paracetamol)</option>
+          <option value="antifreeze"      data-i18n="substanceAntifreeze">Antifreeze (Ethylene Glycol)</option>
+          <option value="lilies"          data-i18n="substanceLilies">Lilies (True Lilies)</option>
+          <option value="alcohol"         data-i18n="substanceAlcohol">Alcohol (Ethanol)</option>
         </select>
         <span class="error-msg" id="err-substance" data-i18n="errSubstance">Please select a substance.</span>
       </div>
@@ -669,6 +674,12 @@
         emergencyHTML: '🚨 Emergency Vet Hotline (US): <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK: <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a>',
         // Disclaimer
         disclaimerHTML: '⚠️ This tool provides general guidance only and is <strong>not</strong> a substitute for professional veterinary advice. Always consult a licensed veterinarian for medical decisions.',
+        // New substances
+        substanceIbuprofen:      'Ibuprofen',
+        substanceAcetaminophen:  'Acetaminophen (Paracetamol)',
+        substanceAntifreeze:     'Antifreeze (Ethylene Glycol)',
+        substanceLilies:         'Lilies (True Lilies)',
+        substanceAlcohol:        'Alcohol (Ethanol)',
         // Monetization
         adLabel:        'Advertisement',
         supportBtn:     'Support this tool',
@@ -714,6 +725,12 @@
         emergencyHTML: '🚨 Ligne d\'urgence vétérinaire (US) : <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK : <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a>',
         // Disclaimer
         disclaimerHTML: '⚠️ Cet outil fournit des indications générales uniquement et ne remplace <strong>pas</strong> l\'avis d\'un vétérinaire professionnel. Consultez toujours un vétérinaire agréé pour toute décision médicale.',
+        // New substances
+        substanceIbuprofen:      'Ibuprofène',
+        substanceAcetaminophen:  'Acétaminophène (Paracétamol)',
+        substanceAntifreeze:     'Antigel (Éthylène glycol)',
+        substanceLilies:         'Lys (vrais lys)',
+        substanceAlcohol:        'Alcool (Éthanol)',
         // Monetization
         adLabel:        'Publicité',
         supportBtn:     'Soutenir ce projet',
@@ -896,6 +913,43 @@
           if (gPerKg < 0.1)  return 'yellow';
           return 'red';
         }
+
+        // ── Ibuprofen (NSAID) ────────────────────────────────────────
+        // Dogs & Cats: < 25 mg/kg GREEN | 25–50 mg/kg YELLOW | > 50 mg/kg RED
+        case 'ibuprofen': {
+          const mgPerKg = (amountG * 1000) / weightKg;
+          if (mgPerKg < 25) return 'green';
+          if (mgPerKg < 50) return 'yellow';
+          return 'red';
+        }
+
+        // ── Acetaminophen / Paracetamol ───────────────────────────
+        // Cats: any amount > 0 = RED (extremely sensitive — lack N-acetyl transferase)
+        // Dogs: < 50 mg/kg GREEN | 50–75 mg/kg YELLOW | > 75 mg/kg RED
+        case 'acetaminophen': {
+          if (pet === 'cat') return amountG > 0 ? 'red' : 'green';
+          const mgPerKg = (amountG * 1000) / weightKg;
+          if (mgPerKg < 50) return 'green';
+          if (mgPerKg < 75) return 'yellow';
+          return 'red';
+        }
+
+        // ── Antifreeze (Ethylene Glycol) ──────────────────────────
+        // Any amount > 0 is immediately life-threatening for all species.
+        case 'antifreeze':
+          return amountG > 0 ? 'red' : 'green';
+
+        // ── Lilies (True Lilies: Lilium / Hemerocallis spp.) ─────────
+        // Cats: any amount > 0 = RED (acute renal failure)
+        // Dogs: no established toxic mechanism — GREEN (monitor)
+        case 'lilies':
+          if (pet === 'cat') return amountG > 0 ? 'red' : 'green';
+          return 'green';
+
+        // ── Alcohol (Ethanol) ─────────────────────────────────
+        // Any amount > 0 is RED — risk of respiratory depression in all species.
+        case 'alcohol':
+          return amountG > 0 ? 'red' : 'green';
 
         default:
           return 'yellow';
