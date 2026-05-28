@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi perro comió chocolate — ¿Es peligroso? | Guía de toxicología veterinaria</title>
+  <meta name="description" content="Descubra por qué el chocolate es tóxico para los perros, cómo actúa la teobromina, qué síntomas debe vigilar y qué pasos de emergencia debe seguir de inmediato." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="chocolate-perro.html" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mi perro comió chocolate — ¿Es peligroso?" />
+  <meta property="og:description" content="¿Por qué el chocolate es tóxico para los perros? ¿Qué hacer en caso de emergencia? Todo lo que necesita saber, explicado con claridad." />
+  <meta property="og:type" content="article" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68M2645EP1');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --clr-bg:         #f5f7fa;
+      --clr-surface:    #ffffff;
+      --clr-border:     #e2e8f0;
+      --clr-text:       #1e293b;
+      --clr-muted:      #64748b;
+      --clr-primary:    #4f46e5;
+      --clr-primary-h:  #4338ca;
+      --clr-red:        #dc2626;
+      --clr-red-bg:     #fef2f2;
+      --clr-red-bdr:    #fecaca;
+      --clr-yellow:     #b45309;
+      --clr-yellow-bg:  #fffbeb;
+      --clr-yellow-bdr: #fde68a;
+      --radius-sm:      8px;
+      --radius-md:      12px;
+      --radius-lg:      16px;
+      --shadow-sm:      0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md:      0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+      --transition:     0.18s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .top-bar {
+      background: var(--clr-surface);
+      border-bottom: 1px solid var(--clr-border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-bar a.site-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--clr-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .top-bar a.site-name:hover { text-decoration: underline; }
+
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 48px 16px 40px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--clr-red-bg);
+      color: var(--clr-red);
+      border: 1px solid var(--clr-red-bdr);
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--clr-text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--clr-muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      color: #fff;
+      margin: 36px 0;
+      box-shadow: 0 8px 32px rgba(79,70,229,0.30);
+    }
+
+    .cta-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+
+    .cta-card p {
+      font-size: 0.92rem;
+      opacity: 0.88;
+      margin-bottom: 22px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #fff;
+      color: var(--clr-primary);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.20); }
+
+    .article-body {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (max-width: 480px) { .article-body { padding: 24px 18px; } }
+
+    .article-body h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--clr-text);
+      margin: 36px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--clr-border);
+      letter-spacing: -0.02em;
+    }
+
+    .article-body h2:first-child { margin-top: 0; }
+    .article-body p { color: var(--clr-muted); font-size: 0.97rem; margin-bottom: 14px; }
+    .article-body strong { color: var(--clr-text); }
+
+    .warning-box {
+      background: var(--clr-yellow-bg);
+      border: 1.5px solid var(--clr-yellow-bdr);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      color: var(--clr-yellow);
+      font-weight: 600;
+    }
+
+    .danger-box {
+      background: var(--clr-red-bg);
+      border: 1.5px solid var(--clr-red-bdr);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.92rem;
+      color: var(--clr-red);
+      font-weight: 600;
+    }
+
+    .symptom-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .symptom-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--clr-text);
+    }
+
+    .symptom-list li::before { content: '⚠️'; flex-shrink: 0; margin-top: 1px; }
+
+    .step-list {
+      list-style: none;
+      counter-reset: steps;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .step-list li {
+      counter-increment: steps;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.95rem;
+      color: var(--clr-text);
+    }
+
+    .step-list li::before {
+      content: counter(steps);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .choc-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+
+    .choc-table th {
+      background: var(--clr-bg);
+      color: var(--clr-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--clr-border);
+    }
+
+    .choc-table td { padding: 10px 14px; border-bottom: 1px solid var(--clr-border); color: var(--clr-text); }
+    .choc-table tr:last-child td { border-bottom: none; }
+    .badge-danger   { color: var(--clr-red);    font-weight: 700; }
+    .badge-moderate { color: var(--clr-yellow); font-weight: 700; }
+    .badge-low      { color: #16a34a;           font-weight: 700; }
+
+    .site-footer { text-align: center; padding: 32px 16px; font-size: 0.78rem; color: var(--clr-muted); }
+    .site-footer a { color: var(--clr-primary); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav class="top-bar">
+    <a href="index.html" class="site-name">🐾 Calculadora de Toxicidad para Mascotas</a>
+    <a href="index.html" style="font-size:0.82rem; color:var(--clr-muted); text-decoration:none;">← Volver a la calculadora</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="hero">
+      <span class="hero-badge">🚨 Alerta de seguridad para mascotas</span>
+      <h1>Mi perro comió chocolate —<br>¿Es realmente peligroso?</h1>
+      <p class="hero-lead">El chocolate contiene teobromina, un compuesto que los perros no pueden metabolizar de forma segura. Según el tipo y la cantidad ingerida, incluso un pequeño trozo puede convertirse en una emergencia veterinaria.</p>
+    </div>
+
+    <!-- CTA #1 -->
+    <div class="cta-card">
+      <h3>🔍 Calcule el nivel de riesgo para su mascota de inmediato</h3>
+      <p>Introduzca el peso de su perro y la cantidad de chocolate ingerida. Nuestra calculadora utiliza umbrales toxicológicos veterinarios reales para ofrecerle una evaluación instantánea.</p>
+      <a href="index.html" class="cta-btn">Abrir la calculadora de riesgos →</a>
+    </div>
+
+    <article class="article-body">
+
+      <h2>¿Por qué el chocolate es peligroso para los perros?</h2>
+      <p>El chocolate contiene dos compuestos de tipo metilxantina: la <strong>teobromina</strong> y, en menor medida, la <strong>cafeína</strong>. En los seres humanos, estas sustancias se metabolizan rápida e inocuamente. Sin embargo, los perros procesan la teobromina de forma mucho más lenta — se acumula en su organismo y altera el funcionamiento normal del corazón, los riñones y el sistema nervioso.</p>
+      <p>La regla es clara: <strong>cuanto más puro y oscuro es el chocolate, mayor es su contenido de teobromina y mayor el riesgo.</strong> El chocolate de repostería y el chocolate negro son los más peligrosos; el chocolate blanco contiene cantidades ínfimas y supone un riesgo mínimo.</p>
+
+      <table class="choc-table">
+        <thead>
+          <tr>
+            <th>Tipo de chocolate</th>
+            <th>Teobromina (mg/g)</th>
+            <th>Nivel de peligro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chocolate de repostería / sin azúcar</td><td>~16 – 26 mg/g</td><td class="badge-danger">Muy alto</td></tr>
+          <tr><td>Chocolate negro (70 %+)</td><td>~16 mg/g</td><td class="badge-danger">Alto</td></tr>
+          <tr><td>Chocolate con leche</td><td>~2,4 mg/g</td><td class="badge-moderate">Moderado</td></tr>
+          <tr><td>Chocolate blanco</td><td>&lt;0,1 mg/g</td><td class="badge-low">Muy bajo</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">⚠️ Umbral de toxicidad veterinaria: los síntomas suelen aparecer a partir de <strong>20 mg de teobromina por kg</strong> de peso corporal. Por encima de 40 mg/kg, los efectos pueden ser graves.</div>
+
+      <h2>¿Cuáles son los síntomas de la intoxicación por chocolate?</h2>
+      <p>Los síntomas suelen aparecer entre las <strong>6 y las 12 horas</strong> siguientes a la ingestión y pueden durar hasta 72 horas. Esté atento a:</p>
+      <ul class="symptom-list">
+        <li>Vómitos y/o diarrea — a menudo las primeras señales</li>
+        <li>Sed excesiva y micción frecuente</li>
+        <li>Inquietud, agitación e hiperactividad</li>
+        <li>Temblores musculares o espasmos</li>
+        <li>Ritmo cardíaco rápido o irregular (taquicardia)</li>
+        <li>Convulsiones (en casos graves)</li>
+        <li>Colapso o coma (dosis potencialmente letales)</li>
+      </ul>
+
+      <div class="danger-box">🚨 Si su perro presenta convulsiones, colapsa o tiene un ritmo cardíaco irregular, acuda <strong>inmediatamente a una clínica veterinaria de urgencias</strong>. Cada minuto cuenta.</div>
+
+      <h2>Pasos de emergencia inmediatos a seguir</h2>
+      <p>Actúe con rapidez y serenidad. Estos pasos pueden ser determinantes:</p>
+      <ol class="step-list">
+        <li><strong>Identifique el tipo y la cantidad de chocolate ingerido.</strong> Conserve el envase — esta información es fundamental para que el veterinario estime la dosis de teobromina recibida.</li>
+        <li><strong>Anote la hora de ingestión.</strong> Cuanto antes actúe, más opciones terapéuticas habrá disponibles — incluida la inducción del vómito si la ingestión es muy reciente.</li>
+        <li><strong>Llame a su veterinario o a una línea de emergencias toxicológicas de inmediato.</strong> EE. UU.: ASPCA +1-888-426-4435 | Reino Unido: Animal PoisonLine 01202 509000.</li>
+        <li><strong>NO induzca el vómito</strong> por su cuenta, salvo que un profesional veterinario se lo indique explícitamente.</li>
+        <li><strong>Utilice nuestra calculadora</strong> para cuantificar el nivel de riesgo — y comparta el resultado con su veterinario para priorizar el tratamiento.</li>
+        <li><strong>Mantenga a su perro tranquilo y bajo observación.</strong> Evite cualquier agitación. Observe a su mascota atentamente durante al menos 12 horas, incluso si los síntomas iniciales parecen leves.</li>
+      </ol>
+    </article>
+
+    <!-- CTA #2 -->
+    <div class="cta-card" style="margin-top: 36px;">
+      <h3>🐶 Obtenga una evaluación precisa en segundos</h3>
+      <p>Nuestra calculadora gratuita utiliza los mismos umbrales que emplean los veterinarios en la clínica. Introduzca el peso de su perro y los datos del chocolate ingerido — el resultado es inmediato.</p>
+      <a href="index.html" class="cta-btn">Calcular el riesgo de mi perro →</a>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>🐾 <a href="index.html">Calculadora de Toxicidad para Mascotas</a> — Herramienta de orientación veterinaria gratuita. No sustituye el consejo de un veterinario profesional. Consulte siempre a un veterinario con licencia.</p>
+  </footer>
+
+</body>
+</html>
