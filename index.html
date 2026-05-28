@@ -401,11 +401,11 @@
 
     /* ── Header logo ─────────────────────────────────────── */
     .header-logo {
-      max-height: 70px;
+      max-height: 100px;
       width: auto;
       max-width: 100%;
       object-fit: contain;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     /* ── Dark Mode Toggle ─────────────────────────────── */
@@ -466,7 +466,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    .lang-btn:first-child {
+    .lang-btn:not(:last-child) {
       border-right: 1.5px solid var(--clr-border);
     }
 
@@ -544,6 +544,56 @@
       color: var(--clr-muted);
     }
 
+    /* ── Mini-Blog ─────────────────────────────────────── */
+    .mini-blog {
+      max-width: 560px;
+      margin: 32px auto 0;
+      padding: 0 16px;
+    }
+
+    .mini-blog-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--clr-text);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--clr-border);
+    }
+
+    .blog-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .blog-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .blog-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .blog-card-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--clr-primary);
+      margin-bottom: 6px;
+    }
+
+    .blog-card-body {
+      font-size: 0.85rem;
+      color: var(--clr-muted);
+      line-height: 1.6;
+    }
+
     /* ── Responsive tweaks ────────────────────────────── */
     @media (max-width: 360px) {
       .card { padding: 20px 16px; }
@@ -564,6 +614,8 @@
     <div class="lang-toggle" role="group" aria-label="Language selector">
       <button class="lang-btn active" id="btn-en" onclick="switchLanguage('en')" aria-pressed="true">EN</button>
       <button class="lang-btn"        id="btn-fr" onclick="switchLanguage('fr')" aria-pressed="false">FR</button>
+      <button class="lang-btn"        id="btn-es" onclick="switchLanguage('es')" aria-pressed="false">ES</button>
+      <button class="lang-btn"        id="btn-de" onclick="switchLanguage('de')" aria-pressed="false">DE</button>
     </div>
   </div>
 
@@ -683,6 +735,21 @@
 
   </div><!-- /.page-wrap -->
 
+  <!-- Mini-Blog: SEO Content Section -->
+  <section id="mini-blog" class="mini-blog" aria-label="Emergency Care Guides">
+    <h2 class="mini-blog-title" id="blog-section-title">Emergency Care Guides</h2>
+    <div class="blog-cards">
+      <article class="blog-card" id="blog-card-1">
+        <div class="blog-card-title" id="blog-1-title">First Steps After Toxin Ingestion</div>
+        <div class="blog-card-body"  id="blog-1-body">Stay calm, identify the substance and estimated amount, then call your vet or a poison helpline immediately. Do not induce vomiting unless specifically instructed by a professional.</div>
+      </article>
+      <article class="blog-card" id="blog-card-2">
+        <div class="blog-card-title" id="blog-2-title">Understanding Veterinary ABCs</div>
+        <div class="blog-card-body"  id="blog-2-body">Emergency vets assess Airway, Breathing, and Circulation first. Bringing the substance packaging and knowing your pet's weight can significantly speed up diagnosis and treatment.</div>
+      </article>
+    </div>
+  </section>
+
   <!-- Footer: Support Button -->
   <footer class="site-footer">
     <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" class="btn-support" id="btn-support">
@@ -764,6 +831,12 @@
         adLabel:        'Advertisement',
         supportBtn:     'Support this tool',
         supportTagline: 'Free forever. Powered by pet lovers.',
+        // Mini-blog
+        blogSectionTitle: 'Emergency Care Guides',
+        blog1Title: 'First Steps After Toxin Ingestion',
+        blog1Body:  'Stay calm, identify the substance and estimated amount, then call your vet or a poison helpline immediately. Do not induce vomiting unless specifically instructed by a professional.',
+        blog2Title: 'Understanding Veterinary ABCs',
+        blog2Body:  'Emergency vets assess Airway, Breathing, and Circulation first. Bringing the substance packaging and knowing your pet\u2019s weight can significantly speed up diagnosis and treatment.',
       },
 
       fr: {
@@ -820,6 +893,136 @@
         adLabel:        'Publicité',
         supportBtn:     'Soutenir ce projet',
         supportTagline: 'Gratuit pour toujours. Par des amoureux des animaux.',
+        // Mini-blog
+        blogSectionTitle: 'Guides de soins d\'urgence',
+        blog1Title: 'Premiers gestes après l\'ingéstion d\'une substance toxique',
+        blog1Body:  'Restez calme, identifiez la substance et la quantité estimée, puis appelez immédiatement votre vétérinaire ou une ligne d\'assistance aux intoxications. Ne provoquez pas de vomissements sauf instruction explicite d\'un professionnel.',
+        blog2Title: 'Comprendre l\'ABC vétérinaire',
+        blog2Body:  'Les vétérinaires urgentistes évaluent d\'abord les Voies aériennes, la Respiration et la Circulation. Apporter l\'emballage de la substance et connaître le poids de votre animal peut considérablement accélérer le diagnostic et le traitement.',
+      },
+
+      es: {
+        // Page
+        pageTitle:            'Calculadora de Toxicidad para Mascotas',
+        pageSubtitle:         'Evalúe rápidamente el nivel de riesgo cuando su mascota ha ingerido una sustancia potencialmente tóxica.',
+        // Form labels
+        labelPetType:         'Tipo de mascota',
+        labelWeight:          'Peso de la mascota',
+        labelSubstance:       'Sustancia ingerida',
+        labelAmount:          'Cantidad ingerida',
+        // Pet names
+        petDog:               'Perro',
+        petCat:               'Gato',
+        // Placeholders
+        placeholderWeight:    'ej. 12',
+        placeholderAmount:    'ej. 50',
+        // Substance dropdown
+        substancePlaceholder: '— Seleccione una sustancia —',
+        substanceDarkChoc:    'Chocolate negro',
+        substanceMilkChoc:    'Chocolate con leche',
+        substanceGrapes:      'Uvas / Pasas',
+        substanceOnion:       'Cebolla / Ajo',
+        substanceXylitol:     'Xilitol',
+        // Calculate button
+        btnCalculate:         '🔍 Calcular el riesgo',
+        // Validation errors
+        errPet:               'Por favor, seleccione un tipo de mascota.',
+        errWeight:            'Por favor, introduzca un peso válido.',
+        errSubstance:         'Por favor, seleccione una sustancia.',
+        errAmount:            'Por favor, introduzca una cantidad válida.',
+        // Result cards
+        result: {
+          green:  { icon: '✅', badge: 'Riesgo bajo',          title: 'Riesgo bajo — Vigilar en casa',                           desc: 'Según la información proporcionada, la cantidad ingerida parece estar por debajo de los umbrales tóxicos habituales. Vigile de cerca a su mascota por síntomas inusuales como vómitos, letargo o pérdida de apetito. Contacte a su veterinario si algo cambia.' },
+          yellow: { icon: '⚠️', badge: 'Riesgo moderado',      title: 'Riesgo moderado — Llame a su veterinario',                desc: 'La cantidad ingerida puede causar síntomas leves a moderados. Recomendamos llamar a su veterinario o a una línea de ayuda para intoxicaciones de mascotas de inmediato. No espere a que aparezcan los síntomas.' },
+          red:    { icon: '🚨', badge: 'Riesgo alto / Crítico', title: '¡Riesgo alto — Acuda al veterinario de urgencias!', desc: 'La dosis ingerida puede ser potencialmente mortal. No espere la aparición de síntomas. Lleve a su mascota a la clínica veterinaria de urgencias más cercana AHORA y traiga el embalaje de la sustancia si es posible.' },
+        },
+        // Emergency hotline
+        emergencyHTML: '🚨 Línea de emergencia veterinaria (EE. UU.): <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK: <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a>',
+        // Disclaimer
+        disclaimerHTML: '⚠️ Esta herramienta ofrece orientación general únicamente y <strong>no</strong> sustituye el consejo de un veterinario profesional. Consulte siempre a un veterinario con licencia para tomar decisiones médicas.',
+        // New substances
+        substanceIbuprofen:      'Ibuprofeno',
+        substanceAcetaminophen:  'Acetaminofén (Paracetamol)',
+        substanceAntifreeze:     'Anticongelante (Etilenglicol)',
+        substanceLilies:         'Lirios (lirios verdaderos)',
+        substanceAlcohol:        'Alcohol (Etanol)',
+        // Amount unit labels
+        unitGrams: 'gramos',
+        unitOz:    'oz',
+        unitMl:    'ml',
+        unitFlOz:  'fl oz',
+        // Monetization
+        adLabel:        'Publicidad',
+        supportBtn:     'Apoyar esta herramienta',
+        supportTagline: 'Gratis para siempre. Con el apoyo de amantes de las mascotas.',
+        // Mini-blog
+        blogSectionTitle: 'Guías de atención de emergencia',
+        blog1Title: 'Primeros pasos tras la ingestión de una sustancia tóxica',
+        blog1Body:  'Mantenga la calma, identifique la sustancia y la cantidad estimada y llame inmediatamente a su veterinario o a una línea de asistencia por intoxicación. No induzca el vómito salvo indicación expresa de un profesional.',
+        blog2Title: 'Comprender el ABC veterinario',
+        blog2Body:  'Los veterinarios de urgencias evalúan primero la Vía aérea, la Respiración y la Circulación. Traer el envase de la sustancia y saber el peso de su mascota puede acelerar considerablemente el diagnóstico y el tratamiento.',
+      },
+
+      de: {
+        // Page
+        pageTitle:            'Haustiergift-Rechner',
+        pageSubtitle:         'Bewerten Sie schnell das Risikoniveau, wenn Ihr Haustier eine möglicherweise giftige Substanz aufgenommen hat.',
+        // Form labels
+        labelPetType:         'Tierart',
+        labelWeight:          'Gewicht des Tieres',
+        labelSubstance:       'Aufgenommene Substanz',
+        labelAmount:          'Aufgenommene Menge',
+        // Pet names
+        petDog:               'Hund',
+        petCat:               'Katze',
+        // Placeholders
+        placeholderWeight:    'z. B. 12',
+        placeholderAmount:    'z. B. 50',
+        // Substance dropdown
+        substancePlaceholder: '— Substanz auswählen —',
+        substanceDarkChoc:    'Zartbitterschokolade',
+        substanceMilkChoc:    'Vollmilchschokolade',
+        substanceGrapes:      'Trauben / Rosinen',
+        substanceOnion:       'Zwiebel / Knoblauch',
+        substanceXylitol:     'Xylitol',
+        // Calculate button
+        btnCalculate:         '🔍 Risiko berechnen',
+        // Validation errors
+        errPet:               'Bitte wählen Sie eine Tierart aus.',
+        errWeight:            'Bitte geben Sie ein gültiges Gewicht ein.',
+        errSubstance:         'Bitte wählen Sie eine Substanz aus.',
+        errAmount:            'Bitte geben Sie eine gültige Menge ein.',
+        // Result cards
+        result: {
+          green:  { icon: '✅', badge: 'Geringes Risiko',          title: 'Geringes Risiko — Zu Hause überwachen',                           desc: 'Basierend auf den angegebenen Informationen scheint die aufgenommene Menge unterhalb der typischen Toxizitätsschwellen zu liegen. Beobachten Sie Ihr Tier genau auf ungewöhnliche Symptome wie Erbrechen, Lethargie oder Appetitlosigkeit. Kontaktieren Sie Ihren Tier- arzt, wenn sich etwas ändert.' },
+          yellow: { icon: '⚠️', badge: 'Mäßiges Risiko',           title: 'Mäßiges Risiko — Rufen Sie Ihren Tierärzt an',                    desc: 'Die aufgenommene Menge kann leichte bis mäßige Symptome verursachen. Wir empfehlen, sofort Ihren Tierärzt oder eine Notrufhotline für Tiervergiftungen anzurufen. Warten Sie nicht auf das Auftreten von Symptomen.' },
+          red:    { icon: '🚨', badge: 'Hohes Risiko / Kritisch',   title: 'Hohes Risiko — Sofort zum Notfall-Tierärzt!',                    desc: 'Die aufgenommene Dosis ist potenziell lebensbedrohlich. Warten Sie nicht auf Symptome. Bringen Sie Ihr Tier JETZT in die nächste Notfall-Tierklinik und bringen Sie nach Möglichkeit die Verpackung der Substanz mit.' },
+        },
+        // Emergency hotline
+        emergencyHTML: '🚨 Tierärztlicher Notruf (USA): <a href="tel:+18884264435">ASPCA +1-888-426-4435</a> &nbsp;|&nbsp; UK: <a href="tel:+441202509000">Animal PoisonLine 01202 509000</a>',
+        // Disclaimer
+        disclaimerHTML: '⚠️ Dieses Tool dient nur zur allgemeinen Orientierung und ist <strong>kein</strong> Ersatz für professionellen tierärztlichen Rat. Konsultieren Sie für medizinische Entscheidungen stets einen zugelassenen Tierärzt.',
+        // New substances
+        substanceIbuprofen:      'Ibuprofen',
+        substanceAcetaminophen:  'Paracetamol (Acetaminophen)',
+        substanceAntifreeze:     'Frostschutzmittel (Ethylenglykol)',
+        substanceLilies:         'Lilien (echte Lilien)',
+        substanceAlcohol:        'Alkohol (Ethanol)',
+        // Amount unit labels
+        unitGrams: 'Gramm',
+        unitOz:    'oz',
+        unitMl:    'ml',
+        unitFlOz:  'fl oz',
+        // Monetization
+        adLabel:        'Werbung',
+        supportBtn:     'Dieses Tool unterstützen',
+        supportTagline: 'Für immer kostenlos. Von Tierfreunden unterstützt.',
+        // Mini-blog
+        blogSectionTitle: 'Notfallratgeber',
+        blog1Title: 'Erste Schritte nach der Aufnahme einer giftigen Substanz',
+        blog1Body:  'Bleiben Sie ruhig, identifizieren Sie die Substanz und die geschätzte Menge, und rufen Sie sofort Ihren Tierärzt oder eine Vergiftungshotline an. Provozieren Sie kein Erbrechen, außer wenn ein Fachmann dies ausdrücklich empfiehlt.',
+        blog2Title: 'Das tierärztliche ABC verstehen',
+        blog2Body:  'Notfall-Tierärzte prüfen zuerst Atemwege, Atmung und Kreislauf. Das Mitbringen der Verpackung der Substanz und das Wissen über das Gewicht Ihres Tieres kann Diagnose und Behandlung erheblich beschleunigen.',
       },
     };
 
@@ -830,11 +1033,13 @@
 
       document.documentElement.setAttribute('lang', lang);
 
-      // Toggle button active states
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-      document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
-      document.getElementById('btn-fr').setAttribute('aria-pressed', lang === 'fr');
+      // Toggle button active states (works for any number of lang buttons)
+      ['en', 'fr', 'es', 'de'].forEach(code => {
+        const btn = document.getElementById('btn-' + code);
+        if (!btn) return;
+        btn.classList.toggle('active', code === lang);
+        btn.setAttribute('aria-pressed', code === lang);
+      });
 
       // Update all elements with data-i18n attribute (textContent)
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -862,6 +1067,19 @@
 
       // Re-apply amount unit labels for current substance
       updateAmountUnitLabels();
+
+      // Update mini-blog content
+      renderBlog();
+    }
+
+    // ── Render Mini-Blog ────────────────────────────────────
+    function renderBlog() {
+      const t = translations[currentLang];
+      document.getElementById('blog-section-title').textContent = t.blogSectionTitle;
+      document.getElementById('blog-1-title').textContent       = t.blog1Title;
+      document.getElementById('blog-1-body').textContent        = t.blog1Body;
+      document.getElementById('blog-2-title').textContent       = t.blog2Title;
+      document.getElementById('blog-2-body').textContent        = t.blog2Body;
     }
 
     // ── Pet Selection ─────────────────────────────────────
