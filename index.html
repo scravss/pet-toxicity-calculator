@@ -442,10 +442,30 @@
       transform: rotate(20deg);
     }
 
+    /* ── Hamburger Nav ────────────────────────────────── */
+    .hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}
+    .hmb-btn:hover{background:rgba(0,0,0,.06)}
+    .hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+    .hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hmb-btn.open span:nth-child(2){opacity:0}
+    .hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}
+    .hmb-menu.open{transform:translateX(0)}
+    .hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}
+    .hmb-overlay.open{opacity:1;pointer-events:all}
+    .hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}
+    .hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}
+    .hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}
+    .hmb-nav{display:flex;flex-direction:column}
+    .hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}
+    .hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}
+    .hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}
+    .hmb-nav .hmb-icon{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+
     /* ── Language Switcher ──────────────────────────────── */
     .lang-switcher {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       gap: 10px;
       padding: 14px 16px 0;
@@ -679,8 +699,19 @@
 </head>
 <body>
 
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Main navigation">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Pet Tools</a><button class="hmb-close" onclick="closeMenu()" aria-label="Close menu">✕</button></div>
+    <div class="hmb-nav" id="hmb-nav-links">
+      <a href="index.html" class="active-page" id="hmb-link-tox"><span class="hmb-icon">🧪</span><span id="hmb-lbl-tox">Toxicity Calculator</span></a>
+      <a href="age-calculator.html" id="hmb-link-age"><span class="hmb-icon">🎂</span><span id="hmb-lbl-age">Pet Age Calculator</span></a>
+      <a href="calorie-calculator.html" id="hmb-link-cal"><span class="hmb-icon">🥗</span><span id="hmb-lbl-cal">Calorie Calculator</span></a>
+      <a href="quality-of-life-calculator.html" id="hmb-link-qol"><span class="hmb-icon">🤍</span><span id="hmb-lbl-qol">Quality of Life</span></a>
+    </div>
+  </nav>
   <!-- Top bar: Dark Mode toggle + Language Switcher -->
   <div class="lang-switcher">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     <div class="lang-toggle" role="group" aria-label="Language selector">
       <button class="lang-btn active" id="btn-en" onclick="switchLanguage('en')" aria-pressed="true">EN</button>
@@ -1189,7 +1220,32 @@
 
       // Update mini-blog content
       renderBlog();
+
+      // Update hamburger menu link labels
+      const hmb = {
+        en: { tox:'Toxicity Calculator', age:'Pet Age Calculator', cal:'Calorie Calculator', qol:'Quality of Life',
+              ageHref:'age-calculator.html', calHref:'calorie-calculator.html', qolHref:'quality-of-life-calculator.html' },
+        fr: { tox:'Calculateur de toxicité', age:'Âge de l’animal', cal:'Calculateur de calories', qol:'Qualité de vie',
+              ageHref:'age-calculateur.html', calHref:'calculateur-calories.html', qolHref:'qualite-de-vie-animal.html' },
+        es: { tox:'Calculadora de toxicidad', age:'Calculadora de edad', cal:'Calculadora de calorías', qol:'Calidad de vida',
+              ageHref:'calculadora-edad.html', calHref:'calculadora-calorias.html', qolHref:'calidad-de-vida-mascotas.html' },
+        de: { tox:'Giftstoffrechner', age:'Tieralter-Rechner', cal:'Kalorienrechner', qol:'Lebensqualität',
+              ageHref:'alter-rechner.html', calHref:'kalorienrechner.html', qolHref:'lebensqualitaet-rechner.html' }
+      };
+      const m = hmb[lang] || hmb.en;
+      document.getElementById('hmb-lbl-tox').textContent = m.tox;
+      document.getElementById('hmb-lbl-age').textContent = m.age;
+      document.getElementById('hmb-lbl-cal').textContent = m.cal;
+      document.getElementById('hmb-lbl-qol').textContent = m.qol;
+      document.getElementById('hmb-link-age').href = m.ageHref;
+      document.getElementById('hmb-link-cal').href = m.calHref;
+      document.getElementById('hmb-link-qol').href = m.qolHref;
     }
+
+    // ── Hamburger Menu ────────────────────────────────────
+    function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}
+    function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 
     // ── Render Mini-Blog ────────────────────────────────────
     function renderBlog() {
