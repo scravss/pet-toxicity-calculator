@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Age Calculator — Convert Dog & Cat Years to Human Years</title>
+  <meta name="description" content="How old is your pet in human years? Convert your dog or cat's age instantly using our free, science-based Pet Age Calculator. No sign-up required." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/age-calculator.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta property="og:title" content="Pet Age Calculator — Dog & Cat Years to Human Years" />
+  <meta property="og:description" content="Find out how old your dog or cat is in human years. Free, instant, science-based converter." />
+  <meta property="og:type" content="website" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68M2645EP1');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clr-bg: #f5f7fa; --clr-surface: #ffffff; --clr-border: #e2e8f0;
+      --clr-text: #1e293b; --clr-muted: #64748b; --clr-primary: #4f46e5;
+      --clr-primary-h: #4338ca; --clr-green: #16a34a; --clr-green-bg: #f0fdf4;
+      --clr-green-bdr: #bbf7d0;
+      --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+      --shadow-md: 0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+      --transition: 0.18s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--clr-bg); color: var(--clr-text); min-height: 100vh; line-height: 1.6; }
+
+    /* ── Top Bar ── */
+    .top-bar { background: var(--clr-surface); border-bottom: 1px solid var(--clr-border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .top-bar a.site-name { font-weight: 800; font-size: 0.95rem; color: var(--clr-primary); text-decoration: none; }
+    .top-bar a.site-name:hover { text-decoration: underline; }
+    .top-bar a.back-link { font-size: 0.82rem; color: var(--clr-muted); text-decoration: none; transition: color var(--transition); }
+    .top-bar a.back-link:hover { color: var(--clr-primary); }
+
+    /* ── Page Wrap ── */
+    .page-wrap { max-width: 560px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* ── Hero ── */
+    .hero { text-align: center; margin-bottom: 36px; }
+    .hero-emoji { font-size: 3rem; line-height: 1; margin-bottom: 16px; display: block; }
+    .hero h1 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 12px; }
+    .hero-lead { font-size: 1rem; color: var(--clr-muted); max-width: 440px; margin: 0 auto; }
+
+    /* ── Card ── */
+    .calc-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-sm); }
+    @media (max-width: 480px) { .calc-card { padding: 24px 18px; } }
+
+    /* ── Pet Toggle ── */
+    .pet-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+    .pet-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 18px 12px; border: 2px solid var(--clr-border); border-radius: var(--radius-md); background: var(--clr-bg); cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 700; color: var(--clr-muted); transition: border-color var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition); }
+    .pet-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); background: #eef2ff; }
+    .pet-btn.active { border-color: var(--clr-primary); background: #eef2ff; color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.12); }
+    .pet-btn .pet-icon { font-size: 2rem; line-height: 1; }
+
+    /* ── Field ── */
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .field-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--clr-muted); }
+    .field-input { border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); padding: 13px 16px; font-size: 1.1rem; font-family: inherit; font-weight: 600; color: var(--clr-text); background: var(--clr-surface); outline: none; transition: border-color var(--transition), box-shadow var(--transition); width: 100%; }
+    .field-input:focus { border-color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.12); }
+    .field-input::placeholder { font-weight: 400; color: #cbd5e1; }
+    .field-hint { font-size: 0.78rem; color: var(--clr-muted); }
+
+    /* ── Size Select (dogs only) ── */
+    .size-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .size-btn { padding: 9px 6px; border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); background: var(--clr-bg); cursor: pointer; font-family: inherit; font-size: 0.78rem; font-weight: 700; color: var(--clr-muted); transition: border-color var(--transition), background var(--transition), color var(--transition); text-align: center; }
+    .size-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
+    .size-btn.active { border-color: var(--clr-primary); background: #eef2ff; color: var(--clr-primary); }
+    #size-field { display: none; }
+
+    /* ── Calculate Button ── */
+    .btn-calc { width: 100%; padding: 15px; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #fff; font-family: inherit; font-size: 1.05rem; font-weight: 800; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: opacity var(--transition), transform var(--transition); box-shadow: 0 4px 14px rgba(79,70,229,0.35); margin-top: 4px; }
+    .btn-calc:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-calc:active { transform: translateY(0); }
+
+    /* ── Result ── */
+    .result-box { display: none; margin-top: 24px; background: var(--clr-green-bg); border: 2px solid var(--clr-green-bdr); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; animation: fadeIn 0.3s ease; }
+    .result-box.show { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-green); margin-bottom: 8px; }
+    .result-number { font-size: clamp(3rem, 10vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--clr-green); line-height: 1; }
+    .result-unit { font-size: 1.1rem; font-weight: 700; color: var(--clr-green); margin-top: 4px; }
+    .result-context { margin-top: 14px; font-size: 0.9rem; color: var(--clr-muted); line-height: 1.6; }
+    .result-context strong { color: var(--clr-text); }
+
+    /* ── Error ── */
+    .err-msg { display: none; margin-top: 10px; font-size: 0.85rem; color: #dc2626; font-weight: 600; }
+    .err-msg.show { display: block; }
+
+    /* ── Fun Fact Band ── */
+    .fact-band { margin-top: 24px; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); padding: 16px 20px; font-size: 0.88rem; color: var(--clr-muted); line-height: 1.6; }
+    .fact-band strong { color: var(--clr-text); }
+
+    /* ── How It Works ── */
+    .how-section { margin-top: 40px; }
+    .how-section h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .how-grid { display: flex; flex-direction: column; gap: 12px; }
+    .how-row { display: flex; align-items: flex-start; gap: 14px; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); padding: 14px 16px; }
+    .how-num { display: flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; border-radius: 50%; font-size: 0.82rem; font-weight: 800; flex-shrink: 0; }
+    .how-text { font-size: 0.9rem; color: var(--clr-muted); line-height: 1.5; }
+    .how-text strong { color: var(--clr-text); }
+
+    /* ── CTA ── */
+    .cta-card { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border-radius: var(--radius-lg); padding: 32px 28px; text-align: center; color: #fff; margin-top: 40px; box-shadow: 0 8px 32px rgba(79,70,229,0.30); }
+    .cta-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    .cta-card p { font-size: 0.9rem; opacity: 0.88; margin-bottom: 22px; }
+    .cta-btn { display: inline-block; padding: 13px 30px; background: #fff; color: var(--clr-primary); font-family: inherit; font-size: 0.97rem; font-weight: 800; border-radius: var(--radius-sm); text-decoration: none; transition: transform var(--transition), box-shadow var(--transition); box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.20); }
+
+    /* ── Nav Footer ── */
+    .nav-footer { background: var(--clr-surface); border-top: 1px solid var(--clr-border); padding: 40px 24px 32px; margin-top: 60px; }
+    .nav-footer-inner { max-width: 560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 420px) { .nav-footer-inner { grid-template-columns: 1fr; } }
+    .nav-footer-col h4 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; color: var(--clr-muted); margin-bottom: 12px; }
+    .nav-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .nav-footer-col ul li a { font-size: 0.88rem; color: var(--clr-text); text-decoration: none; transition: color var(--transition); }
+    .nav-footer-col ul li a:hover { color: var(--clr-primary); }
+    .nav-footer-bottom { max-width: 560px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid var(--clr-border); text-align: center; font-size: 0.72rem; color: var(--clr-muted); }
+  </style>
+</head>
+<body>
+  <nav class="top-bar">
+    <a href="index.html" class="site-name">🐾 Pet Toxicity Calculator</a>
+    <a href="index.html" class="back-link">← Back to Toxicity Calculator</a>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-emoji">🐾</span>
+      <h1>Pet Age Calculator</h1>
+      <p class="hero-lead">How old is your dog or cat in human years? Select your pet, enter their age, and get an instant science-based conversion.</p>
+    </div>
+
+    <div class="calc-card">
+      <!-- Step 1: Pet Type -->
+      <div class="field">
+        <span class="field-label">Step 1 — Choose your pet</span>
+        <div class="pet-toggle">
+          <button class="pet-btn" id="btn-dog" onclick="selectPet('dog')" type="button">
+            <span class="pet-icon">🐶</span>Dog
+          </button>
+          <button class="pet-btn" id="btn-cat" onclick="selectPet('cat')" type="button">
+            <span class="pet-icon">🐱</span>Cat
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Dog Size (dogs only) -->
+      <div class="field" id="size-field">
+        <span class="field-label">Step 2 — Dog size</span>
+        <div class="size-toggle">
+          <button class="size-btn active" id="sz-small"  onclick="selectSize('small')"  type="button">Small<br><span style="font-weight:400;font-size:0.72rem;">&lt;10 kg</span></button>
+          <button class="size-btn"        id="sz-medium" onclick="selectSize('medium')" type="button">Medium<br><span style="font-weight:400;font-size:0.72rem;">10–25 kg</span></button>
+          <button class="size-btn"        id="sz-large"  onclick="selectSize('large')"  type="button">Large<br><span style="font-weight:400;font-size:0.72rem;">&gt;25 kg</span></button>
+        </div>
+      </div>
+
+      <!-- Step 3: Pet Age -->
+      <div class="field">
+        <label class="field-label" for="pet-age" id="age-label">Step 2 — Enter your pet's age</label>
+        <input type="number" id="pet-age" class="field-input" placeholder="e.g. 5" min="0" max="30" step="0.5" />
+        <span class="field-hint">Enter age in years. You can use decimals (e.g. 1.5 for 18 months).</span>
+      </div>
+
+      <button class="btn-calc" onclick="calculate()" type="button">Calculate Human Age →</button>
+
+      <p class="err-msg" id="err-msg">Please select a pet type and enter a valid age.</p>
+
+      <!-- Result -->
+      <div class="result-box" id="result-box">
+        <div class="result-label" id="result-label">Human Age Equivalent</div>
+        <div class="result-number" id="result-number">—</div>
+        <div class="result-unit">human years</div>
+        <p class="result-context" id="result-context"></p>
+      </div>
+    </div>
+
+    <!-- Fun Fact -->
+    <div class="fact-band" id="fact-band" style="display:none;">
+      <strong>💡 Did you know?</strong> The classic "multiply by 7" rule is a myth. A dog's first year equals roughly 15 human years — because they mature from puppy to adult very rapidly. The conversion slows significantly after year 2.
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-section">
+      <h2>How the conversion works</h2>
+      <div class="how-grid">
+        <div class="how-row">
+          <div class="how-num">1</div>
+          <div class="how-text"><strong>Year 1 = 15 human years.</strong> Pets mature extremely fast in their first year — reaching full sexual maturity and adult size.</div>
+        </div>
+        <div class="how-row">
+          <div class="how-num">2</div>
+          <div class="how-text"><strong>Year 2 = +9 human years.</strong> The second year adds another major developmental leap — equivalent to a young adult.</div>
+        </div>
+        <div class="how-row">
+          <div class="how-num">3</div>
+          <div class="how-text"><strong>Each additional year = +4–5 human years</strong> (varies by dog size — large dogs age faster). Cats are relatively consistent after year 2.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-card">
+      <h3>🚨 Is Your Pet Safe?</h3>
+      <p>If your pet has ingested something toxic, use our free Toxicity Calculator to assess the risk level instantly.</p>
+      <a href="index.html" class="cta-btn">Open Toxicity Calculator →</a>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="nav-footer" aria-label="Site navigation">
+      <div class="nav-footer-inner">
+        <div class="nav-footer-col">
+          <h4>More Tools</h4>
+          <ul>
+            <li><a href="index.html">🧪 Toxicity Calculator</a></li>
+            <li><a href="age-calculateur.html">🇫🇷 Calculateur d'âge</a></li>
+            <li><a href="alter-rechner.html">🇩🇪 Altersrechner</a></li>
+            <li><a href="calculadora-edad.html">🇪🇸 Calculadora de edad</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>Legal &amp; Contact</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Use</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-footer-bottom">
+        <p>&copy; <span id="footer-year"></span> Pet Toxicity Calculator — Not a substitute for professional veterinary advice.</p>
+      </div>
+    </nav>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    let selectedPet  = null;
+    let selectedSize = 'small';
+
+    function selectPet(pet) {
+      selectedPet = pet;
+      document.getElementById('btn-dog').classList.toggle('active', pet === 'dog');
+      document.getElementById('btn-cat').classList.toggle('active', pet === 'cat');
+      const sizeField = document.getElementById('size-field');
+      const ageLabel  = document.getElementById('age-label');
+      if (pet === 'dog') {
+        sizeField.style.display = 'block';
+        ageLabel.textContent = 'Step 3 — Enter your dog\'s age';
+      } else {
+        sizeField.style.display = 'none';
+        ageLabel.textContent = 'Step 2 — Enter your cat\'s age';
+      }
+      hideResult();
+    }
+
+    function selectSize(size) {
+      selectedSize = size;
+      ['small','medium','large'].forEach(s => {
+        document.getElementById('sz-' + s).classList.toggle('active', s === size);
+      });
+    }
+
+    function dogHumanAge(petAge, size) {
+      // Multiplier per year after 2nd, by size
+      const rate = size === 'large' ? 5 : size === 'medium' ? 4.5 : 4;
+      if (petAge <= 0)   return 0;
+      if (petAge <= 1)   return Math.round(15 * petAge);
+      if (petAge <= 2)   return Math.round(15 + (petAge - 1) * 9);
+      return Math.round(15 + 9 + (petAge - 2) * rate);
+    }
+
+    function catHumanAge(petAge) {
+      if (petAge <= 0)   return 0;
+      if (petAge <= 1)   return Math.round(15 * petAge);
+      if (petAge <= 2)   return Math.round(15 + (petAge - 1) * 9);
+      return Math.round(15 + 9 + (petAge - 2) * 4);
+    }
+
+    function lifeStage(humanAge, pet) {
+      if (humanAge < 18)  return pet === 'dog' ? 'a puppy / junior' : 'a kitten / junior';
+      if (humanAge < 40)  return 'a young adult';
+      if (humanAge < 60)  return 'a mature adult';
+      if (humanAge < 75)  return 'a senior';
+      return 'a geriatric';
+    }
+
+    function calculate() {
+      const ageInput = parseFloat(document.getElementById('pet-age').value);
+      const errMsg   = document.getElementById('err-msg');
+
+      if (!selectedPet || isNaN(ageInput) || ageInput < 0 || ageInput > 30) {
+        errMsg.classList.add('show');
+        hideResult();
+        return;
+      }
+      errMsg.classList.remove('show');
+
+      const humanAge = selectedPet === 'dog'
+        ? dogHumanAge(ageInput, selectedSize)
+        : catHumanAge(ageInput);
+
+      const stage = lifeStage(humanAge, selectedPet);
+      const petName = selectedPet === 'dog' ? 'dog' : 'cat';
+
+      document.getElementById('result-number').textContent  = humanAge;
+      document.getElementById('result-label').textContent   = 'Human Age Equivalent';
+      document.getElementById('result-context').innerHTML   =
+        `Your <strong>${ageInput}-year-old ${petName}</strong> is equivalent to a <strong>${humanAge}-year-old human</strong> — considered ${stage} in human terms.`;
+
+      document.getElementById('result-box').classList.add('show');
+      document.getElementById('fact-band').style.display = 'block';
+      document.getElementById('result-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideResult() {
+      document.getElementById('result-box').classList.remove('show');
+      document.getElementById('fact-band').style.display = 'none';
+    }
+
+    // Allow Enter key
+    document.getElementById('pet-age').addEventListener('keydown', e => {
+      if (e.key === 'Enter') calculate();
+    });
+  </script>
+</body>
+</html>

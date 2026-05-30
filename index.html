@@ -563,15 +563,18 @@
     }
 
     .nav-footer-inner {
-      max-width: 560px;
+      max-width: 720px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 32px;
     }
 
-    @media (max-width: 420px) {
-      .nav-footer-inner { grid-template-columns: 1fr; gap: 24px; }
+    @media (max-width: 600px) {
+      .nav-footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+    @media (max-width: 380px) {
+      .nav-footer-inner { grid-template-columns: 1fr; gap: 20px; }
     }
 
     .nav-footer-col h4 {
@@ -840,6 +843,15 @@
             <li><a href="oignon-chat.html">🇫🇷 Chat &amp; Oignon</a></li>
             <li><a href="grape-dog.html">🇬🇧 Dog &amp; Grapes</a></li>
             <li><a href="raisin-chien.html">🇫🇷 Chien &amp; Raisins</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>More Tools</h4>
+          <ul>
+            <li><a href="age-calculator.html">🇬🇧 Pet Age Calculator</a></li>
+            <li><a href="age-calculateur.html">🇫🇷 Calculateur d'âge</a></li>
+            <li><a href="alter-rechner.html">🇩🇪 Tieralter-Rechner</a></li>
+            <li><a href="calculadora-edad.html">🇪🇸 Calculadora de edad</a></li>
           </ul>
         </div>
         <div class="nav-footer-col">
