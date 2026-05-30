@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Calidad de Vida para Mascotas — Escala HHHHHMM</title>
+  <meta name="description" content="Evalúa la calidad de vida de tu perro o gato con la escala HHHHHMM de 7 criterios. Resultado compasivo y basado en ciencia para apoyar la conversación con tu veterinario." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/calidad-de-vida-mascotas.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--clr-red:#dc2626;--clr-red-bg:#fef2f2;--clr-red-bdr:#fecaca;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.6}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .top-bar a.back-link{font-size:.82rem;color:var(--clr-muted);text-decoration:none;transition:color var(--transition)}
+    .top-bar a.back-link:hover{color:var(--clr-primary)}
+    .page-wrap{max-width:620px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;margin-bottom:32px}
+    .hero-emoji{font-size:3rem;line-height:1;margin-bottom:16px;display:block}
+    .hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:12px}
+    .hero-lead{font-size:.97rem;color:var(--clr-muted);max-width:500px;margin:0 auto}
+    .intro-box{background:var(--clr-surface);border:1px solid var(--clr-border);border-left:4px solid var(--clr-primary);border-radius:var(--radius-md);padding:16px 20px;margin-bottom:28px;font-size:.9rem;color:var(--clr-muted);line-height:1.65}
+    .intro-box strong{color:var(--clr-text)}
+    .criterion-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:14px;box-shadow:var(--shadow-sm);transition:border-color var(--transition)}
+    .criterion-card:focus-within{border-color:var(--clr-primary)}
+    @media(max-width:480px){.criterion-card{padding:16px 14px}}
+    .criterion-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+    .criterion-num{display:flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:50%;font-size:.78rem;font-weight:800;flex-shrink:0;margin-top:2px}
+    .criterion-title{font-size:1rem;font-weight:800;color:var(--clr-text);margin-bottom:3px}
+    .criterion-desc{font-size:.82rem;color:var(--clr-muted);line-height:1.5}
+    .slider-wrap{display:flex;align-items:center;gap:12px;margin-top:4px}
+    .slider-wrap input[type=range]{flex:1;height:6px;border-radius:99px;cursor:pointer;accent-color:var(--clr-primary);-webkit-appearance:none;appearance:none;background:linear-gradient(to right,var(--clr-primary) 0%,var(--clr-primary) var(--fill,0%),var(--clr-border) var(--fill,0%),var(--clr-border) 100%)}
+    .slider-val{min-width:36px;text-align:center;font-size:1.15rem;font-weight:900;color:var(--clr-primary);background:#eef2ff;border-radius:var(--radius-sm);padding:3px 6px}
+    .slider-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--clr-muted);margin-top:4px}
+    .btn-calc{width:100%;padding:15px;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);color:#fff;font-family:inherit;font-size:1.05rem;font-weight:800;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:opacity var(--transition),transform var(--transition);box-shadow:0 4px 14px rgba(79,70,229,.35);margin-top:8px}
+    .btn-calc:hover{opacity:.92;transform:translateY(-1px)}.btn-calc:active{transform:translateY(0)}
+    .result-box{display:none;margin-top:28px;border-radius:var(--radius-lg);padding:28px 24px;animation:fadeIn .35s ease}
+    .result-box.show{display:block}
+    .result-box.good{background:var(--clr-green-bg);border:2px solid var(--clr-green-bdr)}
+    .result-box.caution{background:var(--clr-yellow-bg);border:2px solid var(--clr-yellow-bdr)}
+    .result-box.concern{background:var(--clr-red-bg);border:2px solid var(--clr-red-bdr)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .result-top{text-align:center;margin-bottom:20px}
+    .result-badge{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;padding:4px 14px;border-radius:99px;margin-bottom:12px}
+    .good .result-badge{background:var(--clr-green-bg);color:var(--clr-green);border:1px solid var(--clr-green-bdr)}
+    .caution .result-badge{background:var(--clr-yellow-bg);color:var(--clr-yellow);border:1px solid var(--clr-yellow-bdr)}
+    .concern .result-badge{background:var(--clr-red-bg);color:var(--clr-red);border:1px solid var(--clr-red-bdr)}
+    .score-display{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:8px}
+    .score-num{font-size:clamp(3.5rem,10vw,5rem);font-weight:900;letter-spacing:-.05em;line-height:1}
+    .good .score-num{color:var(--clr-green)}.caution .score-num{color:var(--clr-yellow)}.concern .score-num{color:var(--clr-red)}
+    .score-denom{font-size:1.5rem;font-weight:700;color:var(--clr-muted)}
+    .result-headline{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+    .result-text{font-size:.9rem;color:var(--clr-muted);line-height:1.65;max-width:480px;margin:0 auto}
+    .score-bar-wrap{margin:18px 0}
+    .score-bar-track{height:10px;background:var(--clr-border);border-radius:99px;overflow:hidden}
+    .score-bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
+    .good .score-bar-fill{background:linear-gradient(90deg,#86efac,#16a34a)}
+    .caution .score-bar-fill{background:linear-gradient(90deg,#fde68a,#b45309)}
+    .concern .score-bar-fill{background:linear-gradient(90deg,#fca5a5,#dc2626)}
+    .score-bar-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--clr-muted);margin-top:5px}
+    .breakdown{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+    .breakdown-row{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;padding:7px 12px;background:rgba(255,255,255,.65);border-radius:var(--radius-sm)}
+    .breakdown-row-label{color:var(--clr-muted)}.breakdown-row-val{font-weight:800;color:var(--clr-text)}
+    .disclaimer{margin-top:18px;background:rgba(255,255,255,.7);border-radius:var(--radius-md);padding:12px 16px;font-size:.8rem;color:var(--clr-muted);line-height:1.55}
+    .disclaimer strong{color:var(--clr-text)}
+    .about-section{margin-top:40px}
+    .about-section h2{font-size:1.1rem;font-weight:800;margin-bottom:14px;letter-spacing:-.02em}
+    .about-grid{display:flex;flex-direction:column;gap:10px}
+    .about-row{display:flex;align-items:flex-start;gap:12px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:12px 16px}
+    .about-icon{font-size:1.3rem;flex-shrink:0}
+    .about-text{font-size:.88rem;color:var(--clr-muted);line-height:1.5}
+    .about-text strong{color:var(--clr-text)}
+    .cta-card{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);border-radius:var(--radius-lg);padding:32px 28px;text-align:center;color:#fff;margin-top:40px;box-shadow:0 8px 32px rgba(79,70,229,.28)}
+    .cta-card h3{font-size:1.15rem;font-weight:800;margin-bottom:8px}
+    .cta-card p{font-size:.9rem;opacity:.88;margin-bottom:22px}
+    .cta-btn{display:inline-block;padding:13px 28px;background:#fff;color:var(--clr-primary);font-family:inherit;font-size:.95rem;font-weight:800;border-radius:var(--radius-sm);text-decoration:none;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 14px rgba(0,0,0,.14)}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.20)}
+    .nav-footer{background:var(--clr-surface);border-top:1px solid var(--clr-border);padding:40px 24px 32px;margin-top:60px}
+    .nav-footer-inner{max-width:620px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+    @media(max-width:420px){.nav-footer-inner{grid-template-columns:1fr}}
+    .nav-footer-col h4{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--clr-muted);margin-bottom:12px}
+    .nav-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .nav-footer-col ul li a{font-size:.88rem;color:var(--clr-text);text-decoration:none;transition:color var(--transition)}
+    .nav-footer-col ul li a:hover{color:var(--clr-primary)}
+    .nav-footer-bottom{max-width:620px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--clr-border);text-align:center;font-size:.72rem;color:var(--clr-muted)}
+  </style>
+</head>
+<body>
+  <nav class="top-bar">
+    <a href="index.html" class="site-name">🐾 Calculadora de Toxicidad</a>
+    <a href="index.html" class="back-link">← Volver a la calculadora</a>
+  </nav>
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-emoji">🤍</span>
+      <h1>Calculadora de Calidad de Vida para Mascotas</h1>
+      <p class="hero-lead">La escala HHHHHMM te ayuda a evaluar el bienestar de tu mascota en siete criterios clave — para apoyar una conversación honesta y compasiva con tu veterinario.</p>
+    </div>
+    <div class="intro-box"><strong>Una herramienta de reflexión, no un veredicto.</strong> Basada en la escala HHHHHMM de la Dra. Alice Villalobos. Cada criterio se puntúa de 0 a 10 (0 = muy malo, 10 = excelente). Una puntuación total superior a 35 de 70 generalmente indica una calidad de vida aceptable — pero la evaluación de tu veterinario y tu conocimiento de tu mascota son lo que más importa.</div>
+    <form id="qol-form" onsubmit="return false;">
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">1</div><div><div class="criterion-title">😣 Dolor</div><div class="criterion-desc">¿Está controlado el dolor de tu mascota? Observa la postura, respiración y reacciones al tacto.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s1" min="0" max="10" value="5" oninput="upd(this,'v1')"><span class="slider-val" id="v1">5</span></div>
+        <div class="slider-labels"><span>0 — Dolor severo</span><span>10 — Sin dolor</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">2</div><div><div class="criterion-title">🍽️ Hambre</div><div class="criterion-desc">¿Come suficiente para mantener su condición corporal? Ten en cuenta el apetito y la pérdida de peso.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s2" min="0" max="10" value="5" oninput="upd(this,'v2')"><span class="slider-val" id="v2">5</span></div>
+        <div class="slider-labels"><span>0 — Rechaza comer</span><span>10 — Buen apetito</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">3</div><div><div class="criterion-title">💧 Hidratación</div><div class="criterion-desc">¿Está bien hidratada tu mascota? Comprueba la elasticidad de la piel y la humedad de las encías.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s3" min="0" max="10" value="5" oninput="upd(this,'v3')"><span class="slider-val" id="v3">5</span></div>
+        <div class="slider-labels"><span>0 — Deshidratación grave</span><span>10 — Bien hidratado</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">4</div><div><div class="criterion-title">🛁 Higiene</div><div class="criterion-desc">¿Puede mantenerse limpia y con dignidad? Considera úlceras de presión, incontinencia y estado del pelaje.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s4" min="0" max="10" value="5" oninput="upd(this,'v4')"><span class="slider-val" id="v4">5</span></div>
+        <div class="slider-labels"><span>0 — Suciedad crónica</span><span>10 — Limpia y cómoda</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">5</div><div><div class="criterion-title">😊 Felicidad</div><div class="criterion-desc">¿Muestra interés por la vida — busca contacto, responde a caricias o juguetes?</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s5" min="0" max="10" value="5" oninput="upd(this,'v5')"><span class="slider-val" id="v5">5</span></div>
+        <div class="slider-labels"><span>0 — Retraída / angustiada</span><span>10 — Alegre y activa</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">6</div><div><div class="criterion-title">🦮 Movilidad</div><div class="criterion-desc">¿Puede moverse con suficiente independencia para evitar un sufrimiento constante?</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s6" min="0" max="10" value="5" oninput="upd(this,'v6')"><span class="slider-val" id="v6">5</span></div>
+        <div class="slider-labels"><span>0 — No puede moverse</span><span>10 — Se mueve libremente</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">7</div><div><div class="criterion-title">📅 Más días buenos que malos</div><div class="criterion-desc">En las últimas semanas, ¿han predominado los momentos de bienestar? Confía en tu conocimiento de tu mascota.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s7" min="0" max="10" value="5" oninput="upd(this,'v7')"><span class="slider-val" id="v7">5</span></div>
+        <div class="slider-labels"><span>0 — Mostly bad days</span><span>10 — Mostly good days</span></div>
+      </div>
+      <button class="btn-calc" type="button" onclick="calculate()">Evaluar calidad de vida →</button>
+    </form>
+
+    <div class="result-box" id="result-box">
+      <div class="result-top">
+        <div class="result-badge" id="res-badge">—</div>
+        <div class="score-display"><span class="score-num" id="res-score">—</span><span class="score-denom">/ 70</span></div>
+        <div class="result-headline" id="res-headline">—</div>
+        <p class="result-text" id="res-text">—</p>
+      </div>
+      <div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" id="res-bar" style="width:0%"></div></div><div class="score-bar-labels"><span>0</span><span>Umbral 35</span><span>70</span></div></div>
+      <div class="breakdown" id="res-breakdown"></div>
+      <div class="disclaimer"><strong>⚠️ Aviso médico:</strong> Esta herramienta no constituye asesoramiento veterinario, diagnóstico ni recomendación de eutanasia. Es una ayuda educativa para estructurar tus observaciones. Solo un veterinario con licencia puede evaluar el cuadro clínico completo de tu mascota.</div>
+    </div>
+
+    <div class="about-section">
+      <h2>Sobre la escala HHHHHMM</h2>
+      <div class="about-grid">
+        <div class="about-row"><span class="about-icon">🔬</span><div class="about-text">Desarrollada por la veterinaria oncóloga <strong>Dra. Alice Villalobos</strong> como marco compasivo para que los dueños de mascotas evalúen el bienestar al final de la vida.</div></div>
+        <div class="about-row"><span class="about-icon">📊</span><div class="about-text"><strong>Puntuación superior a 35 / 70:</strong> Generalmente indica que el confort supera al sufrimiento. Continúa monitorizando y consulta a tu veterinario regularmente.</div></div>
+        <div class="about-row"><span class="about-icon">📉</span><div class="about-text"><strong>Puntuación inferior a 35 / 70:</strong> El sufrimiento puede superar los momentos de bienestar. Se recomienda una conversación urgente con tu veterinario sobre cuidados paliativos.</div></div>
+        <div class="about-row"><span class="about-icon">💙</span><div class="about-text">Sea cual sea el resultado, <strong>no estás solo/a</strong>. El amor por una mascota y el dolor de perderla son profundamente reales. Date la misma compasión que das a tu animal.</div></div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h3>🚨 ¿Sospecha de intoxicación?</h3>
+      <p>Si tu mascota ha ingerido algo potencialmente tóxico, nuestra calculadora de toxicidad evalúa el riesgo al instante.</p>
+      <a href="index.html" class="cta-btn">Abrir la Calculadora de Toxicidad →</a>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="nav-footer" aria-label="Navegación del sitio">
+      <div class="nav-footer-inner">
+        <div class="nav-footer-col">
+          <h4>Más herramientas</h4>
+          <ul>
+            <li><a href="index.html">🧪 Calculadora de toxicidad</a></li>
+            <li><a href="calculadora-edad.html">🎂 Calculadora de edad</a></li>
+            <li><a href="calculadora-calorias.html">🥗 Calculadora de calorías</a></li>
+            <li><a href="quality-of-life-calculator.html">🇬🇧 Quality of Life</a></li>
+            <li><a href="qualite-de-vie-animal.html">🇫🇷 Qualité de vie</a></li>
+            <li><a href="lebensqualitaet-rechner.html">🇩🇪 Lebensqualität</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>Legal y contacto</h4>
+          <ul>
+            <li><a href="privacy.html">Política de privacidad</a></li>
+            <li><a href="terms.html">Términos de uso</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-footer-bottom"><p>&copy; <span id="footer-year"></span> Pet Toxicity Calculator — No sustituye el consejo veterinario profesional.</p></div>
+    </nav>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    const CR = ['Dolor','Hambre','Hidratación','Higiene','Felicidad','Movilidad','Días buenos'];
+    function upd(el,id){el.style.setProperty('--fill',(el.value/10*100)+'%');document.getElementById(id).textContent=el.value;}
+    for(let i=1;i<=7;i++) document.getElementById('s'+i).style.setProperty('--fill','50%');
+    function calculate(){
+      const s=[];for(let i=1;i<=7;i++) s.push(parseInt(document.getElementById('s'+i).value,10));
+      const t=s.reduce((a,b)=>a+b,0), pct=Math.round(t/70*100);
+      let tier,badge,headline,text;
+      if(t>=45){tier='good';badge='✅ Buena calidad de vida';headline='La calidad de vida de tu mascota parece aceptable.';text='La puntuación sugiere que el confort supera al sufrimiento. Continúa observando de cerca, mantén revisiones veterinarias regulares y anota los días buenos y malos en un diario.';}
+      else if(t>=35){tier='caution';badge='⚠️ Calidad de vida a vigilar';headline='La puntuación está en una zona de alerta.';text='Algunos criterios son preocupantes. Habla pronto con tu veterinario sobre manejo del dolor o cuidados de apoyo. Reevalúa semanalmente.';}
+      else{tier='concern';badge='🔴 Consulta veterinaria urgente recomendada';headline='La puntuación sugiere un sufrimiento significativo.';text='Una puntuación inferior a 35 no significa necesariamente el fin — tu veterinario puede identificar causas tratables. Pero una conversación urgente sobre cuidados paliativos y opciones de final de vida es muy recomendable. Estás haciendo lo correcto al hacer estas preguntas.';}
+      const box=document.getElementById('result-box');
+      box.className='result-box show '+tier;
+      document.getElementById('res-badge').textContent=badge;
+      document.getElementById('res-score').textContent=t;
+      document.getElementById('res-headline').textContent=headline;
+      document.getElementById('res-text').textContent=text;
+      document.getElementById('res-bar').style.width=pct+'%';
+      document.getElementById('res-breakdown').innerHTML=s.map((v,i)=>`<div class="breakdown-row"><span class="breakdown-row-label">${CR[i]}</span><span class="breakdown-row-val">${v} / 10</span></div>`).join('');
+      box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  </script>
+</body>
+</html>

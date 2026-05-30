@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lebensqualität-Rechner für Tiere — HHHHHMM-Skala für Hund & Katze</title>
+  <meta name="description" content="Bewerten Sie die Lebensqualität Ihres Hundes oder Ihrer Katze mit der 7-Kriterien-HHHHHMM-Skala. Kostenlos, einfühlsam und wissenschaftlich fundiert." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/lebensqualitaet-rechner.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--clr-red:#dc2626;--clr-red-bg:#fef2f2;--clr-red-bdr:#fecaca;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.6}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .top-bar a.back-link{font-size:.82rem;color:var(--clr-muted);text-decoration:none;transition:color var(--transition)}
+    .top-bar a.back-link:hover{color:var(--clr-primary)}
+    .page-wrap{max-width:620px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;margin-bottom:32px}
+    .hero-emoji{font-size:3rem;line-height:1;margin-bottom:16px;display:block}
+    .hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:12px}
+    .hero-lead{font-size:.97rem;color:var(--clr-muted);max-width:500px;margin:0 auto}
+    .intro-box{background:var(--clr-surface);border:1px solid var(--clr-border);border-left:4px solid var(--clr-primary);border-radius:var(--radius-md);padding:16px 20px;margin-bottom:28px;font-size:.9rem;color:var(--clr-muted);line-height:1.65}
+    .intro-box strong{color:var(--clr-text)}
+    .criterion-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:22px 26px;margin-bottom:14px;box-shadow:var(--shadow-sm);transition:border-color var(--transition)}
+    .criterion-card:focus-within{border-color:var(--clr-primary)}
+    @media(max-width:480px){.criterion-card{padding:16px 14px}}
+    .criterion-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+    .criterion-num{display:flex;align-items:center;justify-content:center;min-width:30px;height:30px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:50%;font-size:.78rem;font-weight:800;flex-shrink:0;margin-top:2px}
+    .criterion-title{font-size:1rem;font-weight:800;color:var(--clr-text);margin-bottom:3px}
+    .criterion-desc{font-size:.82rem;color:var(--clr-muted);line-height:1.5}
+    .slider-wrap{display:flex;align-items:center;gap:12px;margin-top:4px}
+    .slider-wrap input[type=range]{flex:1;height:6px;border-radius:99px;cursor:pointer;accent-color:var(--clr-primary);-webkit-appearance:none;appearance:none;background:linear-gradient(to right,var(--clr-primary) 0%,var(--clr-primary) var(--fill,0%),var(--clr-border) var(--fill,0%),var(--clr-border) 100%)}
+    .slider-val{min-width:36px;text-align:center;font-size:1.15rem;font-weight:900;color:var(--clr-primary);background:#eef2ff;border-radius:var(--radius-sm);padding:3px 6px}
+    .slider-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--clr-muted);margin-top:4px}
+    .btn-calc{width:100%;padding:15px;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);color:#fff;font-family:inherit;font-size:1.05rem;font-weight:800;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:opacity var(--transition),transform var(--transition);box-shadow:0 4px 14px rgba(79,70,229,.35);margin-top:8px}
+    .btn-calc:hover{opacity:.92;transform:translateY(-1px)}
+    .btn-calc:active{transform:translateY(0)}
+    .result-box{display:none;margin-top:28px;border-radius:var(--radius-lg);padding:28px 24px;animation:fadeIn .35s ease}
+    .result-box.show{display:block}
+    .result-box.good{background:var(--clr-green-bg);border:2px solid var(--clr-green-bdr)}
+    .result-box.caution{background:var(--clr-yellow-bg);border:2px solid var(--clr-yellow-bdr)}
+    .result-box.concern{background:var(--clr-red-bg);border:2px solid var(--clr-red-bdr)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .result-top{text-align:center;margin-bottom:20px}
+    .result-badge{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;padding:4px 14px;border-radius:99px;margin-bottom:12px}
+    .good .result-badge{background:var(--clr-green-bg);color:var(--clr-green);border:1px solid var(--clr-green-bdr)}
+    .caution .result-badge{background:var(--clr-yellow-bg);color:var(--clr-yellow);border:1px solid var(--clr-yellow-bdr)}
+    .concern .result-badge{background:var(--clr-red-bg);color:var(--clr-red);border:1px solid var(--clr-red-bdr)}
+    .score-display{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:8px}
+    .score-num{font-size:clamp(3.5rem,10vw,5rem);font-weight:900;letter-spacing:-.05em;line-height:1}
+    .good .score-num{color:var(--clr-green)}.caution .score-num{color:var(--clr-yellow)}.concern .score-num{color:var(--clr-red)}
+    .score-denom{font-size:1.5rem;font-weight:700;color:var(--clr-muted)}
+    .result-headline{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+    .result-text{font-size:.9rem;color:var(--clr-muted);line-height:1.65;max-width:480px;margin:0 auto}
+    .score-bar-wrap{margin:18px 0}
+    .score-bar-track{height:10px;background:var(--clr-border);border-radius:99px;overflow:hidden}
+    .score-bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
+    .good .score-bar-fill{background:linear-gradient(90deg,#86efac,#16a34a)}
+    .caution .score-bar-fill{background:linear-gradient(90deg,#fde68a,#b45309)}
+    .concern .score-bar-fill{background:linear-gradient(90deg,#fca5a5,#dc2626)}
+    .score-bar-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--clr-muted);margin-top:5px}
+    .breakdown{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+    .breakdown-row{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;padding:7px 12px;background:rgba(255,255,255,.65);border-radius:var(--radius-sm)}
+    .breakdown-row-label{color:var(--clr-muted)}.breakdown-row-val{font-weight:800;color:var(--clr-text)}
+    .disclaimer{margin-top:18px;background:rgba(255,255,255,.7);border-radius:var(--radius-md);padding:12px 16px;font-size:.8rem;color:var(--clr-muted);line-height:1.55}
+    .disclaimer strong{color:var(--clr-text)}
+    .about-section{margin-top:40px}
+    .about-section h2{font-size:1.1rem;font-weight:800;margin-bottom:14px;letter-spacing:-.02em}
+    .about-grid{display:flex;flex-direction:column;gap:10px}
+    .about-row{display:flex;align-items:flex-start;gap:12px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:12px 16px}
+    .about-icon{font-size:1.3rem;flex-shrink:0}
+    .about-text{font-size:.88rem;color:var(--clr-muted);line-height:1.5}
+    .about-text strong{color:var(--clr-text)}
+    .cta-card{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);border-radius:var(--radius-lg);padding:32px 28px;text-align:center;color:#fff;margin-top:40px;box-shadow:0 8px 32px rgba(79,70,229,.28)}
+    .cta-card h3{font-size:1.15rem;font-weight:800;margin-bottom:8px}
+    .cta-card p{font-size:.9rem;opacity:.88;margin-bottom:22px}
+    .cta-btn{display:inline-block;padding:13px 28px;background:#fff;color:var(--clr-primary);font-family:inherit;font-size:.95rem;font-weight:800;border-radius:var(--radius-sm);text-decoration:none;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 14px rgba(0,0,0,.14)}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.20)}
+    .nav-footer{background:var(--clr-surface);border-top:1px solid var(--clr-border);padding:40px 24px 32px;margin-top:60px}
+    .nav-footer-inner{max-width:620px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+    @media(max-width:420px){.nav-footer-inner{grid-template-columns:1fr}}
+    .nav-footer-col h4{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--clr-muted);margin-bottom:12px}
+    .nav-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .nav-footer-col ul li a{font-size:.88rem;color:var(--clr-text);text-decoration:none;transition:color var(--transition)}
+    .nav-footer-col ul li a:hover{color:var(--clr-primary)}
+    .nav-footer-bottom{max-width:620px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--clr-border);text-align:center;font-size:.72rem;color:var(--clr-muted)}
+  </style>
+</head>
+<body>
+  <nav class="top-bar">
+    <a href="index.html" class="site-name">🐾 Giftstoffrechner für Tiere</a>
+    <a href="index.html" class="back-link">← Zurück zum Rechner</a>
+  </nav>
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-emoji">🤍</span>
+      <h1>Lebensqualität-Rechner für Tiere</h1>
+      <p class="hero-lead">Die HHHHHMM-Skala hilft Ihnen, die Lebensqualität Ihres Tieres anhand von sieben Kriterien zu bewerten — als Grundlage für ein offenes Gespräch mit Ihrem Tierarzt.</p>
+    </div>
+    <div class="intro-box"><strong>Ein Reflexionswerkzeug, kein Urteil.</strong> Entwickelt von Dr. Alice Villalobos. Jedes Kriterium wird von 0 (sehr schlecht) bis 10 (ausgezeichnet) bewertet. Ein Gesamtwert über 35 von 70 deutet auf eine noch akzeptable Lebensqualität hin — maßgeblich bleibt stets die Einschätzung Ihres Tierarztes.</div>
+    <form id="qol-form" onsubmit="return false;">
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">1</div><div><div class="criterion-title">😣 Schmerz</div><div class="criterion-desc">Ist der Schmerz ausreichend kontrolliert? Achten Sie auf Körperhaltung, Atmung und Reaktionen auf Berührung.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s1" min="0" max="10" value="5" oninput="upd(this,'v1')"><span class="slider-val" id="v1">5</span></div>
+        <div class="slider-labels"><span>0 — Starke Schmerzen</span><span>10 — Schmerzfrei</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">2</div><div><div class="criterion-title">🍽️ Hunger</div><div class="criterion-desc">Frisst Ihr Tier genug, um den Körperzustand zu erhalten? Berücksichtigen Sie Appetit und Gewichtsverlust.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s2" min="0" max="10" value="5" oninput="upd(this,'v2')"><span class="slider-val" id="v2">5</span></div>
+        <div class="slider-labels"><span>0 — Verweigert Futter</span><span>10 — Guter Appetit</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">3</div><div><div class="criterion-title">💧 Hydratation</div><div class="criterion-desc">Ist Ihr Tier ausreichend mit Flüssigkeit versorgt? Prüfen Sie Hautelastizität und Schleimhäute.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s3" min="0" max="10" value="5" oninput="upd(this,'v3')"><span class="slider-val" id="v3">5</span></div>
+        <div class="slider-labels"><span>0 — Stark dehydriert</span><span>10 — Gut hydratisiert</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">4</div><div><div class="criterion-title">🛁 Hygiene</div><div class="criterion-desc">Kann Ihr Tier sauber und würdevoll gehalten werden? Berücksichtigen Sie Druckgeschwüre und Inkontinenz.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s4" min="0" max="10" value="5" oninput="upd(this,'v4')"><span class="slider-val" id="v4">5</span></div>
+        <div class="slider-labels"><span>0 — Chronische Verunreinigung</span><span>10 — Sauber und gepflegt</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">5</div><div><div class="criterion-title">😊 Freude</div><div class="criterion-desc">Zeigt Ihr Tier noch Interesse am Leben — sucht es Kontakt, reagiert es auf Zuneigung?</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s5" min="0" max="10" value="5" oninput="upd(this,'v5')"><span class="slider-val" id="v5">5</span></div>
+        <div class="slider-labels"><span>0 — Zurückgezogen</span><span>10 — Lebensfreudig</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">6</div><div><div class="criterion-title">🦮 Mobilität</div><div class="criterion-desc">Kann Ihr Tier sich ausreichend bewegen, um anhaltende Leiden zu vermeiden?</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s6" min="0" max="10" value="5" oninput="upd(this,'v6')"><span class="slider-val" id="v6">5</span></div>
+        <div class="slider-labels"><span>0 — Bewegungsunfähig</span><span>10 — Bewegt sich frei</span></div>
+      </div>
+      <div class="criterion-card">
+        <div class="criterion-header"><div class="criterion-num">7</div><div><div class="criterion-title">📅 Mehr gute als schlechte Tage</div><div class="criterion-desc">Überwiegen in den letzten Wochen die guten Momente? Vertrauen Sie Ihrer Kenntnis Ihres Tieres.</div></div></div>
+        <div class="slider-wrap"><input type="range" id="s7" min="0" max="10" value="5" oninput="upd(this,'v7')"><span class="slider-val" id="v7">5</span></div>
+        <div class="slider-labels"><span>0 — Meist schlechte Tage</span><span>10 — Meist gute Tage</span></div>
+      </div>
+      <button class="btn-calc" type="button" onclick="calculate()">Lebensqualität bewerten →</button>
+    </form>
+
+    <div class="result-box" id="result-box">
+      <div class="result-top">
+        <div class="result-badge" id="res-badge">—</div>
+        <div class="score-display"><span class="score-num" id="res-score">—</span><span class="score-denom">/ 70</span></div>
+        <div class="result-headline" id="res-headline">—</div>
+        <p class="result-text" id="res-text">—</p>
+      </div>
+      <div class="score-bar-wrap"><div class="score-bar-track"><div class="score-bar-fill" id="res-bar" style="width:0%"></div></div><div class="score-bar-labels"><span>0</span><span>Schwellenwert 35</span><span>70</span></div></div>
+      <div class="breakdown" id="res-breakdown"></div>
+      <div class="disclaimer"><strong>⚠️ Medizinischer Hinweis:</strong> Dieses Werkzeug stellt keine tierärztliche Beratung, Diagnose oder Empfehlung zur Euthanasie dar. Nur ein Tierarzt kann das vollständige klinische Bild beurteilen. Bitte vereinbaren Sie einen Termin, bevor Sie Entscheidungen zur Lebensplanung Ihres Tieres treffen.</div>
+    </div>
+
+    <div class="about-section">
+      <h2>Über die HHHHHMM-Skala</h2>
+      <div class="about-grid">
+        <div class="about-row"><span class="about-icon">🔬</span><div class="about-text">Entwickelt von Tierärztin <strong>Dr. Alice Villalobos</strong> als strukturiertes, mitfühlendes Werkzeug für Tierhalter in schwierigen Lebensphasen.</div></div>
+        <div class="about-row"><span class="about-icon">📊</span><div class="about-text"><strong>Über 35 / 70:</strong> Die Lebensqualität ist in der Regel noch akzeptabel — Komfort überwiegt Leiden.</div></div>
+        <div class="about-row"><span class="about-icon">📉</span><div class="about-text"><strong>Unter 35 / 70:</strong> Das Leiden könnte die guten Momente überwiegen. Ein dringendes Gespräch mit Ihrem Tierarzt über Palliativpflege oder Lebensende-Optionen ist empfohlen.</div></div>
+        <div class="about-row"><span class="about-icon">💙</span><div class="about-text">Unabhängig vom Ergebnis: <strong>Sie sind nicht allein.</strong> Die Trauer um ein Tier ist tief und real. Gönnen Sie sich dieselbe Fürsorge, die Sie Ihrem Tier entgegenbringen.</div></div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h3>🚨 Giftstoffverdacht?</h3>
+      <p>Falls Ihr Tier eine giftige Substanz gefressen hat, ermitteln Sie mit unserem Giftstoffrechner sofort das Risikoniveau.</p>
+      <a href="index.html" class="cta-btn">Zum Giftstoffrechner →</a>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="nav-footer" aria-label="Seitennavigation">
+      <div class="nav-footer-inner">
+        <div class="nav-footer-col">
+          <h4>Weitere Tools</h4>
+          <ul>
+            <li><a href="index.html">🧪 Giftstoffrechner</a></li>
+            <li><a href="alter-rechner.html">🎂 Altersrechner</a></li>
+            <li><a href="kalorienrechner.html">🥗 Kalorienrechner</a></li>
+            <li><a href="quality-of-life-calculator.html">🇬🇧 Quality of Life</a></li>
+            <li><a href="qualite-de-vie-animal.html">🇫🇷 Qualité de vie</a></li>
+            <li><a href="calidad-de-vida-mascotas.html">🇪🇸 Calidad de vida</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="privacy.html">Datenschutz</a></li>
+            <li><a href="terms.html">Nutzungsbedingungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-footer-bottom"><p>&copy; <span id="footer-year"></span> Pet Toxicity Calculator — Kein Ersatz für tierärztlichen Rat.</p></div>
+    </nav>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+    const CR = ['Schmerz','Hunger','Hydratation','Hygiene','Freude','Mobilität','Gute Tage'];
+    function upd(el,id){el.style.setProperty('--fill',(el.value/10*100)+'%');document.getElementById(id).textContent=el.value;}
+    for(let i=1;i<=7;i++) document.getElementById('s'+i).style.setProperty('--fill','50%');
+    function calculate(){
+      const s=[];for(let i=1;i<=7;i++) s.push(parseInt(document.getElementById('s'+i).value,10));
+      const t=s.reduce((a,b)=>a+b,0), pct=Math.round(t/70*100);
+      let tier,badge,headline,text;
+      if(t>=45){tier='good';badge='✅ Lebensqualität gut';headline='Die Lebensqualität Ihres Tieres scheint noch akzeptabel.';text='Der Gesamtwert deutet darauf hin, dass Komfort das Leiden überwiegt. Beobachten Sie weiterhin aufmerksam und führen Sie regelmäßige Tierarztkontrollen durch.';}
+      else if(t>=35){tier='caution';badge='⚠️ Lebensqualität beobachten';headline='Der Wert liegt in einem kritischen Bereich.';text='Einige Kriterien sind besorgniserregend. Sprechen Sie bald mit Ihrem Tierarzt über Schmerzmanagement oder unterstützende Pflege. Führen Sie ein Tagebuch guter und schlechter Tage.';}
+      else{tier='concern';badge='🔴 Dringende Tierarztkonsultation empfohlen';headline='Der Wert deutet auf erhebliche Beeinträchtigungen hin.';text='Ein Wert unter 35 bedeutet nicht zwangsläufig das Ende — Ihr Tierarzt kann möglicherweise behandelbare Ursachen identifizieren. Ein offenes Gespräch über Palliativpflege und Lebensende-Möglichkeiten ist jedoch dringend angeraten.';}
+      const box=document.getElementById('result-box');
+      box.className='result-box show '+tier;
+      document.getElementById('res-badge').textContent=badge;
+      document.getElementById('res-score').textContent=t;
+      document.getElementById('res-headline').textContent=headline;
+      document.getElementById('res-text').textContent=text;
+      document.getElementById('res-bar').style.width=pct+'%';
+      document.getElementById('res-breakdown').innerHTML=s.map((v,i)=>`<div class="breakdown-row"><span class="breakdown-row-label">${CR[i]}</span><span class="breakdown-row-val">${v} / 10</span></div>`).join('');
+      box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  </script>
+</body>
+</html>
