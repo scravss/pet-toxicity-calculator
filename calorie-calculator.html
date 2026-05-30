@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Calorie Calculator — Daily kcal for Dogs & Cats</title>
+  <meta name="description" content="Calculate your dog or cat's daily calorie needs using veterinary RER/MER formulas. Enter weight and activity level for an instant, science-based kcal recommendation." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/calorie-calculator.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta property="og:title" content="Pet Calorie Calculator — Daily kcal for Dogs & Cats" />
+  <meta property="og:description" content="Free veterinary-formula calorie calculator for dogs and cats. Get an instant daily kcal recommendation." />
+  <meta property="og:type" content="website" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68M2645EP1');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clr-bg:#f5f7fa; --clr-surface:#ffffff; --clr-border:#e2e8f0;
+      --clr-text:#1e293b; --clr-muted:#64748b; --clr-primary:#4f46e5;
+      --clr-green:#16a34a; --clr-green-bg:#f0fdf4; --clr-green-bdr:#bbf7d0;
+      --clr-yellow:#b45309; --clr-yellow-bg:#fffbeb; --clr-yellow-bdr:#fde68a;
+      --radius-sm:8px; --radius-md:12px; --radius-lg:16px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+      --transition:0.18s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--clr-bg); color: var(--clr-text); min-height: 100vh; line-height: 1.6; }
+
+    .top-bar { background: var(--clr-surface); border-bottom: 1px solid var(--clr-border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .top-bar a.site-name { font-weight: 800; font-size: 0.95rem; color: var(--clr-primary); text-decoration: none; }
+    .top-bar a.site-name:hover { text-decoration: underline; }
+    .top-bar a.back-link { font-size: 0.82rem; color: var(--clr-muted); text-decoration: none; transition: color var(--transition); }
+    .top-bar a.back-link:hover { color: var(--clr-primary); }
+
+    .page-wrap { max-width: 560px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .hero { text-align: center; margin-bottom: 36px; }
+    .hero-emoji { font-size: 3rem; line-height: 1; margin-bottom: 16px; display: block; }
+    .hero h1 { font-size: clamp(1.7rem,4.5vw,2.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 12px; }
+    .hero-lead { font-size: 1rem; color: var(--clr-muted); max-width: 440px; margin: 0 auto; }
+
+    .calc-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-sm); }
+    @media (max-width: 480px) { .calc-card { padding: 24px 18px; } }
+
+    /* Pet toggle */
+    .pet-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    .pet-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 16px 12px; border: 2px solid var(--clr-border); border-radius: var(--radius-md); background: var(--clr-bg); cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 700; color: var(--clr-muted); transition: border-color var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition); }
+    .pet-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); background: #eef2ff; }
+    .pet-btn.active { border-color: var(--clr-primary); background: #eef2ff; color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
+    .pet-btn .pet-icon { font-size: 1.8rem; line-height: 1; }
+
+    /* Field */
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .field-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--clr-muted); }
+    .field-hint { font-size: 0.78rem; color: var(--clr-muted); }
+
+    /* Weight row with unit toggle */
+    .input-row { display: flex; gap: 8px; align-items: stretch; }
+    .input-row input { flex: 1; border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); padding: 12px 14px; font-size: 1.05rem; font-family: inherit; font-weight: 600; color: var(--clr-text); background: var(--clr-surface); outline: none; transition: border-color var(--transition), box-shadow var(--transition); min-width: 0; }
+    .input-row input:focus { border-color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
+    .input-row input::placeholder { font-weight: 400; color: #cbd5e1; }
+    .unit-toggle { display: flex; border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; }
+    .unit-btn { padding: 0 14px; background: var(--clr-bg); border: none; font-family: inherit; font-size: 0.82rem; font-weight: 700; color: var(--clr-muted); cursor: pointer; transition: background var(--transition), color var(--transition); white-space: nowrap; }
+    .unit-btn.active { background: var(--clr-primary); color: #fff; }
+
+    /* Activity select */
+    .activity-select { appearance: none; -webkit-appearance: none; width: 100%; border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); padding: 12px 36px 12px 14px; font-size: 0.97rem; font-family: inherit; font-weight: 600; color: var(--clr-text); background: var(--clr-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center; outline: none; cursor: pointer; transition: border-color var(--transition), box-shadow var(--transition); }
+    .activity-select:focus { border-color: var(--clr-primary); box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
+
+    /* Calculate button */
+    .btn-calc { width: 100%; padding: 15px; background: linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%); color: #fff; font-family: inherit; font-size: 1.05rem; font-weight: 800; border: none; border-radius: var(--radius-sm); cursor: pointer; transition: opacity var(--transition), transform var(--transition); box-shadow: 0 4px 14px rgba(79,70,229,.35); margin-top: 4px; }
+    .btn-calc:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-calc:active { transform: translateY(0); }
+
+    /* Error */
+    .err-msg { display: none; margin-top: 10px; font-size: 0.85rem; color: #dc2626; font-weight: 600; }
+    .err-msg.show { display: block; }
+
+    /* Result */
+    .result-box { display: none; margin-top: 24px; border-radius: var(--radius-lg); padding: 28px 24px; animation: fadeIn 0.3s ease; }
+    .result-box.show { display: block; }
+    .result-box.ok { background: var(--clr-green-bg); border: 2px solid var(--clr-green-bdr); }
+    .result-box.warn { background: var(--clr-yellow-bg); border: 2px solid var(--clr-yellow-bdr); }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    .result-header { text-align: center; margin-bottom: 20px; }
+    .result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-green); margin-bottom: 6px; }
+    .result-kcal { font-size: clamp(3rem,10vw,4.5rem); font-weight: 900; letter-spacing: -0.04em; color: var(--clr-green); line-height: 1; }
+    .result-unit { font-size: 1rem; font-weight: 700; color: var(--clr-green); margin-top: 4px; }
+    .result-breakdown { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; padding: 8px 12px; background: rgba(255,255,255,0.6); border-radius: var(--radius-sm); }
+    .result-row-label { color: var(--clr-muted); }
+    .result-row-value { font-weight: 700; color: var(--clr-text); }
+    .result-note { margin-top: 14px; font-size: 0.82rem; color: var(--clr-muted); text-align: center; line-height: 1.5; }
+
+    /* Science section */
+    .science-section { margin-top: 40px; }
+    .science-section h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .info-grid { display: flex; flex-direction: column; gap: 12px; }
+    .info-row { display: flex; align-items: flex-start; gap: 14px; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); padding: 14px 16px; }
+    .info-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
+    .info-text { font-size: 0.9rem; color: var(--clr-muted); line-height: 1.5; }
+    .info-text strong { color: var(--clr-text); }
+
+    /* MER table */
+    .mer-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 16px; }
+    .mer-table th { text-align: left; padding: 8px 12px; background: var(--clr-bg); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--clr-muted); border-bottom: 2px solid var(--clr-border); }
+    .mer-table td { padding: 9px 12px; border-bottom: 1px solid var(--clr-border); color: var(--clr-text); vertical-align: top; }
+    .mer-table td:last-child { font-weight: 700; color: var(--clr-primary); }
+    .mer-table tr:last-child td { border-bottom: none; }
+
+    /* CTA */
+    .cta-card { background: linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%); border-radius: var(--radius-lg); padding: 32px 28px; text-align: center; color: #fff; margin-top: 40px; box-shadow: 0 8px 32px rgba(79,70,229,.30); }
+    .cta-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    .cta-card p { font-size: 0.9rem; opacity: 0.88; margin-bottom: 22px; }
+    .cta-btn { display: inline-block; padding: 13px 30px; background: #fff; color: var(--clr-primary); font-family: inherit; font-size: 0.97rem; font-weight: 800; border-radius: var(--radius-sm); text-decoration: none; transition: transform var(--transition), box-shadow var(--transition); box-shadow: 0 4px 14px rgba(0,0,0,.15); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.20); }
+
+    /* Nav footer */
+    .nav-footer { background: var(--clr-surface); border-top: 1px solid var(--clr-border); padding: 40px 24px 32px; margin-top: 60px; }
+    .nav-footer-inner { max-width: 560px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 420px) { .nav-footer-inner { grid-template-columns: 1fr; } }
+    .nav-footer-col h4 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; color: var(--clr-muted); margin-bottom: 12px; }
+    .nav-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .nav-footer-col ul li a { font-size: 0.88rem; color: var(--clr-text); text-decoration: none; transition: color var(--transition); }
+    .nav-footer-col ul li a:hover { color: var(--clr-primary); }
+    .nav-footer-bottom { max-width: 560px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid var(--clr-border); text-align: center; font-size: 0.72rem; color: var(--clr-muted); }
+  </style>
+</head>
+<body>
+  <nav class="top-bar">
+    <a href="index.html" class="site-name">🐾 Pet Toxicity Calculator</a>
+    <a href="index.html" class="back-link">← Back to Toxicity Calculator</a>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-emoji">🥗</span>
+      <h1>Pet Calorie Calculator</h1>
+      <p class="hero-lead">Find out exactly how many calories your dog or cat needs per day — calculated using the same RER/MER formulas used by veterinary nutritionists.</p>
+    </div>
+
+    <div class="calc-card">
+      <!-- Pet type -->
+      <div class="field">
+        <span class="field-label">Step 1 — Choose your pet</span>
+        <div class="pet-toggle">
+          <button class="pet-btn" id="btn-dog" onclick="selectPet('dog')" type="button">
+            <span class="pet-icon">🐶</span>Dog
+          </button>
+          <button class="pet-btn" id="btn-cat" onclick="selectPet('cat')" type="button">
+            <span class="pet-icon">🐱</span>Cat
+          </button>
+        </div>
+      </div>
+
+      <!-- Weight -->
+      <div class="field">
+        <label class="field-label" for="weight-input">Step 2 — Body weight</label>
+        <div class="input-row">
+          <input type="number" id="weight-input" placeholder="e.g. 10" min="0.1" max="200" step="0.1" />
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btn-kg" onclick="setUnit('kg')" type="button">kg</button>
+            <button class="unit-btn"        id="btn-lbs" onclick="setUnit('lbs')" type="button">lbs</button>
+          </div>
+        </div>
+        <span class="field-hint">Enter your pet's current body weight.</span>
+      </div>
+
+      <!-- Activity / life stage -->
+      <div class="field">
+        <label class="field-label" for="activity-select">Step 3 — Life stage &amp; activity level</label>
+        <select class="activity-select" id="activity-select">
+          <option value="">— Select a lifestyle —</option>
+          <optgroup label="Dogs">
+            <option value="dog_neutered">Dog — Neutered / Spayed adult</option>
+            <option value="dog_intact">Dog — Intact adult</option>
+            <option value="dog_active">Dog — Active / working dog</option>
+            <option value="dog_puppy">Dog — Puppy (under 4 months)</option>
+            <option value="dog_puppy_adult">Dog — Puppy (4 months to adult)</option>
+            <option value="dog_loss">Dog — Weight loss programme</option>
+            <option value="dog_senior">Dog — Senior / less active</option>
+          </optgroup>
+          <optgroup label="Cats">
+            <option value="cat_neutered">Cat — Neutered / Spayed adult</option>
+            <option value="cat_intact">Cat — Intact adult</option>
+            <option value="cat_active">Cat — Active / outdoor cat</option>
+            <option value="cat_kitten">Cat — Kitten (under 6 months)</option>
+            <option value="cat_loss">Cat — Weight loss programme</option>
+            <option value="cat_senior">Cat — Senior cat (&gt;7 years)</option>
+          </optgroup>
+        </select>
+        <span class="field-hint">Choose the option that best matches your pet's lifestyle.</span>
+      </div>
+
+      <button class="btn-calc" onclick="calculate()" type="button">Calculate Daily Calories →</button>
+      <p class="err-msg" id="err-msg">Please select a pet type, enter a valid weight, and choose a lifestyle.</p>
+
+      <!-- Result -->
+      <div class="result-box ok" id="result-box">
+        <div class="result-header">
+          <div class="result-label">Recommended daily intake</div>
+          <div class="result-kcal" id="result-kcal">—</div>
+          <div class="result-unit">kcal / day</div>
+        </div>
+        <div class="result-breakdown">
+          <div class="result-row">
+            <span class="result-row-label">Resting Energy Requirement (RER)</span>
+            <span class="result-row-value" id="res-rer">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">MER multiplier</span>
+            <span class="result-row-value" id="res-factor">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">Life stage</span>
+            <span class="result-row-value" id="res-stage">—</span>
+          </div>
+        </div>
+        <p class="result-note">⚠️ This estimate is for guidance only. Consult your vet before changing your pet's diet, especially for weight loss.</p>
+      </div>
+    </div>
+
+    <!-- Science section -->
+    <div class="science-section">
+      <h2>The science behind the numbers</h2>
+      <div class="info-grid">
+        <div class="info-row">
+          <span class="info-icon">🔬</span>
+          <div class="info-text"><strong>Resting Energy Requirement (RER)</strong> is the baseline calories needed for basic body functions at rest. Calculated as: <strong>RER = 70 × (body weight in kg)<sup>0.75</sup></strong></div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">⚡</span>
+          <div class="info-text"><strong>Maintenance Energy Requirement (MER)</strong> = RER × a lifestyle multiplier that accounts for activity, reproductive status, and life stage. This is the number you should actually feed.</div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">📋</span>
+          <div class="info-text"><strong>MER multipliers used (WSAVA guidelines):</strong></div>
+        </div>
+      </div>
+      <table class="mer-table">
+        <thead><tr><th>Life Stage / Activity</th><th>Multiplier</th></tr></thead>
+        <tbody>
+          <tr><td>Dog — Neutered adult</td><td>×1.6</td></tr>
+          <tr><td>Dog — Intact adult</td><td>×1.8</td></tr>
+          <tr><td>Dog — Active / working</td><td>×3.0</td></tr>
+          <tr><td>Dog — Puppy &lt;4 months</td><td>×3.0</td></tr>
+          <tr><td>Dog — Puppy 4 mo → adult</td><td>×2.0</td></tr>
+          <tr><td>Dog — Weight loss</td><td>×1.0</td></tr>
+          <tr><td>Dog — Senior</td><td>×1.4</td></tr>
+          <tr><td>Cat — Neutered adult</td><td>×1.2</td></tr>
+          <tr><td>Cat — Intact adult</td><td>×1.4</td></tr>
+          <tr><td>Cat — Active / outdoor</td><td>×1.6</td></tr>
+          <tr><td>Cat — Kitten</td><td>×2.5</td></tr>
+          <tr><td>Cat — Weight loss</td><td>×0.8</td></tr>
+          <tr><td>Cat — Senior</td><td>×1.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cta-card">
+      <h3>🚨 Is Your Pet Safe?</h3>
+      <p>If your pet has ingested something potentially toxic, use our free Toxicity Calculator to assess the risk level instantly.</p>
+      <a href="index.html" class="cta-btn">Open Toxicity Calculator →</a>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="nav-footer" aria-label="Site navigation">
+      <div class="nav-footer-inner">
+        <div class="nav-footer-col">
+          <h4>More Tools</h4>
+          <ul>
+            <li><a href="index.html">🧪 Toxicity Calculator</a></li>
+            <li><a href="age-calculator.html">🎂 Pet Age Calculator</a></li>
+            <li><a href="calculateur-calories.html">🇫🇷 Calculateur de calories</a></li>
+            <li><a href="kalorienrechner.html">🇩🇪 Kalorienrechner</a></li>
+            <li><a href="calculadora-calorias.html">🇪🇸 Calculadora de calorías</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>Legal &amp; Contact</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Use</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-footer-bottom">
+        <p>&copy; <span id="footer-year"></span> Pet Toxicity Calculator — Not a substitute for professional veterinary advice.</p>
+      </div>
+    </nav>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    let selectedPet = null;
+    let weightUnit  = 'kg';
+
+    // MER multipliers keyed by option value
+    const MER = {
+      dog_neutered:    { factor: 1.6, label: 'Neutered/Spayed adult dog' },
+      dog_intact:      { factor: 1.8, label: 'Intact adult dog' },
+      dog_active:      { factor: 3.0, label: 'Active/working dog' },
+      dog_puppy:       { factor: 3.0, label: 'Puppy < 4 months' },
+      dog_puppy_adult: { factor: 2.0, label: 'Puppy 4 months → adult' },
+      dog_loss:        { factor: 1.0, label: 'Dog weight loss' },
+      dog_senior:      { factor: 1.4, label: 'Senior dog' },
+      cat_neutered:    { factor: 1.2, label: 'Neutered/Spayed adult cat' },
+      cat_intact:      { factor: 1.4, label: 'Intact adult cat' },
+      cat_active:      { factor: 1.6, label: 'Active/outdoor cat' },
+      cat_kitten:      { factor: 2.5, label: 'Kitten' },
+      cat_loss:        { factor: 0.8, label: 'Cat weight loss' },
+      cat_senior:      { factor: 1.1, label: 'Senior cat' },
+    };
+
+    function selectPet(pet) {
+      selectedPet = pet;
+      document.getElementById('btn-dog').classList.toggle('active', pet === 'dog');
+      document.getElementById('btn-cat').classList.toggle('active', pet === 'cat');
+      hideResult();
+    }
+
+    function setUnit(unit) {
+      weightUnit = unit;
+      document.getElementById('btn-kg').classList.toggle('active', unit === 'kg');
+      document.getElementById('btn-lbs').classList.toggle('active', unit === 'lbs');
+    }
+
+    function toKg(val) {
+      return weightUnit === 'lbs' ? val * 0.453592 : val;
+    }
+
+    function calculate() {
+      const rawWeight  = parseFloat(document.getElementById('weight-input').value);
+      const activityKey = document.getElementById('activity-select').value;
+      const errMsg     = document.getElementById('err-msg');
+
+      if (!activityKey || isNaN(rawWeight) || rawWeight <= 0) {
+        errMsg.classList.add('show');
+        hideResult();
+        return;
+      }
+      errMsg.classList.remove('show');
+
+      const weightKg = toKg(rawWeight);
+      const rer      = Math.round(70 * Math.pow(weightKg, 0.75));
+      const entry    = MER[activityKey];
+      const mer      = Math.round(rer * entry.factor);
+
+      document.getElementById('result-kcal').textContent  = mer;
+      document.getElementById('res-rer').textContent      = rer + ' kcal/day';
+      document.getElementById('res-factor').textContent   = '×' + entry.factor;
+      document.getElementById('res-stage').textContent    = entry.label;
+
+      const box = document.getElementById('result-box');
+      box.classList.remove('ok', 'warn');
+      box.classList.add(activityKey.includes('loss') ? 'warn' : 'ok');
+
+      // Update label colours for weight-loss variant
+      const isLoss = activityKey.includes('loss');
+      box.querySelector('.result-label').style.color = isLoss ? 'var(--clr-yellow)' : 'var(--clr-green)';
+      box.querySelector('.result-kcal').style.color  = isLoss ? 'var(--clr-yellow)' : 'var(--clr-green)';
+      box.querySelector('.result-unit').style.color  = isLoss ? 'var(--clr-yellow)' : 'var(--clr-green)';
+
+      box.classList.add('show');
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideResult() {
+      const box = document.getElementById('result-box');
+      box.classList.remove('show');
+    }
+
+    document.getElementById('weight-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') calculate();
+    });
+  </script>
+</body>
+</html>
