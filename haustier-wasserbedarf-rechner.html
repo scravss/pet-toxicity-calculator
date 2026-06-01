@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haustier Wasserbedarf Rechner — Hund &amp; Katze Tagesbedarf</title>
+  <meta name="description" content="Berechnen Sie den täglichen Wasserbedarf Ihres Hundes oder Ihrer Katze nach Gewicht, Aktivitätslevel und Futtertyp. Kostenloser tierärztlich fundierter Rechner." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/haustier-wasserbedarf-rechner.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta property="og:title" content="Haustier Wasserbedarf Rechner — Tägliche Wasseraufnahme" />
+  <meta property="og:description" content="Wie viel Wasser braucht Ihr Hund oder Ihre Katze pro Tag? Kostenloser Rechner." />
+  <meta property="og:type" content="website" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#ffffff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-blue-bg:#f0f9ff;--clr-blue-bdr:#bae6fd;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.6}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:0.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:560px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;margin-bottom:36px}
+    .hero-emoji{font-size:3rem;line-height:1;margin-bottom:16px;display:block}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin-bottom:12px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:460px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm)}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+    .field-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--clr-muted)}
+    .pet-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .pet-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 12px;border:2px solid var(--clr-border);border-radius:var(--radius-md);background:var(--clr-bg);cursor:pointer;font-family:inherit;font-size:0.88rem;font-weight:700;color:var(--clr-muted);transition:border-color var(--transition),background var(--transition),color var(--transition)}
+    .pet-btn:hover{border-color:var(--clr-primary);color:var(--clr-primary);background:#eef2ff}
+    .pet-btn.active{border-color:var(--clr-primary);background:#eef2ff;color:var(--clr-primary);box-shadow:0 0 0 3px rgba(79,70,229,0.12)}
+    .pet-icon{font-size:2rem;line-height:1}
+    .input-wrap{position:relative}
+    .input-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-weight:600;font-size:0.88rem;color:var(--clr-muted);pointer-events:none}
+    .field-input{border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);padding:13px 48px 13px 16px;font-size:1.05rem;font-family:inherit;font-weight:600;color:var(--clr-text);background:var(--clr-surface);outline:none;transition:border-color var(--transition);width:100%}
+    .field-input:focus{border-color:var(--clr-primary);box-shadow:0 0 0 3px rgba(79,70,229,0.12)}
+    .field-input::placeholder{font-weight:400;color:#cbd5e1}
+    .opt-grid{display:flex;flex-direction:column;gap:8px}
+    .opt-btn{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:2px solid var(--clr-border);border-radius:var(--radius-md);cursor:pointer;background:var(--clr-bg);font-family:inherit;text-align:left;transition:border-color var(--transition),background var(--transition);width:100%}
+    .opt-btn:hover{border-color:var(--clr-primary);background:#f8f9ff}
+    .opt-btn.active{border-color:var(--clr-primary);background:#eef2ff;box-shadow:0 0 0 3px rgba(79,70,229,0.10)}
+    .opt-icon{font-size:1.3rem;flex-shrink:0}
+    .opt-text{font-size:0.88rem;line-height:1.45}
+    .opt-text strong{display:block;font-size:0.82rem;color:var(--clr-text)}
+    .opt-text span{color:var(--clr-muted)}
+    .btn-calc{width:100%;padding:15px;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);color:#fff;font-family:inherit;font-size:1.05rem;font-weight:800;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:opacity var(--transition),transform var(--transition);box-shadow:0 4px 14px rgba(79,70,229,0.35);margin-top:4px}
+    .btn-calc:hover{opacity:0.92;transform:translateY(-1px)}
+    .err-msg{display:none;margin-top:10px;font-size:0.85rem;color:#dc2626;font-weight:600}
+    .err-msg.show{display:block}
+    .result-box{display:none;margin-top:28px;border-radius:var(--radius-lg);padding:32px 28px;animation:fadeIn .35s ease;background:var(--clr-blue-bg);border:2px solid var(--clr-blue-bdr)}
+    .result-box.show{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .res-label{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.09em;color:#0369a1;margin-bottom:8px}
+    .res-ml{font-size:clamp(2.8rem,9vw,4.2rem);font-weight:900;letter-spacing:-0.04em;line-height:1;color:#0369a1}
+    .res-unit{font-size:1rem;font-weight:700;color:#0369a1}
+    .res-glasses{font-size:1.05rem;font-weight:800;color:#0c4a6e;margin-top:10px}
+    .glass-note{font-size:0.78rem;color:#374151;margin-top:3px}
+    .breakdown-table{margin:20px 0;display:flex;flex-direction:column;gap:6px}
+    .brow{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;padding:8px 14px;background:rgba(0,0,0,0.06);border-radius:var(--radius-sm);color:#374151}
+    .brow-label{font-weight:500}
+    .brow-val{font-weight:800;color:#0c4a6e}
+    .brow.highlight{background:rgba(14,165,233,0.12)}
+    .brow.highlight .brow-label{font-weight:700;color:#0c4a6e}
+    .brow.highlight .brow-val{font-size:1rem;color:#0369a1}
+    .water-visual{margin:20px 0;text-align:center}
+    .water-label-top{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#374151;margin-bottom:8px}
+    .glasses-row{display:flex;justify-content:center;flex-wrap:wrap;gap:6px}
+    .glass-icon{font-size:1.5rem;line-height:1}
+    .btn-copy{display:flex;align-items:center;justify-content:center;gap:8px;margin:20px auto 0;padding:10px 22px;border:1.5px solid var(--clr-blue-bdr);border-radius:var(--radius-sm);background:rgba(255,255,255,0.6);font-family:inherit;font-size:0.88rem;font-weight:700;color:#0369a1;cursor:pointer;transition:background var(--transition)}
+    .disclaimer{margin-top:16px;background:rgba(0,0,0,0.06);border-radius:var(--radius-md);padding:14px 18px;font-size:0.8rem;color:#374151;line-height:1.55}
+    .disclaimer strong{color:#111827}
+    .about-section{margin-top:44px}
+    .about-section h2{font-size:1.1rem;font-weight:800;margin-bottom:14px}
+    .about-grid{display:flex;flex-direction:column;gap:10px}
+    .about-row{display:flex;align-items:flex-start;gap:12px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:12px 16px}
+    .about-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .about-text{font-size:0.88rem;color:var(--clr-muted);line-height:1.5}
+    .about-text strong{color:var(--clr-text)}
+    .cta-card{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);border-radius:var(--radius-lg);padding:32px 28px;text-align:center;color:#fff;margin-top:40px;box-shadow:0 8px 32px rgba(79,70,229,0.28)}
+    .cta-card h3{font-size:1.15rem;font-weight:800;margin-bottom:8px}
+    .cta-card p{font-size:0.9rem;opacity:0.88;margin-bottom:22px}
+    .cta-btn{display:inline-block;padding:13px 30px;background:#fff;color:var(--clr-primary);font-family:inherit;font-size:0.97rem;font-weight:800;border-radius:var(--radius-sm);text-decoration:none;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.20)}
+    .nav-footer{background:var(--clr-surface);border-top:1px solid var(--clr-border);padding:40px 24px 32px;margin-top:60px}
+    .nav-footer-inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+    @media(max-width:420px){.nav-footer-inner{grid-template-columns:1fr}}
+    .nav-footer-col h4{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.09em;color:var(--clr-muted);margin-bottom:12px}
+    .nav-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .nav-footer-col ul li a{font-size:0.88rem;color:var(--clr-text);text-decoration:none;transition:color var(--transition)}
+    .nav-footer-col ul li a:hover{color:var(--clr-primary)}
+    .nav-footer-bottom{max-width:620px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--clr-border);text-align:center;font-size:0.72rem;color:var(--clr-muted)}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--shadow-sm:0 1px 3px rgba(0,0,0,.4)}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+    html.dark-theme body .result-box *,body.dark-theme .result-box *{color:#0c4a6e!important}
+    html.dark-theme body .result-box .res-ml,body.dark-theme .result-box .res-ml{color:#0369a1!important}
+    html.dark-theme body .result-box .res-unit,body.dark-theme .result-box .res-unit{color:#0369a1!important}
+    html.dark-theme body .result-box .res-label,body.dark-theme .result-box .res-label{color:#0369a1!important}
+    html.dark-theme body .result-box .brow.highlight .brow-val,body.dark-theme .result-box .brow.highlight .brow-val{color:#0369a1!important}
+    html.dark-theme body .result-box .btn-copy,body.dark-theme .result-box .btn-copy{background:rgba(255,255,255,0.5)!important;color:#0369a1!important}
+    html.dark-theme body .result-box .disclaimer,body.dark-theme .result-box .disclaimer{background:rgba(0,0,0,0.08)!important;color:#374151!important}
+    html.dark-theme body .result-box .disclaimer strong,body.dark-theme .result-box .disclaimer strong{color:#111827!important}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-icon{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Hauptnavigation">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Tier-Tools</a><button class="hmb-close" onclick="closeMenu()" aria-label="Schließen">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Giftstoffrechner</a>
+      <a href="alter-rechner.html"><span class="hmb-icon">🎂</span>Tieralter-Rechner</a>
+      <a href="kalorienrechner.html"><span class="hmb-icon">🥗</span>Kalorienrechner</a>
+      <a href="lebensqualitaet-rechner.html"><span class="hmb-icon">🤍</span>Lebensqualität</a>
+      <a href="kostenrechner-haustier.html"><span class="hmb-icon">💰</span>Lebenskosten</a>
+      <a href="haustier-bmi-rechner.html"><span class="hmb-icon">⚖️</span>Körperkondition</a>
+      <a href="haustier-wasserbedarf-rechner.html" class="active-page"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Giftstoffrechner für Tiere</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Dunkelmodus umschalten">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-emoji">💧</span>
+      <h1>Haustier Wasserbedarf Rechner</h1>
+      <p class="hero-lead">Berechnen Sie genau, wie viel Wasser Ihr Hund oder Ihre Katze täglich benötigt — basierend auf Gewicht, Aktivitätslevel und Futtertyp.</p>
+    </div>
+
+    <div class="calc-card">
+      <div class="field">
+        <span class="field-label">Schritt 1 — Wählen Sie Ihr Tier</span>
+        <div class="pet-toggle">
+          <button class="pet-btn" id="btn-dog" onclick="selectPet('dog')" type="button"><span class="pet-icon">🐶</span>Hund</button>
+          <button class="pet-btn" id="btn-cat" onclick="selectPet('cat')" type="button"><span class="pet-icon">🐱</span>Katze</button>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="inp-weight">Schritt 2 — Körpergewicht</label>
+        <div class="input-wrap">
+          <input type="number" id="inp-weight" class="field-input" placeholder="z. B. 10" min="0.1" max="200" step="0.1" />
+          <span class="input-suffix" id="weight-unit">kg</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button type="button" onclick="setUnit('kg')" id="unit-kg" style="padding:4px 12px;border:1.5px solid var(--clr-primary);border-radius:99px;background:#eef2ff;color:var(--clr-primary);font-size:0.78rem;font-weight:700;cursor:pointer">kg</button>
+          <button type="button" onclick="setUnit('lbs')" id="unit-lbs" style="padding:4px 12px;border:1.5px solid var(--clr-border);border-radius:99px;background:var(--clr-bg);color:var(--clr-muted);font-size:0.78rem;font-weight:700;cursor:pointer">lbs</button>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field-label">Schritt 3 — Aktivitätsniveau</span>
+        <div class="opt-grid">
+          <button class="opt-btn" id="act-low" onclick="selectActivity('low')" type="button"><span class="opt-icon">🛋️</span><div class="opt-text"><strong>Gering / Sitzend</strong><span>Hauptsächlich drinnen, kurze Spaziergänge, älteres oder genesenes Tier</span></div></button>
+          <button class="opt-btn" id="act-normal" onclick="selectActivity('normal')" type="button"><span class="opt-icon">🚶</span><div class="opt-text"><strong>Normal / Moderat</strong><span>Regelmäßige tägliche Spaziergänge oder Spieleinheiten</span></div></button>
+          <button class="opt-btn" id="act-high" onclick="selectActivity('high')" type="button"><span class="opt-icon">🏃</span><div class="opt-text"><strong>Hoch / Sehr aktiv</strong><span>Arbeitshund, Agility, lange Läufe, sehr verspieltes Tier</span></div></button>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field-label">Schritt 4 — Futtertyp</span>
+        <div class="opt-grid">
+          <button class="opt-btn" id="diet-dry" onclick="selectDiet('dry')" type="button"><span class="opt-icon">🥣</span><div class="opt-text"><strong>Nur Trockenfutter</strong><span>~10 % Feuchtigkeitsgehalt — Tier trinkt mehr</span></div></button>
+          <button class="opt-btn" id="diet-mixed" onclick="selectDiet('mixed')" type="button"><span class="opt-icon">🍱</span><div class="opt-text"><strong>Gemischt (Trocken + Nass)</strong><span>~50 % der Mahlzeiten sind Nassfutter</span></div></button>
+          <button class="opt-btn" id="diet-wet" onclick="selectDiet('wet')" type="button"><span class="opt-icon">🥫</span><div class="opt-text"><strong>Nur Nass- / Frischfutter</strong><span>~70–80 % Feuchtigkeitsgehalt — reduziert Trinkbedarf deutlich</span></div></button>
+        </div>
+      </div>
+      <button class="btn-calc" type="button" onclick="calculate()">Wasserbedarf berechnen →</button>
+      <p class="err-msg" id="err-msg">Bitte wählen Sie ein Tier, ein Aktivitätsniveau und einen Futtertyp aus.</p>
+    </div>
+
+    <div class="result-box" id="result-box">
+      <div style="text-align:center;margin-bottom:20px">
+        <div class="res-label">Täglicher Wasserbedarf</div>
+        <div class="res-ml" id="res-ml">—</div>
+        <div class="res-unit">ml / Tag</div>
+        <div class="res-glasses" id="res-glasses">—</div>
+        <div class="glass-note">1 Glas = 250 ml</div>
+      </div>
+      <div class="water-visual">
+        <div class="water-label-top">Visuelle Übersicht</div>
+        <div class="glasses-row" id="glasses-row"></div>
+      </div>
+      <div class="breakdown-table" id="res-breakdown"></div>
+      <button class="btn-copy" id="btn-copy" type="button" onclick="copyResult()">📋 Ergebnis kopieren</button>
+      <div class="disclaimer"><strong>⚕️ Tierärztlicher Hinweis:</strong> Diese Berechnung basiert auf der metabolischen Wasserformel (ml/Tag = Gewicht_kg<sup>0,75</sup> × 70), angepasst für Aktivität und Futterfeuchte. Stellen Sie immer sicher, dass frisches Wasser frei verfügbar ist. Konsultieren Sie Ihren Tierarzt, wenn Ihr Tier deutlich mehr oder weniger trinkt als erwartet.</div>
+    </div>
+
+    <div class="about-section">
+      <h2>So funktioniert der Rechner</h2>
+      <div class="about-grid">
+        <div class="about-row"><div class="about-icon">🧮</div><div class="about-text"><strong>Grundformel.</strong> Metabolischer Wasserbedarf = Gewicht(kg)⁰·⁷⁵ × 70 ml/Tag. Diese allometrische Formel ist der tierärztliche Goldstandard.</div></div>
+        <div class="about-row"><div class="about-icon">🏃</div><div class="about-text"><strong>Aktivitätsmultiplikator.</strong> Gering = ×0,85 | Normal = ×1,0 | Hoch = ×1,25. Aktive Tiere verlieren mehr Wasser durch Hecheln und Atmung.</div></div>
+        <div class="about-row"><div class="about-icon">🥫</div><div class="about-text"><strong>Futteranpassung.</strong> Nassfutter enthält ~70–80 % Feuchtigkeit. Ein Tier, das nur Nassfutter frisst, kann bis zu 60 % seines Tagesbedarfs über das Futter aufnehmen.</div></div>
+        <div class="about-row"><div class="about-icon">🥛</div><div class="about-text"><strong>Glasreferenz.</strong> Wir verwenden 250 ml als Standardglas. Das Ergebnis zeigt sowohl ml als auch die Anzahl der Gläser für die praktische Nutzung.</div></div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h3>⚖️ Hat Ihr Tier sein Idealgewicht?</h3>
+      <p>Prüfen Sie den Körperkonditionsscore Ihres Tieres, um sicherzustellen, dass es sein gesundes Gewicht hat.</p>
+      <a href="haustier-bmi-rechner.html" class="cta-btn">Zum Körperkonditions-Rechner →</a>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="nav-footer" aria-label="Seitennavigation">
+      <div class="nav-footer-inner">
+        <div class="nav-footer-col">
+          <h4>Weitere Tools</h4>
+          <ul>
+            <li><a href="index.html">🧪 Giftstoffrechner</a></li>
+            <li><a href="alter-rechner.html">🎂 Altersrechner</a></li>
+            <li><a href="kalorienrechner.html">🥗 Kalorienrechner</a></li>
+            <li><a href="lebensqualitaet-rechner.html">🤍 Lebensqualität</a></li>
+            <li><a href="kostenrechner-haustier.html">💰 Lebenskosten-Rechner</a></li>
+            <li><a href="haustier-bmi-rechner.html">⚖️ Körperkondition</a></li>
+            <li><a href="haustier-wasserbedarf-rechner.html">💧 Wasserbedarf</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="privacy.html">Datenschutz</a></li>
+            <li><a href="terms.html">Nutzungsbedingungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-footer-bottom">
+        <p>&copy; <span id="footer-year"></span> Giftstoffrechner für Tiere — Kein Ersatz für tierärztlichen Rat.</p>
+      </div>
+    </nav>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent=new Date().getFullYear();
+    let selectedPet=null,selectedActivity=null,selectedDiet=null,weightUnit='kg';
+    function setUnit(u){weightUnit=u;document.getElementById('weight-unit').textContent=u;['kg','lbs'].forEach(x=>{const el=document.getElementById('unit-'+x);el.style.borderColor=x===u?'var(--clr-primary)':'var(--clr-border)';el.style.background=x===u?'#eef2ff':'var(--clr-bg)';el.style.color=x===u?'var(--clr-primary)':'var(--clr-muted)';});}
+    function selectPet(p){selectedPet=p;document.getElementById('btn-dog').classList.toggle('active',p==='dog');document.getElementById('btn-cat').classList.toggle('active',p==='cat');}
+    function selectActivity(a){selectedActivity=a;['low','normal','high'].forEach(x=>document.getElementById('act-'+x).classList.toggle('active',x===a));}
+    function selectDiet(d){selectedDiet=d;['dry','mixed','wet'].forEach(x=>document.getElementById('diet-'+x).classList.toggle('active',x===d));}
+    function getWeightKg(){const v=parseFloat(document.getElementById('inp-weight').value);if(isNaN(v)||v<=0)return null;return weightUnit==='lbs'?v*0.453592:v;}
+    function calculate(){
+      const errEl=document.getElementById('err-msg');
+      if(!selectedPet||!selectedActivity||!selectedDiet){errEl.classList.add('show');return;}
+      const weightKg=getWeightKg();if(!weightKg){errEl.classList.add('show');return;}
+      errEl.classList.remove('show');
+      const base=Math.pow(weightKg,0.75)*70;
+      const actMult={low:0.85,normal:1.0,high:1.25}[selectedActivity];
+      const dietFactor={dry:1.0,mixed:0.70,wet:0.40}[selectedDiet];
+      const totalMl=Math.round(base*actMult*dietFactor);
+      const glasses=totalMl/250;
+      document.getElementById('res-ml').textContent=totalMl;
+      document.getElementById('res-glasses').textContent='≈ '+glasses.toFixed(1)+' Glas Wasser';
+      const displayGlasses=Math.min(Math.round(glasses+0.5),10);
+      document.getElementById('glasses-row').innerHTML=Array(Math.max(displayGlasses,1)).fill(0).map(()=>'<span class="glass-icon">🥛</span>').join('');
+      const actLabel={low:'Geringes Aktivitätsniveau (×0,85)',normal:'Normales Aktivitätsniveau (×1,00)',high:'Hohes Aktivitätsniveau (×1,25)'}[selectedActivity];
+      const dietLabel={dry:'Trockenfutter — keine Reduktion',mixed:'Gemischte Ernährung — 30 % aus Futterfeuchte',wet:'Nur Nassfutter — 60 % aus Futterfeuchte'}[selectedDiet];
+      document.getElementById('res-breakdown').innerHTML=`
+        <div class="brow"><span class="brow-label">Metabolischer Grundwasserbedarf (${weightKg.toFixed(1)} kg)</span><span class="brow-val">${Math.round(base)} ml</span></div>
+        <div class="brow"><span class="brow-label">${actLabel}</span><span class="brow-val">${Math.round(base*actMult)} ml</span></div>
+        <div class="brow"><span class="brow-label">${dietLabel}</span><span class="brow-val">−${Math.round(base*actMult*(1-dietFactor))} ml</span></div>
+        <div class="brow highlight"><span class="brow-label">Täglich zu trinkende Wassermenge</span><span class="brow-val">${totalMl} ml</span></div>`;
+      document.getElementById('result-box').classList.add('show');
+      document.getElementById('result-box').scrollIntoView({behavior:'smooth',block:'start'});
+      const petName=selectedPet==='dog'?'Hund':'Katze';
+      window._copyText=`Mein ${petName} (${weightKg.toFixed(1)} kg) braucht ${totalMl} ml (≈ ${glasses.toFixed(1)} Gläser) Wasser pro Tag — via pettoxicitycalc.com`;
+    }
+    function copyResult(){if(!window._copyText)return;navigator.clipboard.writeText(window._copyText).then(()=>{const btn=document.getElementById('btn-copy');btn.textContent='✓ Kopiert!';setTimeout(()=>{btn.innerHTML='📋 Ergebnis kopieren';},2000);}).catch(()=>{const btn=document.getElementById('btn-copy');btn.textContent='✓ Kopiert!';setTimeout(()=>{btn.innerHTML='📋 Ergebnis kopieren';},2000);});}
+  </script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haustier BMI &amp; Körperkonditions-Rechner — Hund &amp; Katze</title>
+  <meta name="description" content="Kostenloser BMI- und Körperkonditions-Rechner (BCS) für Hunde und Katzen. Erfahren Sie ob Ihr Tier unter-, normal- oder übergewichtig ist." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/haustier-bmi-rechner.html" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta property="og:title" content="Haustier BMI &amp; Körperkonditions-Rechner" />
+  <meta property="og:description" content="Prüfen Sie den Körperkonditionsscore Ihres Haustieres mit der BCS-Skala der Tierärzte." />
+  <meta property="og:type" content="website" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#ffffff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-red-bg:#fef2f2;--clr-red-bdr:#fecaca;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.6}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:0.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:560px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;margin-bottom:36px}
+    .hero-emoji{font-size:3rem;line-height:1;margin-bottom:16px;display:block}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin-bottom:12px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:460px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm)}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+    .field-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--clr-muted)}
+    .pet-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .pet-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 12px;border:2px solid var(--clr-border);border-radius:var(--radius-md);background:var(--clr-bg);cursor:pointer;font-family:inherit;font-size:0.88rem;font-weight:700;color:var(--clr-muted);transition:border-color var(--transition),background var(--transition),color var(--transition)}
+    .pet-btn:hover{border-color:var(--clr-primary);color:var(--clr-primary);background:#eef2ff}
+    .pet-btn.active{border-color:var(--clr-primary);background:#eef2ff;color:var(--clr-primary);box-shadow:0 0 0 3px rgba(79,70,229,0.12)}
+    .pet-icon{font-size:2rem;line-height:1}
+    .input-wrap{position:relative}
+    .input-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-weight:600;font-size:0.88rem;color:var(--clr-muted);pointer-events:none}
+    .field-input{border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);padding:13px 48px 13px 16px;font-size:1.05rem;font-family:inherit;font-weight:600;color:var(--clr-text);background:var(--clr-surface);outline:none;transition:border-color var(--transition);width:100%}
+    .field-input:focus{border-color:var(--clr-primary);box-shadow:0 0 0 3px rgba(79,70,229,0.12)}
+    .field-input::placeholder{font-weight:400;color:#cbd5e1}
+    .field-hint{font-size:0.78rem;color:var(--clr-muted)}
+    .bcs-grid{display:flex;flex-direction:column;gap:8px}
+    .bcs-option{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:2px solid var(--clr-border);border-radius:var(--radius-md);cursor:pointer;transition:border-color var(--transition),background var(--transition)}
+    .bcs-option:hover{border-color:var(--clr-primary);background:#f8f9ff}
+    .bcs-option.selected{border-color:var(--clr-primary);background:#eef2ff}
+    .bcs-score{font-size:1.1rem;font-weight:900;color:var(--clr-primary);width:28px;flex-shrink:0;padding-top:1px}
+    .bcs-desc{font-size:0.88rem;line-height:1.45}
+    .bcs-desc strong{display:block;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px}
+    .bcs-option[data-cat="under"] .bcs-desc strong{color:#0369a1}
+    .bcs-option[data-cat="ideal"] .bcs-desc strong{color:#16a34a}
+    .bcs-option[data-cat="over"] .bcs-desc strong{color:#dc2626}
+    .btn-calc{width:100%;padding:15px;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);color:#fff;font-family:inherit;font-size:1.05rem;font-weight:800;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:opacity var(--transition),transform var(--transition);box-shadow:0 4px 14px rgba(79,70,229,0.35);margin-top:4px}
+    .btn-calc:hover{opacity:0.92;transform:translateY(-1px)}
+    .err-msg{display:none;margin-top:10px;font-size:0.85rem;color:#dc2626;font-weight:600}
+    .err-msg.show{display:block}
+    .result-box{display:none;margin-top:28px;border-radius:var(--radius-lg);padding:32px 28px;animation:fadeIn .35s ease}
+    .result-box.show{display:block}
+    .result-box.ideal{background:var(--clr-green-bg);border:2px solid var(--clr-green-bdr)}
+    .result-box.under{background:#eff6ff;border:2px solid #bfdbfe}
+    .result-box.over{background:var(--clr-red-bg);border:2px solid var(--clr-red-bdr)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .res-badge{display:inline-block;padding:4px 14px;border-radius:99px;font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+    .result-box.ideal .res-badge{background:#dcfce7;color:#166534}
+    .result-box.under .res-badge{background:#dbeafe;color:#1e40af}
+    .result-box.over .res-badge{background:#fee2e2;color:#991b1b}
+    .res-score{font-size:clamp(2.8rem,9vw,4.2rem);font-weight:900;letter-spacing:-0.04em;line-height:1}
+    .result-box.ideal .res-score{color:#16a34a}
+    .result-box.under .res-score{color:#2563eb}
+    .result-box.over .res-score{color:#dc2626}
+    .res-headline{font-size:1.05rem;font-weight:800;margin-top:8px;color:#111827}
+    .res-subtext{font-size:0.88rem;color:#374151;margin-top:4px}
+    .res-target{font-size:0.88rem;font-weight:700;color:#374151;margin-top:6px;padding:8px 12px;background:rgba(0,0,0,0.05);border-radius:var(--radius-sm)}
+    .bcs-bar-wrap{margin:20px 0}
+    .bcs-bar-track{height:14px;border-radius:99px;background:linear-gradient(90deg,#93c5fd 0%,#86efac 45%,#fca5a5 100%);position:relative}
+    .bcs-bar-marker{position:absolute;top:-5px;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--clr-primary);box-shadow:0 2px 6px rgba(0,0,0,0.2);transform:translateX(-50%);transition:left 0.4s ease}
+    .bcs-bar-labels{display:flex;justify-content:space-between;margin-top:6px;font-size:0.72rem;color:#374151;font-weight:600}
+    .action-plan{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+    .action-row{display:flex;align-items:flex-start;gap:10px;font-size:0.85rem;padding:10px 14px;background:rgba(0,0,0,0.05);border-radius:var(--radius-sm);color:#374151}
+    .action-icon{flex-shrink:0;font-size:1.1rem}
+    .btn-copy{display:flex;align-items:center;justify-content:center;gap:8px;margin:20px auto 0;padding:10px 22px;border:1.5px solid #bbf7d0;border-radius:var(--radius-sm);background:rgba(255,255,255,0.6);font-family:inherit;font-size:0.88rem;font-weight:700;color:#16a34a;cursor:pointer;transition:background var(--transition)}
+    .result-box.under .btn-copy{border-color:#bfdbfe;color:#2563eb}
+    .result-box.over .btn-copy{border-color:#fecaca;color:#dc2626}
+    .disclaimer{margin-top:16px;background:rgba(0,0,0,0.06);border-radius:var(--radius-md);padding:14px 18px;font-size:0.8rem;color:#374151;line-height:1.55}
+    .disclaimer strong{color:#111827}
+    .about-section{margin-top:44px}
+    .about-section h2{font-size:1.1rem;font-weight:800;margin-bottom:14px}
+    .about-grid{display:flex;flex-direction:column;gap:10px}
+    .about-row{display:flex;align-items:flex-start;gap:12px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:12px 16px}
+    .about-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .about-text{font-size:0.88rem;color:var(--clr-muted);line-height:1.5}
+    .about-text strong{color:var(--clr-text)}
+    .cta-card{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);border-radius:var(--radius-lg);padding:32px 28px;text-align:center;color:#fff;margin-top:40px;box-shadow:0 8px 32px rgba(79,70,229,0.28)}
+    .cta-card h3{font-size:1.15rem;font-weight:800;margin-bottom:8px}
+    .cta-card p{font-size:0.9rem;opacity:0.88;margin-bottom:22px}
+    .cta-btn{display:inline-block;padding:13px 30px;background:#fff;color:var(--clr-primary);font-family:inherit;font-size:0.97rem;font-weight:800;border-radius:var(--radius-sm);text-decoration:none;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.20)}
+    .nav-footer{background:var(--clr-surface);border-top:1px solid var(--clr-border);padding:40px 24px 32px;margin-top:60px}
+    .nav-footer-inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+    @media(max-width:420px){.nav-footer-inner{grid-template-columns:1fr}}
+    .nav-footer-col h4{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.09em;color:var(--clr-muted);margin-bottom:12px}
+    .nav-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .nav-footer-col ul li a{font-size:0.88rem;color:var(--clr-text);text-decoration:none;transition:color var(--transition)}
+    .nav-footer-col ul li a:hover{color:var(--clr-primary)}
+    .nav-footer-bottom{max-width:620px;margin:24px auto 0;padding-top:20px;border-top:1px solid var(--clr-border);text-align:center;font-size:0.72rem;color:var(--clr-muted)}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--shadow-sm:0 1px 3px rgba(0,0,0,.4)}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+    html.dark-theme body .result-box *,body.dark-theme .result-box *{color:#111827!important}
+    html.dark-theme body .result-box.ideal .res-score,body.dark-theme .result-box.ideal .res-score{color:#16a34a!important}
+    html.dark-theme body .result-box.ideal .res-badge,body.dark-theme .result-box.ideal .res-badge{color:#166534!important}
+    html.dark-theme body .result-box.under .res-score,body.dark-theme .result-box.under .res-score{color:#2563eb!important}
+    html.dark-theme body .result-box.under .res-badge,body.dark-theme .result-box.under .res-badge{color:#1e40af!important}
+    html.dark-theme body .result-box.over .res-score,body.dark-theme .result-box.over .res-score{color:#dc2626!important}
+    html.dark-theme body .result-box.over .res-badge,body.dark-theme .result-box.over .res-badge{color:#991b1b!important}
+    html.dark-theme body .result-box .btn-copy,body.dark-theme .result-box .btn-copy{background:rgba(255,255,255,0.5)!important}
+    html.dark-theme body .result-box .disclaimer,body.dark-theme .result-box .disclaimer{background:rgba(0,0,0,0.08)!important;color:#374151!important}
+    html.dark-theme body .result-box .disclaimer strong,body.dark-theme .result-box .disclaimer strong{color:#111827!important}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-icon{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Hauptnavigation">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Tier-Tools</a><button class="hmb-close" onclick="closeMenu()" aria-label="Schließen">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Giftstoffrechner</a>
+      <a href="alter-rechner.html"><span class="hmb-icon">🎂</span>Tieralter-Rechner</a>
+      <a href="kalorienrechner.html"><span class="hmb-icon">🥗</span>Kalorienrechner</a>
+      <a href="lebensqualitaet-rechner.html"><span class="hmb-icon">🤍</span>Lebensqualität</a>
+      <a href="kostenrechner-haustier.html"><span class="hmb-icon">💰</span>Lebenskosten</a>
+      <a href="haustier-bmi-rechner.html" class="active-page"><span class="hmb-icon">⚖️</span>Körperkondition</a>
+      <a href="haustier-wasserbedarf-rechner.html"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Giftstoffrechner für Tiere</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Dunkelmodus umschalten">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-emoji">⚖️</span>
+      <h1>Haustier BMI &amp; Körperkonditions-Rechner</h1>
+      <p class="hero-lead">Erfahren Sie, ob Ihr Hund oder Ihre Katze unter-, normal- oder übergewichtig ist — mit der BCS-Skala (Body Condition Score), die Tierärzte weltweit verwenden.</p>
+    </div>
+
+    <div class="calc-card">
+      <div class="field">
+        <span class="field-label">Schritt 1 — Wählen Sie Ihr Tier</span>
+        <div class="pet-toggle">
+          <button class="pet-btn" id="btn-dog" onclick="selectPet('dog')" type="button"><span class="pet-icon">🐶</span>Hund</button>
+          <button class="pet-btn" id="btn-cat" onclick="selectPet('cat')" type="button"><span class="pet-icon">🐱</span>Katze</button>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="inp-weight">Schritt 2 — Aktuelles Gewicht</label>
+        <div class="input-wrap">
+          <input type="number" id="inp-weight" class="field-input" placeholder="z. B. 12" min="0.1" max="200" step="0.1" />
+          <span class="input-suffix" id="weight-unit">kg</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button type="button" onclick="setUnit('kg')" id="unit-kg" style="padding:4px 12px;border:1.5px solid var(--clr-primary);border-radius:99px;background:#eef2ff;color:var(--clr-primary);font-size:0.78rem;font-weight:700;cursor:pointer">kg</button>
+          <button type="button" onclick="setUnit('lbs')" id="unit-lbs" style="padding:4px 12px;border:1.5px solid var(--clr-border);border-radius:99px;background:var(--clr-bg);color:var(--clr-muted);font-size:0.78rem;font-weight:700;cursor:pointer">lbs</button>
+        </div>
+        <span class="field-hint">Typisches Hundegewicht: 3–90 kg. Katze: 3–8 kg.</span>
+      </div>
+      <div class="field">
+        <span class="field-label">Schritt 3 — Körperkonditionsscore (BCS 1–9)</span>
+        <span class="field-hint" style="margin-bottom:8px">Tasten Sie die Rippen Ihres Tieres ab und betrachten Sie die Silhouette. Wählen Sie die passende Beschreibung.</span>
+        <div class="bcs-grid" id="bcs-grid"></div>
+      </div>
+      <button class="btn-calc" type="button" onclick="calculate()">Körperkondition prüfen →</button>
+      <p class="err-msg" id="err-msg">Bitte wählen Sie ein Tier und eine Körperbeschreibung aus.</p>
+    </div>
+
+    <div class="result-box" id="result-box">
+      <div style="text-align:center;margin-bottom:20px">
+        <span class="res-badge" id="res-badge">—</span>
+        <div class="res-score" id="res-score">—</div>
+        <div class="res-headline" id="res-headline">—</div>
+        <div class="res-subtext" id="res-subtext">—</div>
+        <div class="res-target" id="res-target" style="display:none"></div>
+      </div>
+      <div class="bcs-bar-wrap">
+        <div class="bcs-bar-track"><div class="bcs-bar-marker" id="bcs-marker" style="left:50%"></div></div>
+        <div class="bcs-bar-labels"><span>Untergewicht<br>BCS 1–3</span><span style="text-align:center">Ideal<br>BCS 4–5</span><span style="text-align:right">Übergewicht<br>BCS 6–9</span></div>
+      </div>
+      <div class="action-plan" id="action-plan"></div>
+      <button class="btn-copy" id="btn-copy" type="button" onclick="copyResult()">📋 Ergebnis kopieren</button>
+      <div class="disclaimer"><strong>⚕️ Tierärztlicher Hinweis:</strong> Der Body Condition Score ist die Standardmethode von Tierärzten weltweit. Konsultieren Sie immer Ihren Tierarzt, bevor Sie die Ernährung oder das Training Ihres Tieres wesentlich ändern.</div>
+    </div>
+
+    <div class="about-section">
+      <h2>So funktioniert der BCS-Rechner</h2>
+      <div class="about-grid">
+        <div class="about-row"><div class="about-icon">📏</div><div class="about-text"><strong>Was ist der BCS?</strong> Der Körperkonditionsscore ist eine 9-Punkte-Skala zur Beurteilung des Fettgewebes. Er ist zuverlässiger als das Gewicht allein, da er Rasse und Körperbau berücksichtigt.</div></div>
+        <div class="about-row"><div class="about-icon">👐</div><div class="about-text"><strong>Wie prüfen.</strong> Fahren Sie mit den Fingern entlang des Brustkorbs. Die Rippen sollten leicht tastbar, aber nicht sichtbar sein. Von oben sollte eine Taille erkennbar sein.</div></div>
+        <div class="about-row"><div class="about-icon">🎯</div><div class="about-text"><strong>Ideal ist BCS 4–5.</strong> Ein Score von 4 oder 5 von 9 bedeutet, dass Ihr Tier ein gesundes Gewicht hat.</div></div>
+        <div class="about-row"><div class="about-icon">📊</div><div class="about-text"><strong>Zielgewicht-Formel.</strong> Bei Übergewicht: Idealgewicht ≈ aktuelles Gewicht ÷ (1 + (BCS − 5) × 0,1). Bei Untergewicht: ÷ (1 − (5 − BCS) × 0,1).</div></div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h3>💧 Wie viel Wasser braucht Ihr Tier täglich?</h3>
+      <p>Jetzt kennen Sie den Konditionsscore Ihres Tieres — berechnen Sie seinen täglichen Wasserbedarf.</p>
+      <a href="haustier-wasserbedarf-rechner.html" class="cta-btn">Zum Wasserbedarf-Rechner →</a>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="nav-footer" aria-label="Seitennavigation">
+      <div class="nav-footer-inner">
+        <div class="nav-footer-col">
+          <h4>Weitere Tools</h4>
+          <ul>
+            <li><a href="index.html">🧪 Giftstoffrechner</a></li>
+            <li><a href="alter-rechner.html">🎂 Altersrechner</a></li>
+            <li><a href="kalorienrechner.html">🥗 Kalorienrechner</a></li>
+            <li><a href="lebensqualitaet-rechner.html">🤍 Lebensqualität</a></li>
+            <li><a href="kostenrechner-haustier.html">💰 Lebenskosten-Rechner</a></li>
+            <li><a href="haustier-bmi-rechner.html">⚖️ Körperkondition</a></li>
+            <li><a href="haustier-wasserbedarf-rechner.html">💧 Wasserbedarf</a></li>
+          </ul>
+        </div>
+        <div class="nav-footer-col">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="privacy.html">Datenschutz</a></li>
+            <li><a href="terms.html">Nutzungsbedingungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-footer-bottom">
+        <p>&copy; <span id="footer-year"></span> Giftstoffrechner für Tiere — Kein Ersatz für tierärztlichen Rat.</p>
+      </div>
+    </nav>
+  </footer>
+
+  <script>
+    document.getElementById('footer-year').textContent=new Date().getFullYear();
+    let selectedPet=null,selectedBCS=null,weightUnit='kg';
+    const BCS_OPTIONS={
+      dog:[
+        {score:'1–2',cat:'under',title:'Sehr untergewichtig',desc:'Rippen, Wirbelsäule und Beckenknochen deutlich sichtbar. Kein Körperfett. Schwerer Muskelschwund.'},
+        {score:'3',cat:'under',title:'Untergewichtig',desc:'Rippen leicht sichtbar. Ausgeprägte Wirbelsäule und Beckenknochen. Offensichtliche Taille mit wenig Muskulatur.'},
+        {score:'4',cat:'ideal',title:'Leicht schlank (ideal niedrig)',desc:'Rippen leicht tastbar mit minimalem Fett. Taille von oben deutlich sichtbar. Leichte Baucheinziehung.'},
+        {score:'5',cat:'ideal',title:'Idealgewicht',desc:'Rippen ohne Druck leicht tastbar, nicht sichtbar. Taille von oben erkennbar. Baucheinziehung vorhanden.'},
+        {score:'6',cat:'over',title:'Leicht übergewichtig',desc:'Rippen mit leichtem Fettüberschuss tastbar. Taille erkennbar aber wenig ausgeprägt.'},
+        {score:'7',cat:'over',title:'Übergewichtig',desc:'Rippen schwer tastbar unter mäßigem Fett. Taille kaum sichtbar. Fettdepots an Wirbelsäule und Schwanzansatz.'},
+        {score:'8–9',cat:'over',title:'Adipös',desc:'Rippen nicht tastbar. Keine Taille. Starke Fettdepots an Hals, Gliedmaßen und Wirbelsäule.'},
+      ],
+      cat:[
+        {score:'1–2',cat:'under',title:'Sehr untergewichtig',desc:'Rippen, Wirbelsäule und Beckenknochen extrem ausgeprägt. Kein tastbares Fett. Muskelschwund erkennbar.'},
+        {score:'3',cat:'under',title:'Untergewichtig',desc:'Rippen sichtbar. Ausgeprägte Wirbelsäule. Minimale Muskelmasse.'},
+        {score:'4',cat:'ideal',title:'Leicht schlank (ideal niedrig)',desc:'Rippen leicht tastbar mit minimaler Fettdecke. Taille von oben sichtbar.'},
+        {score:'5',cat:'ideal',title:'Idealgewicht',desc:'Rippen ohne überschüssiges Fett tastbar. Gut proportionierte Taille. Flacher Bauch.'},
+        {score:'6',cat:'over',title:'Leicht übergewichtig',desc:'Rippen mit leichtem Fettpolster tastbar. Taille kaum erkennbar. Leichte Bauchrundiung.'},
+        {score:'7',cat:'over',title:'Übergewichtig',desc:'Rippen schwer tastbar. Keine Taille. Deutliches Bauchfettpolster.'},
+        {score:'8–9',cat:'over',title:'Adipös',desc:'Rippen nicht tastbar. Starkes Bauchfettpolster. Deutliche Fettdepots an Hals und Gliedmaßen.'},
+      ]
+    };
+    const ACTIONS={
+      under:[
+        {icon:'🩺',text:'<strong>Zum Tierarzt.</strong> Plötzlicher Gewichtsverlust kann auf Parasiten, Zahnerkrankungen oder systemische Erkrankungen hinweisen.'},
+        {icon:'🍖',text:'<strong>Kalorienaufnahme schrittweise erhöhen.</strong> Wechseln Sie zu kaloriendichterem Futter.'},
+        {icon:'📊',text:'<strong>Wöchentlich überwachen.</strong> Wiegen Sie Ihr Tier wöchentlich und kontrollieren Sie den BCS alle 2–4 Wochen.'},
+      ],
+      ideal:[
+        {icon:'✅',text:'<strong>Sehr gut!</strong> Ein gesunder Körperzustand ist eine der besten Maßnahmen für die Langlebigkeit Ihres Tieres.'},
+        {icon:'🥗',text:'<strong>Portionen konstant halten.</strong> Futter abwiegen, um schleichende Gewichtszunahme zu vermeiden.'},
+        {icon:'🏃',text:'<strong>Aktiv bleiben.</strong> Regelmäßige Bewegung erhält Muskelmasse und unterstützt die Gelenkgesundheit.'},
+      ],
+      over:[
+        {icon:'🩺',text:'<strong>Tierarzt aufsuchen</strong>, um hormonelle Erkrankungen auszuschließen, bevor ein Abnehmplan begonnen wird.'},
+        {icon:'🥗',text:'<strong>Portionen um 10–20 % reduzieren</strong> und auf Gewichtsmanagement-Futter umsteigen. Tischfutter vermeiden.'},
+        {icon:'🏃',text:'<strong>Bewegung schrittweise steigern</strong> — kurze tägliche Spaziergänge für Hunde, interaktives Spiel für Katzen.'},
+        {icon:'📊',text:'<strong>Ziel: 1–2 % Gewichtsverlust pro Woche.</strong> Schnellerer Verlust kann zu Muskelverlust führen.'},
+      ]
+    };
+    function setUnit(u){weightUnit=u;document.getElementById('weight-unit').textContent=u;['kg','lbs'].forEach(x=>{const el=document.getElementById('unit-'+x);el.style.borderColor=x===u?'var(--clr-primary)':'var(--clr-border)';el.style.background=x===u?'#eef2ff':'var(--clr-bg)';el.style.color=x===u?'var(--clr-primary)':'var(--clr-muted)';});}
+    function selectPet(pet){selectedPet=pet;selectedBCS=null;document.getElementById('btn-dog').classList.toggle('active',pet==='dog');document.getElementById('btn-cat').classList.toggle('active',pet==='cat');renderBCS(pet);}
+    function renderBCS(pet){const grid=document.getElementById('bcs-grid');grid.innerHTML=BCS_OPTIONS[pet].map((o,i)=>`<div class="bcs-option" data-cat="${o.cat}" onclick="selectBCS(${i})" tabindex="0"><span class="bcs-score">${o.score}</span><div class="bcs-desc"><strong>${o.title}</strong>${o.desc}</div></div>`).join('');}
+    function selectBCS(idx){selectedBCS=idx;document.querySelectorAll('.bcs-option').forEach((el,i)=>el.classList.toggle('selected',i===idx));}
+    function getWeightKg(){const v=parseFloat(document.getElementById('inp-weight').value);if(isNaN(v)||v<=0)return null;return weightUnit==='lbs'?v*0.453592:v;}
+    function calculate(){
+      const errEl=document.getElementById('err-msg');
+      if(!selectedPet||selectedBCS===null){errEl.classList.add('show');return;}
+      const weightKg=getWeightKg();errEl.classList.remove('show');
+      const opt=BCS_OPTIONS[selectedPet][selectedBCS];const cat=opt.cat;
+      const scoreNum=parseFloat(opt.score.split('–')[cat==='under'?1:0])||parseFloat(opt.score);
+      const box=document.getElementById('result-box');box.className='result-box show '+cat;
+      document.getElementById('res-badge').textContent=cat==='ideal'?'✅ Idealgewicht':cat==='under'?'⚠️ Untergewicht':'⚠️ Übergewicht';
+      document.getElementById('res-score').textContent='BCS '+opt.score+' / 9';
+      document.getElementById('res-headline').textContent=opt.title;
+      const petName=selectedPet==='dog'?'Hund':'Katze';
+      document.getElementById('res-subtext').textContent=cat==='ideal'?'Ihr '+petName+' hat einen gesunden Körperzustand. Weiter so!':cat==='under'?'Ihr '+petName+' könnte untergewichtig sein. Siehe Aktionsplan unten.':'Ihr '+petName+' könnte Übergewicht haben. Siehe Aktionsplan unten.';
+      const targetEl=document.getElementById('res-target');
+      if(weightKg&&cat!=='ideal'){let idealKg=cat==='over'?weightKg/(1+(scoreNum-5)*0.1):weightKg/(1-(5-scoreNum)*0.1);idealKg=Math.max(idealKg,0.5);const diff=Math.abs(weightKg-idealKg);targetEl.style.display='block';targetEl.innerHTML=`🎯 <strong>Geschätztes Idealgewicht:</strong> ${idealKg.toFixed(1)} kg — ${cat==='over'?'Abnehmen':'Zunehmen'} ca. ${diff.toFixed(1)} kg`;}else{targetEl.style.display='none';}
+      const pct=((scoreNum-1)/8)*100;document.getElementById('bcs-marker').style.left=Math.min(Math.max(pct,3),97)+'%';
+      document.getElementById('action-plan').innerHTML=ACTIONS[cat].map(a=>`<div class="action-row"><span class="action-icon">${a.icon}</span><span>${a.text}</span></div>`).join('');
+      box.scrollIntoView({behavior:'smooth',block:'start'});
+      window._copyText=`BCS meines ${petName}s: BCS ${opt.score}/9 (${opt.title})${weightKg?' — Gewicht: '+weightKg.toFixed(1)+' kg':''} — via pettoxicitycalc.com`;
+    }
+    function copyResult(){if(!window._copyText)return;navigator.clipboard.writeText(window._copyText).then(()=>{const btn=document.getElementById('btn-copy');btn.textContent='✓ Kopiert!';setTimeout(()=>{btn.innerHTML='📋 Ergebnis kopieren';},2000);}).catch(()=>{const btn=document.getElementById('btn-copy');btn.textContent='✓ Kopiert!';setTimeout(()=>{btn.innerHTML='📋 Ergebnis kopieren';},2000);});}
+  </script>
+</body>
+</html>

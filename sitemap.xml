@@ -122,6 +122,58 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- BMI & Body Condition Score Calculator -->
+  <url>
+    <loc>https://pettoxicitycalc.com/pet-bmi-calculator.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pettoxicitycalc.com/calculateur-imc-animal.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pettoxicitycalc.com/haustier-bmi-rechner.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pettoxicitycalc.com/calculadora-imc-mascota.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Daily Hydration Calculator -->
+  <url>
+    <loc>https://pettoxicitycalc.com/pet-hydration-calculator.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pettoxicitycalc.com/calculateur-hydratation-animal.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pettoxicitycalc.com/haustier-wasserbedarf-rechner.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pettoxicitycalc.com/calculadora-hidratacion-mascota.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- ═══════════════════════════════════════════════════════
        SEO CONTENT HUBS  —  Priority 0.8
        ═══════════════════════════════════════════════════════ -->

@@ -713,6 +713,8 @@
       <a href="calorie-calculator.html" id="hmb-link-cal"><span class="hmb-icon">🥗</span><span id="hmb-lbl-cal">Calorie Calculator</span></a>
       <a href="quality-of-life-calculator.html" id="hmb-link-qol"><span class="hmb-icon">🤍</span><span id="hmb-lbl-qol">Quality of Life</span></a>
       <a href="cost-calculator.html" id="hmb-link-cost"><span class="hmb-icon">💰</span><span id="hmb-lbl-cost">Lifetime Cost</span></a>
+      <a href="pet-bmi-calculator.html" id="hmb-link-bmi"><span class="hmb-icon">⚖️</span><span id="hmb-lbl-bmi">Body Condition Score</span></a>
+      <a href="pet-hydration-calculator.html" id="hmb-link-hyd"><span class="hmb-icon">💧</span><span id="hmb-lbl-hyd">Hydration Calculator</span></a>
     </div>
   </nav>
   <!-- Top bar: Dark Mode toggle + Language Switcher -->
@@ -898,6 +900,8 @@
             <li><a href="lebensqualitaet-rechner.html">🇩🇪 Lebensqualität</a></li>
             <li><a href="calidad-de-vida-mascotas.html">🇪🇸 Calidad de vida</a></li>
             <li><a href="cost-calculator.html">💰 Lifetime Cost Calculator</a></li>
+            <li><a href="pet-bmi-calculator.html">⚖️ Body Condition Score</a></li>
+            <li><a href="pet-hydration-calculator.html">💧 Hydration Calculator</a></li>
           </ul>
         </div>
         <div class="nav-footer-col">
@@ -1238,14 +1242,14 @@
 
       // Update hamburger menu link labels
       const hmb = {
-        en: { tox:'Toxicity Calculator', age:'Pet Age Calculator', cal:'Calorie Calculator', qol:'Quality of Life', cost:'Lifetime Cost',
-              ageHref:'age-calculator.html', calHref:'calorie-calculator.html', qolHref:'quality-of-life-calculator.html', costHref:'cost-calculator.html' },
-        fr: { tox:'Calculateur de toxicité', age:'Âge de l’animal', cal:'Calculateur de calories', qol:'Qualité de vie', cost:'Coût de vie',
-              ageHref:'age-calculateur.html', calHref:'calculateur-calories.html', qolHref:'qualite-de-vie-animal.html', costHref:'calculateur-cout-animal.html' },
-        es: { tox:'Calculadora de toxicidad', age:'Calculadora de edad', cal:'Calculadora de calorías', qol:'Calidad de vida', cost:'Costes de vida',
-              ageHref:'calculadora-edad.html', calHref:'calculadora-calorias.html', qolHref:'calidad-de-vida-mascotas.html', costHref:'calculadora-costes-mascota.html' },
-        de: { tox:'Giftstoffrechner', age:'Tieralter-Rechner', cal:'Kalorienrechner', qol:'Lebensqualität', cost:'Lebenskosten',
-              ageHref:'alter-rechner.html', calHref:'kalorienrechner.html', qolHref:'lebensqualitaet-rechner.html', costHref:'kostenrechner-haustier.html' }
+        en: { tox:'Toxicity Calculator', age:'Pet Age Calculator', cal:'Calorie Calculator', qol:'Quality of Life', cost:'Lifetime Cost', bmi:'Body Condition Score', hyd:'Hydration Calculator',
+              ageHref:'age-calculator.html', calHref:'calorie-calculator.html', qolHref:'quality-of-life-calculator.html', costHref:'cost-calculator.html', bmiHref:'pet-bmi-calculator.html', hydHref:'pet-hydration-calculator.html' },
+        fr: { tox:'Calculateur de toxicité', age:'Âge de l\'animal', cal:'Calculateur de calories', qol:'Qualité de vie', cost:'Coût de vie', bmi:'Condition corporelle', hyd:'Hydratation',
+              ageHref:'age-calculateur.html', calHref:'calculateur-calories.html', qolHref:'qualite-de-vie-animal.html', costHref:'calculateur-cout-animal.html', bmiHref:'calculateur-imc-animal.html', hydHref:'calculateur-hydratation-animal.html' },
+        es: { tox:'Calculadora de toxicidad', age:'Calculadora de edad', cal:'Calculadora de calorías', qol:'Calidad de vida', cost:'Costes de vida', bmi:'Condición corporal', hyd:'Hidratación',
+              ageHref:'calculadora-edad.html', calHref:'calculadora-calorias.html', qolHref:'calidad-de-vida-mascotas.html', costHref:'calculadora-costes-mascota.html', bmiHref:'calculadora-imc-mascota.html', hydHref:'calculadora-hidratacion-mascota.html' },
+        de: { tox:'Giftstoffrechner', age:'Tieralter-Rechner', cal:'Kalorienrechner', qol:'Lebensqualität', cost:'Lebenskosten', bmi:'Körperkondition', hyd:'Wasserbedarf',
+              ageHref:'alter-rechner.html', calHref:'kalorienrechner.html', qolHref:'lebensqualitaet-rechner.html', costHref:'kostenrechner-haustier.html', bmiHref:'haustier-bmi-rechner.html', hydHref:'haustier-wasserbedarf-rechner.html' }
       };
       const m = hmb[lang] || hmb.en;
       document.getElementById('hmb-lbl-tox').textContent = m.tox;
@@ -1253,10 +1257,14 @@
       document.getElementById('hmb-lbl-cal').textContent = m.cal;
       document.getElementById('hmb-lbl-qol').textContent = m.qol;
       document.getElementById('hmb-lbl-cost').textContent = m.cost;
+      document.getElementById('hmb-lbl-bmi').textContent = m.bmi;
+      document.getElementById('hmb-lbl-hyd').textContent = m.hyd;
       document.getElementById('hmb-link-age').href = m.ageHref;
       document.getElementById('hmb-link-cal').href = m.calHref;
       document.getElementById('hmb-link-qol').href = m.qolHref;
       document.getElementById('hmb-link-cost').href = m.costHref;
+      document.getElementById('hmb-link-bmi').href = m.bmiHref;
+      document.getElementById('hmb-link-hyd').href = m.hydHref;
     }
 
     // ── Hamburger Menu ────────────────────────────────────
