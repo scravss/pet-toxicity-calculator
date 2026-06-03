@@ -12,6 +12,38 @@
   <meta property="og:title" content="My Cat Ate Onion — Is It Dangerous?" />
   <meta property="og:description" content="Onions are toxic to cats. Find out about thiosulfate poisoning, symptoms, and what to do in an emergency." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why are onions toxic to cats?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Onions contain organosulfur compounds, specifically thiosulfates and disulfides, which cats cannot metabolize. These compounds oxidize the hemoglobin in red blood cells, forming structures called Heinz bodies that make the cells fragile and prone to rupture. This leads to hemolytic anemia, a serious condition where the blood loses its ability to carry oxygen. All forms of onion are toxic — raw, cooked, powdered, and dehydrated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much onion is toxic to a cat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As little as 5 grams of onion per kilogram of a cat's body weight can cause toxicity. Onion powder is significantly more concentrated and dangerous in much smaller amounts. Because toxicity is cumulative, even small repeated exposures — such as onion-flavored broths or baby food — can build up to cause serious anemia. There is no safe amount of onion for cats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the symptoms of onion poisoning in cats?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Symptoms of onion toxicity in cats often appear 1 to 5 days after ingestion and include lethargy, weakness, reduced appetite, pale or yellowish gums (jaundice), rapid breathing, elevated heart rate, collapse, and reddish-brown urine. Because the onset can be delayed, monitor your cat closely for several days after any known ingestion and contact your vet immediately."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -69,6 +101,16 @@
     .site-footer { text-align: center; padding: 32px 16px; font-size: 0.78rem; color: var(--clr-muted); }
     .site-footer a { color: var(--clr-primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 14px 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
     /* ── Dark Theme ── */
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
@@ -88,6 +130,10 @@
       <a href="cost-calculator.html"><span class="hmb-icon">⚖️</span>Lifetime Cost</a>
       <a href="pet-bmi-calculator.html"><span class="hmb-icon">⚖️</span>Body Condition Score</a>
       <a href="pet-hydration-calculator.html"><span class="hmb-icon">💧</span>Hydration Calculator</a>
+      <a href="thc-toxicity-calculator.html"><span class="hmb-icon">🌿</span>THC Toxicity</a>
+      <a href="pet-gestation-calculator.html"><span class="hmb-icon">🐣</span>Gestation Calendar</a>
+      <a href="pet-growth-calculator.html"><span class="hmb-icon">📏</span>Growth Predictor</a>
+      <a href="pet-macronutrient-calculator.html"><span class="hmb-icon">🥩</span>Macronutrients</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -149,6 +195,32 @@
       <p>Our free tool applies the same thresholds used in veterinary practice. Enter your cat's weight and the onion amount — get an instant result.</p>
       <a href="index.html" class="cta-btn">Calculate My Cat's Risk →</a>
     </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" aria-label="Frequently asked questions about onion toxicity in cats">
+      <h2>💬 Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Why are onions toxic to cats?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Onions contain organosulfur compounds (thiosulfates and disulfides) that cats cannot metabolize. These compounds oxidize hemoglobin in red blood cells, forming <strong>Heinz bodies</strong> that make cells fragile and prone to rupture, causing <strong>hemolytic anemia</strong>. All forms are toxic — raw, cooked, powdered, and dehydrated — and toxicity is cumulative with repeated small exposures.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How much onion is toxic to a cat?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">As little as <strong>5 g of onion per kg</strong> of body weight can cause toxicity. Onion powder is far more concentrated and dangerous in much smaller amounts. Because toxicity is cumulative, even small repeated exposures — such as onion-flavoured broths or baby food — can build up and cause serious anemia. There is <strong>no safe amount</strong> of onion for cats.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          What are the symptoms of onion poisoning in cats?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Symptoms often appear <strong>1–5 days after ingestion</strong> and include lethargy, weakness, reduced appetite, pale or yellowish gums (jaundice), rapid breathing, elevated heart rate, collapse, and reddish-brown urine. Because onset is often delayed, monitor your cat closely for several days after any known ingestion and contact your vet immediately.</div>
+      </div>
+    </section>
   </div>
 
   <footer>
@@ -180,5 +252,6 @@
     </nav>
   </footer>
   <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 </body>
 </html>

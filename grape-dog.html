@@ -12,6 +12,38 @@
   <meta property="og:title" content="My Dog Ate Grapes or Raisins — Is It Dangerous?" />
   <meta property="og:description" content="Grapes and raisins are highly toxic to dogs and can cause acute kidney failure. Find out what to do immediately." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is there a safe amount of grapes or raisins for dogs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. There is no established safe dose of grapes or raisins for dogs. Even a small amount — as few as one or two grapes — has caused acute kidney failure in some dogs. The toxic mechanism is not fully understood and individual sensitivity varies widely, making any amount potentially life-threatening. Always treat grape or raisin ingestion as a veterinary emergency."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the symptoms of grape or raisin poisoning in dogs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Symptoms typically appear within 6 to 24 hours and include vomiting, diarrhea, lethargy, loss of appetite, abdominal pain, decreased or absent urination, and weakness. Kidney failure can develop within 24 to 72 hours. Because symptoms may be delayed and silent kidney damage can occur, any known ingestion requires immediate veterinary attention — do not wait for symptoms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do immediately if my dog ate grapes or raisins?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call your vet or the ASPCA Animal Poison Control Center (+1-888-426-4435) immediately — do not wait for symptoms. Identify the amount consumed and the time of ingestion. Your vet may recommend inducing vomiting if ingestion was very recent and your dog is alert. Blood and kidney function tests may be needed 24–48 hours later to detect early renal damage. Use our free calculator to document the risk level."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -66,6 +98,16 @@
     .nav-footer-col ul li a { font-size: 0.88rem; color: var(--clr-text); text-decoration: none; transition: color var(--transition); }
     .nav-footer-col ul li a:hover { color: var(--clr-primary); }
     .nav-footer-bottom { max-width: 720px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid var(--clr-border); text-align: center; font-size: 0.72rem; color: var(--clr-muted); }
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 14px 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
     /* ── Dark Theme ── */
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
@@ -85,6 +127,10 @@
       <a href="cost-calculator.html"><span class="hmb-icon">⚖️</span>Lifetime Cost</a>
       <a href="pet-bmi-calculator.html"><span class="hmb-icon">⚖️</span>Body Condition Score</a>
       <a href="pet-hydration-calculator.html"><span class="hmb-icon">💧</span>Hydration Calculator</a>
+      <a href="thc-toxicity-calculator.html"><span class="hmb-icon">🌿</span>THC Toxicity</a>
+      <a href="pet-gestation-calculator.html"><span class="hmb-icon">🐣</span>Gestation Calendar</a>
+      <a href="pet-growth-calculator.html"><span class="hmb-icon">📏</span>Growth Predictor</a>
+      <a href="pet-macronutrient-calculator.html"><span class="hmb-icon">🥩</span>Macronutrients</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -152,6 +198,32 @@
       <p>Our free calculator follows veterinary toxicology guidelines. For grapes and raisins, any amount triggers a high-risk alert — giving you the documentation you need when contacting your vet.</p>
       <a href="index.html" class="cta-btn">Calculate My Dog's Risk →</a>
     </div>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" aria-label="Frequently asked questions about grape and raisin toxicity in dogs">
+      <h2>💬 Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Is there a safe amount of grapes or raisins for dogs?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">No. There is <strong>no established safe dose</strong> of grapes or raisins for dogs. Even a small amount — as few as one or two grapes — has caused acute kidney failure in some dogs. The toxic mechanism is not fully understood and sensitivity varies widely between individuals, making any amount potentially life-threatening. Always treat grape or raisin ingestion as a veterinary emergency.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          What are the symptoms of grape or raisin poisoning in dogs?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Symptoms typically appear within <strong>6–24 hours</strong> and include vomiting, diarrhea, lethargy, loss of appetite, abdominal pain, decreased or absent urination, and weakness. Kidney failure can develop within 24–72 hours. Because kidney damage can occur silently before symptoms appear, any known ingestion requires <strong>immediate veterinary attention</strong> — do not wait for symptoms.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          What should I do immediately if my dog ate grapes or raisins?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Call your vet or the <strong>ASPCA Poison Control (+1-888-426-4435)</strong> immediately — do not wait for symptoms to appear. Note the amount consumed and the time of ingestion. Your vet may recommend inducing vomiting if ingestion was very recent and your dog is alert. Blood and kidney function tests (BUN, creatinine) may be needed 24–48 hours later to detect early renal damage.</div>
+      </div>
+    </section>
   </div>
 
   <footer>
@@ -183,5 +255,6 @@
     </nav>
   </footer>
   <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 </body>
 </html>

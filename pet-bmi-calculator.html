@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
@@ -158,6 +158,10 @@
       <a href="cost-calculator.html"><span class="hmb-icon">💰</span>Lifetime Cost</a>
       <a href="pet-bmi-calculator.html" class="active-page"><span class="hmb-icon">⚖️</span>Body Condition Score</a>
       <a href="pet-hydration-calculator.html"><span class="hmb-icon">💧</span>Hydration Calculator</a>
+      <a href="thc-toxicity-calculator.html"><span class="hmb-icon">🌿</span>THC Toxicity</a>
+      <a href="pet-gestation-calculator.html"><span class="hmb-icon">🐣</span>Gestation Calendar</a>
+      <a href="pet-growth-calculator.html"><span class="hmb-icon">📏</span>Growth Predictor</a>
+      <a href="pet-macronutrient-calculator.html"><span class="hmb-icon">🥩</span>Macronutrients</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -404,8 +408,8 @@
       let subtext = '';
       if (cat === 'ideal') subtext = 'Your ' + selectedPet + ' is at a healthy body condition. Keep up the great work!';
       else if (cat === 'under') subtext = 'Your ' + selectedPet + ' may be underweight. See the action plan below.';
-      else subtext = 'Your ' + selectedPet + ' may be carrying excess weight. See the action plan below.';
-      document.getElementById('res-subtext').textContent = subtext;
+      else subtext = 'Your ' + selectedPet + ' may be carrying excess weight. For healthy weight loss, consider reducing daily caloric intake by 10–20% and consult your vet. Use our <a href="calorie-calculator.html" style="color:inherit;font-weight:700;text-decoration:underline">Calorie Calculator</a> for precise RER-based measurements.';
+      document.getElementById('res-subtext').innerHTML = subtext;
 
       // Target weight
       const targetEl = document.getElementById('res-target');

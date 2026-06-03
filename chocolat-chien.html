@@ -13,6 +13,38 @@
   <meta property="og:title" content="Mon chien a mangé du chocolat — Est-ce dangereux ?" />
   <meta property="og:description" content="Pourquoi le chocolat est-il toxique pour les chiens ? Que faire en urgence ? Tout ce que vous devez savoir, expliqué avec clarté et bienveillance." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quelle quantité de chocolat est toxique pour un chien ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La toxicité dépend du type de chocolat et du poids du chien. Le chocolat noir et le chocolat de cuisson contiennent le plus de théobromine (16 à 26 mg/g) et sont les plus dangereux. Les symptômes apparaissent généralement au-delà de 20 mg de théobromine par kg de poids corporel. Même une petite quantité de chocolat noir peut être dangereuse pour un petit chien. Utilisez notre calculateur gratuit pour une évaluation précise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels sont les symptômes d'une intoxication au chocolat chez le chien ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les symptômes apparaissent généralement dans les 6 à 12 heures suivant l'ingéstion et peuvent inclure des vomissements, de la diarrhée, une agitation, une soif excessive, un rythme cardiaque rapide, des tremblements musculaires et, dans les cas graves, des convulsions ou un évanouissement. Si votre chien présente ces signes après avoir mangé du chocolat, contactez immédiatement votre vétérinaire."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Que faire si mon chien a mangé du chocolat ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Agissez rapidement : identifiez le type et la quantité de chocolat consommé, notez l'heure d'ingéstion et appelez votre vétérinaire immédiatement. Ne provoquez pas de vomissements sans instruction vétérinaire explicite. Utilisez notre calculateur pour évaluer le niveau de risque et partagez ce résultat avec votre vétérinaire."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -311,6 +343,16 @@
     .site-footer a { color: var(--clr-primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
     /* ── Dark Theme ── */
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 14px 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
     .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
@@ -329,7 +371,12 @@
       <a href="qualite-de-vie-animal.html"><span class="hmb-icon">🤍</span>Qualité de vie</a>
       <a href="
       <a href="calculateur-imc-animal.html"><span class="hmb-icon">&#x2696;&#xFE0F;</span>Condition corporelle</a>
-      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">&#x1F4A7;</span>Hydratation</a></div>
+      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">💧</span>Hydratation</a>
+      <a href="calculateur-thc-animal.html"><span class="hmb-icon">🌿</span>Toxicité THC</a>
+      <a href="calendrier-gestation-animal.html"><span class="hmb-icon">🐣</span>Calendrier de Gestation</a>
+      <a href="calculateur-croissance-animal.html"><span class="hmb-icon">📏</span>Croissance &amp; Poids Adulte</a>
+      <a href="calculateur-macronutriments-animal.html"><span class="hmb-icon">🥩</span>Macronutriments</a>
+    </div>
   </nav>
   <nav class="top-bar">
     <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -410,11 +457,38 @@
       <a href="index.html" class="cta-btn">Calculer le risque maintenant →</a>
     </div>
 
+    <!-- Section FAQ -->
+    <section class="faq-section" aria-label="Questions fréquentes sur la toxicité du chocolat chez le chien">
+      <h2>💬 Questions fréquentes</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quelle quantité de chocolat est toxique pour un chien ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">La toxicité dépend du type de chocolat et du poids du chien. Le chocolat noir et le chocolat de cuisson contiennent le plus de théobromine (<strong>16 à 26 mg/g</strong>) et sont les plus dangereux. Les symptômes apparaissent généralement au-delà de <strong>20 mg de théobromine par kg</strong> de poids corporel. Même une petite quantité de chocolat noir peut être dangereuse pour un petit chien. Utilisez notre calculateur gratuit pour une évaluation précise.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quels sont les symptômes d'une intoxication au chocolat chez le chien ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Les symptômes apparaissent généralement dans les <strong>6 à 12 heures</strong> suivant l'ingéstion et peuvent inclure des vomissements, de la diarrhée, une agitation, une soif excessive, un rythme cardiaque rapide ou irrégulier, des tremblements musculaires et, dans les cas graves, des convulsions ou un évanouissement. Si votre chien présente ces signes après avoir mangé du chocolat, contactez immédiatement votre vétérinaire.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Que faire si mon chien a mangé du chocolat ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Agissez rapidement : identifiez le type et la quantité de chocolat consommé, notez l'heure d'ingéstion et appelez votre vétérinaire ou le <strong>service antipoison vétérinaire</strong> immédiatement. Ne provoquez <em>pas</em> de vomissements sans instruction vétérinaire explicite. Utilisez notre calculateur pour évaluer le niveau de risque et partagez ce résultat avec votre vétérinaire lors du triage.</div>
+      </div>
+    </section>
+
   </div>
 
   <footer class="site-footer">
     <p>🐾 <a href="index.html">Calculateur de Toxicité pour Animaux</a> — Outil d'orientation vétérinaire gratuit. Ne remplace pas l'avis d'un vétérinaire agréé. Consultez toujours un professionnel pour toute décision médicale.</p>
   </footer>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 
 </body>
 </html>

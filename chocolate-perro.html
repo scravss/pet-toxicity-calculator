@@ -13,6 +13,38 @@
   <meta property="og:title" content="Mi perro comió chocolate — ¿Es peligroso?" />
   <meta property="og:description" content="¿Por qué el chocolate es tóxico para los perros? ¿Qué hacer en caso de emergencia? Todo lo que necesita saber, explicado con claridad." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué cantidad de chocolate es tóxica para un perro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La toxicidad depende del tipo de chocolate y del peso del perro. El chocolate negro y el chocolate de repostería contienen la mayor cantidad de teobromina (16 a 26 mg/g) y son los más peligrosos. Los síntomas suelen aparecer por encima de 20 mg de teobromina por kg de peso corporal. Incluso una pequeña cantidad de chocolate negro puede ser peligrosa para un perro pequeño. Use nuestra calculadora gratuita para una evaluación precisa."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuáles son los síntomas de la intoxicación por chocolate en perros?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los síntomas suelen aparecer entre 6 y 12 horas después de la ingesta e incluyen vómitos, diarrea, agitación, sed excesiva, frecuencia cardíaca elevada, temblores musculares y, en casos graves, convulsiones o colapso. Si su perro muestra alguno de estos signos tras comer chocolate, contacte con su veterinario de inmediato."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué debo hacer si mi perro comió chocolate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Actúe rápidamente: identifique el tipo y la cantidad de chocolate ingerido, anote la hora de la ingesta y llame a su veterinario de inmediato. No induzca el vómito a menos que un veterinario se lo indique expresamente. Use nuestra calculadora para evaluar el nivel de riesgo y compartir el resultado con su veterinario."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -275,6 +307,16 @@
     .site-footer a { color: var(--clr-primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
     /* ── Dark Theme ── */
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 14px 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
     .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
@@ -294,6 +336,10 @@
       <a href="calculadora-costes-mascota.html"><span class="hmb-icon">💰</span>Costes de vida</a>
       <a href="calculadora-imc-mascota.html"><span class="hmb-icon">⚖️</span>Condición corporal</a>
       <a href="calculadora-hidratacion-mascota.html"><span class="hmb-icon">💧</span>Hidratación</a>
+      <a href="calculadora-toxicidad-thc.html"><span class="hmb-icon">🌿</span>Toxicidad THC</a>
+      <a href="calculadora-gestacion-mascota.html"><span class="hmb-icon">🐣</span>Gestación</a>
+      <a href="calculadora-crecimiento-mascota.html"><span class="hmb-icon">📏</span>Crecimiento &amp; Peso Adulto</a>
+      <a href="calculadora-macronutrientes-mascota.html"><span class="hmb-icon">🥩</span>Macronutrientes</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -375,11 +421,38 @@
       <a href="index.html" class="cta-btn">Calcular el riesgo de mi perro →</a>
     </div>
 
+    <!-- Preguntas frecuentes -->
+    <section class="faq-section" aria-label="Preguntas frecuentes sobre la toxicidad del chocolate en perros">
+      <h2>💬 Preguntas frecuentes</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          ¿Qué cantidad de chocolate es tóxica para un perro?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">La toxicidad depende del tipo de chocolate y del peso del perro. El chocolate negro y el de repostería contienen la mayor cantidad de teobromina (<strong>16–26 mg/g</strong>) y son los más peligrosos. Los síntomas suelen aparecer por encima de <strong>20 mg de teobromina por kg</strong> de peso corporal. Incluso una pequeña cantidad puede ser peligrosa para un perro pequeño. Use nuestra calculadora para una evaluación precisa.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          ¿Cuáles son los síntomas de la intoxicación por chocolate en perros?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Los síntomas suelen aparecer entre <strong>6 y 12 horas</strong> tras la ingesta e incluyen vómitos, diarrea, agitación, sed excesiva, frecuencia cardíaca elevada o irregular, temblores musculares y, en casos graves, convulsiones o colapso. Si su perro muestra alguno de estos signos tras comer chocolate, contacte con su veterinario de inmediato.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          ¿Qué debo hacer si mi perro comió chocolate?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Actúe rápidamente: identifique el tipo y la cantidad de chocolate ingerido, anote la hora de la ingesta y llame a su <strong>veterinario</strong> de inmediato. No induzca el vómito a menos que un veterinario se lo indique expresamente. Use nuestra calculadora para evaluar el nivel de riesgo y compartir el resultado durante el triaje.</div>
+      </div>
+    </section>
+
   </div>
 
   <footer class="site-footer">
     <p>🐾 <a href="index.html">Calculadora de Toxicidad para Mascotas</a> — Herramienta de orientación veterinaria gratuita. No sustituye el consejo de un veterinario profesional. Consulte siempre a un veterinario con licencia.</p>
   </footer>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 
 </body>
 </html>

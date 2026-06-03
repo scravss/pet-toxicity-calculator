@@ -78,7 +78,18 @@
     .result-row { display: flex; justify-content: space-between; align-items: center; font-size: .88rem; padding: 8px 12px; background: rgba(255,255,255,.6); border-radius: var(--radius-sm); }
     .result-row-label { color: var(--clr-muted); }
     .result-row-value { font-weight: 700; color: var(--clr-text); }
+    .result-row.rer-highlight { background: rgba(255,255,255,0.85); border: 1.5px solid rgba(22,163,74,0.35); }
+    .result-row.rer-highlight .result-row-label { font-weight: 700; color: var(--clr-text) !important; }
+    .result-row.rer-highlight .result-row-value { font-size: 1rem; color: var(--clr-green) !important; }
+    .result-row.rer-highlight .rer-formula { display: block; font-size: 0.75rem; font-weight: 400; color: var(--clr-muted) !important; margin-top: 2px; }
     .result-note { margin-top: 14px; font-size: .82rem; color: var(--clr-muted); text-align: center; line-height: 1.5; }
+    html.dark-theme .result-row,body.dark-theme .result-row { background: rgba(0,0,0,0.25) !important; }
+    html.dark-theme .result-row.rer-highlight,body.dark-theme .result-row.rer-highlight { background: rgba(0,0,0,0.35) !important; border-color: rgba(74,222,128,0.3) !important; }
+    html.dark-theme .result-row-label,body.dark-theme .result-row-label { color: #94a3b8 !important; }
+    html.dark-theme .result-row-value,body.dark-theme .result-row-value { color: #f1f5f9 !important; }
+    html.dark-theme .result-row.rer-highlight .result-row-value,body.dark-theme .result-row.rer-highlight .result-row-value { color: #4ade80 !important; }
+    html.dark-theme .result-row.rer-highlight .result-row-label,body.dark-theme .result-row.rer-highlight .result-row-label { color: #f1f5f9 !important; }
+    html.dark-theme .result-note,body.dark-theme .result-note { color: #94a3b8 !important; }
     .science-section { margin-top: 40px; }
     .science-section h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
     .info-grid { display: flex; flex-direction: column; gap: 12px; }
@@ -123,6 +134,10 @@
       <a href="calculadora-costes-mascota.html"><span class="hmb-icon">💰</span>Costes de vida</a>
       <a href="calculadora-imc-mascota.html"><span class="hmb-icon">⚖️</span>Condición corporal</a>
       <a href="calculadora-hidratacion-mascota.html"><span class="hmb-icon">💧</span>Hidratación</a>
+      <a href="calculadora-toxicidad-thc.html"><span class="hmb-icon">🌿</span>Toxicidad THC</a>
+      <a href="calculadora-gestacion-mascota.html"><span class="hmb-icon">🐣</span>Gestación</a>
+      <a href="calculadora-crecimiento-mascota.html"><span class="hmb-icon">📏</span>Crecimiento &amp; Peso Adulto</a>
+      <a href="calculadora-macronutrientes-mascota.html"><span class="hmb-icon">🥩</span>Macronutrientes</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -195,7 +210,7 @@
           <div class="result-unit">kcal / día</div>
         </div>
         <div class="result-breakdown">
-          <div class="result-row"><span class="result-row-label">Requerimiento Energético en Reposo (RER)</span><span class="result-row-value" id="res-rer">—</span></div>
+          <div class="result-row rer-highlight"><span class="result-row-label">Requerimiento Energético en Reposo (RER)<em class="rer-formula">70 × peso(kg)<sup>0,75</sup></em></span><span class="result-row-value" id="res-rer">—</span></div>
           <div class="result-row"><span class="result-row-label">Multiplicador MER</span><span class="result-row-value" id="res-factor">—</span></div>
           <div class="result-row"><span class="result-row-label">Perfil seleccionado</span><span class="result-row-value" id="res-stage">—</span></div>
         </div>

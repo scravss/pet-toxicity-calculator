@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculateur de Gestation Animal — Chien, Chat, Lapin | Date de Mise Bas</title>
+  <meta name="description" content="Calculateur gratuit de gestation pour chiens, chats, lapins, cochons d'Inde et hamsters. Entrez la date de saillie pour obtenir la date de mise bas et les jalons de grossesse." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/calendrier-gestation-animal.html" />
+  <meta property="og:title" content="Calculateur de Gestation Animal" />
+  <meta property="og:description" content="Calculez la date de mise bas de votre animal et les jalons de grossesse. Couvre chiens, chats, lapins, cochons d'Inde et hamsters." />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Combien de temps dure la gestation chez le chien ?","acceptedAnswer":{"@type":"Answer","text":"La gestation moyenne chez la chienne est de 63 jours (plage 58–68 jours) à partir de la date de saillie. Cela correspond à environ 9 semaines. Les signes d'approche de la mise bas incluent le comportement de nidification, une chute de température en dessous de 37,8 °C et la production de lait 24 à 48 heures avant la naissance."}},
+      {"@type":"Question","name":"Combien de temps dure la gestation chez le chat ?","acceptedAnswer":{"@type":"Answer","text":"La gestation chez la chatte dure en moyenne 63 à 65 jours (plage 60–70 jours). Les chatons nés avant le jour 58 sont considérés comme prématurés. Les signes de mise bas imminente incluent des vocalises, le nidification et de l'agitation 24 à 48 heures avant la naissance."}},
+      {"@type":"Question","name":"Quand emmener mon animal chez le vétérinaire pendant la gestation ?","acceptedAnswer":{"@type":"Answer","text":"Planifiez une consultation vétérinaire 3 à 4 semaines après la saillie pour confirmer la gestation. Une échographie peut détecter les battements cardiaques fœtaux dès le jour 25. Autour de la 6e semaine, une radiographie permet de compter les petits. Consultez votre vétérinaire immédiatement si l'intervalle entre deux naissances dépasse 2 heures."}}
+    ]
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-pink:#db2777;--clr-pink-bg:#fdf2f8;--clr-pink-bdr:#fbcfe8;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.7}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;padding:48px 16px 36px}
+    .hero-badge{display:inline-block;background:var(--clr-pink-bg);color:var(--clr-pink);border:1px solid var(--clr-pink-bdr);border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;color:var(--clr-text);line-height:1.2;margin-bottom:14px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:540px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-md);margin-bottom:32px}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .calc-card h2{font-size:1.15rem;font-weight:800;margin-bottom:24px;color:var(--clr-text);letter-spacing:-.02em}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group label{font-size:.82rem;font-weight:700;color:var(--clr-text)}
+    .form-group select,.form-group input{padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color var(--transition)}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--clr-primary)}
+    .form-group .hint{font-size:.75rem;color:var(--clr-muted)}
+    .calc-btn{width:100%;margin-top:22px;padding:15px;background:var(--clr-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity var(--transition),transform var(--transition)}
+    .calc-btn:hover{opacity:.88;transform:translateY(-1px)}
+    .result-box{display:none;margin-top:28px}.result-box.show{display:block}
+    .due-date-card{background:linear-gradient(135deg,#db2777 0%,#9333ea 100%);border-radius:var(--radius-lg);padding:28px 24px;color:#fff;text-align:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(219,39,119,.28)}
+    .due-date-label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.82;margin-bottom:6px}
+    .due-date-value{font-size:1.8rem;font-weight:800;letter-spacing:-.02em}
+    .due-date-range{font-size:.9rem;opacity:.85;margin-top:4px}
+    .milestones{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:24px 24px 8px;box-shadow:var(--shadow-sm)}
+    .milestones h3{font-size:1rem;font-weight:800;color:var(--clr-text);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+    .milestone-item{display:flex;align-items:flex-start;gap:14px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--clr-border)}
+    .milestone-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .milestone-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;flex-shrink:0;color:#fff}
+    .milestone-dot.done{background:var(--clr-green)}.milestone-dot.upcoming{background:var(--clr-primary)}.milestone-dot.past{background:var(--clr-muted)}
+    .milestone-date{font-size:.82rem;font-weight:800;color:var(--clr-primary)}
+    .milestone-title{font-size:.95rem;font-weight:700;color:var(--clr-text);margin-top:1px}
+    .milestone-desc{font-size:.85rem;color:var(--clr-muted);margin-top:3px}
+    .info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm);margin-top:32px}
+    @media(max-width:480px){.info-card{padding:24px 18px}}
+    .info-card h2{font-size:1.2rem;font-weight:800;color:var(--clr-text);margin:28px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--clr-border);letter-spacing:-.02em}
+    .info-card h2:first-child{margin-top:0}.info-card p{color:var(--clr-muted);font-size:.95rem;margin-bottom:12px}.info-card strong{color:var(--clr-text)}
+    .species-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:16px 0}
+    .species-table th{text-align:left;padding:10px 12px;background:var(--clr-bg);color:var(--clr-muted);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--clr-border)}
+    .species-table td{padding:10px 12px;border-bottom:1px solid var(--clr-border);color:var(--clr-text)}
+    .species-table tr:last-child td{border-bottom:none}
+    .warning-box{background:var(--clr-yellow-bg);border:1.5px solid var(--clr-yellow-bdr);border-radius:var(--radius-md);padding:14px 18px;margin:16px 0;font-size:.90rem;color:var(--clr-yellow);font-weight:600}
+    .faq-section{margin-top:40px}.faq-section h2{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--clr-text)}
+    .faq-item{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background var(--transition)}
+    .faq-question:hover{background:var(--clr-bg)}.faq-chevron{font-size:.75rem;color:var(--clr-muted);flex-shrink:0;transition:transform .2s ease}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
+    .faq-item.open .faq-answer{display:block}
+    .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}.site-footer a{color:var(--clr-primary);text-decoration:none}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-pink:#f472b6;--clr-pink-bg:#2d0a1e;--clr-pink-bdr:#831843;--clr-green:#4ade80;--clr-green-bg:#052e16;--clr-green-bdr:#166534;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    html.dark-theme .species-table th,body.dark-theme .species-table th{background:#0f172a}
+    html.dark-theme .milestone-date,body.dark-theme .milestone-date{color:#818cf8}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Navigation principale">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Outils Animaux</a><button class="hmb-close" onclick="closeMenu()" aria-label="Fermer">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Calculateur de Toxicité</a>
+      <a href="age-calculateur.html"><span class="hmb-icon">🎂</span>Âge de l'Animal</a>
+      <a href="calculateur-calories.html"><span class="hmb-icon">🥗</span>Calculateur Calories</a>
+      <a href="qualite-de-vie-animal.html"><span class="hmb-icon">🤍</span>Qualité de Vie</a>
+      <a href="calculateur-cout-animal.html"><span class="hmb-icon">💶</span>Coût de l'Animal</a>
+      <a href="calculateur-imc-animal.html"><span class="hmb-icon">⚖️</span>IMC / Condition Corporelle</a>
+      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">💧</span>Hydratation</a>
+      <a href="calculateur-thc-animal.html"><span class="hmb-icon">🌿</span>Toxicité THC</a>
+      <a href="calendrier-gestation-animal.html" class="active-page"><span class="hmb-icon">🐣</span>Calendrier de Gestation</a>
+      <a href="calculateur-croissance-animal.html"><span class="hmb-icon">📏</span>Croissance &amp; Poids Adulte</a>
+      <a href="calculateur-macronutriments-animal.html"><span class="hmb-icon">🥩</span>Macronutriments</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Calculateur de Toxicité</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Mode sombre">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">🐣 Outil de Reproduction Gratuit</span>
+      <h1>Calendrier de Gestation<br>pour Animaux de Compagnie</h1>
+      <p class="hero-lead">Entrez l'espèce de votre animal et la date de saillie pour calculer instantanément la date de mise bas estimée et les jalons clés de la gestation.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🗓️ Informations sur la saillie</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="species">Espèce</label>
+          <select id="species">
+            <option value="dog">Chien (Canis lupus familiaris)</option>
+            <option value="cat">Chat (Felis catus)</option>
+            <option value="rabbit">Lapin (Oryctolagus cuniculus)</option>
+            <option value="guinea_pig">Cochon d'Inde (Cavia porcellus)</option>
+            <option value="hamster_syrian">Hamster doré / syrien</option>
+            <option value="hamster_dwarf">Hamster nain</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mating-date">Date de saillie / accouplement</label>
+          <input type="date" id="mating-date" />
+          <span class="hint">Utilisez la première date de saillie confirmée</span>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Calculer la date de mise bas →</button>
+      <div class="result-box" id="result-box">
+        <div class="due-date-card">
+          <div class="due-date-label">🐣 Date de mise bas estimée</div>
+          <div class="due-date-value" id="res-due-date"></div>
+          <div class="due-date-range" id="res-due-range"></div>
+        </div>
+        <div class="milestones" id="milestones-card">
+          <h3>📅 Jalons de la gestation</h3>
+          <div id="milestones-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Durées de gestation par espèce</h2>
+      <table class="species-table">
+        <thead><tr><th>Espèce</th><th>Jours moy.</th><th>Plage</th><th>Portée typique</th></tr></thead>
+        <tbody>
+          <tr><td>🐕 Chien</td><td>63</td><td>58–68 jours</td><td>1–12 chiots</td></tr>
+          <tr><td>🐈 Chat</td><td>64</td><td>60–70 jours</td><td>2–6 chatons</td></tr>
+          <tr><td>🐇 Lapin</td><td>31</td><td>28–35 jours</td><td>4–12 lapereaux</td></tr>
+          <tr><td>🐹 Cochon d'Inde</td><td>68</td><td>59–72 jours</td><td>1–6 petits</td></tr>
+          <tr><td>🐹 Hamster doré</td><td>16</td><td>15–18 jours</td><td>6–12 petits</td></tr>
+          <tr><td>🐹 Hamster nain</td><td>18</td><td>16–21 jours</td><td>4–8 petits</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">⚠️ <strong>Important :</strong> Ce calculateur fournit des estimations basées sur les durées de gestation typiques. Les dates réelles de mise bas varient. Travaillez toujours avec un vétérinaire agréé pour les soins prénataux, surtout pour les primipares ou les races à risque.</div>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Questions fréquentes</h2>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Combien de temps dure la gestation chez le chien ?<span class="faq-chevron">▼</span></button><div class="faq-answer">La gestation moyenne chez la chienne est de <strong>63 jours</strong> (plage 58–68 jours). Les signes d'approche de la mise bas incluent le comportement de nidification, une chute de température en dessous de 37,8 °C et la production de lait 24–48 heures avant la naissance.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Combien de temps dure la gestation chez le chat ?<span class="faq-chevron">▼</span></button><div class="faq-answer">La gestation chez la chatte dure en moyenne <strong>63–65 jours</strong> (plage 60–70 jours). Les chatons nés avant le jour 58 sont prématurés. Les signes incluent vocalises, nidification et agitation 24–48 heures avant la naissance.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Quand emmener mon animal chez le vétérinaire ?<span class="faq-chevron">▼</span></button><div class="faq-answer">Consultez votre vétérinaire <strong>3–4 semaines après la saillie</strong> pour confirmer la gestation. Une échographie peut détecter les battements cardiaques dès le jour 25. Autour de la 6e semaine, une radiographie permet de compter les petits. Consultez votre vétérinaire si l'intervalle entre deux naissances dépasse 2 heures.</div></div>
+    </section>
+  </div>
+
+  <footer class="site-footer"><p>🐾 <a href="index.html">Calculateur de Toxicité pour Animaux</a> — Outil d'orientation gratuit. Ne remplace pas l'avis d'un vétérinaire agréé.</p></footer>
+
+  <script>
+    var SPECIES={dog:{name:'Chien',emoji:'🐕',avg:63,min:58,max:68,milestones:[{day:0,title:'Saillie / Accouplement',desc:'Jour 0 — la fécondation peut se produire sur 2 à 5 jours. Notez toutes les dates de saillie.'},{day:14,title:'Implantation',desc:'Les embryons s\'attachent à la paroi utérine. Aucun signe visible pour l\'instant.'},{day:25,title:'Échographie possible',desc:'Les battements cardiaques fœtaux sont détectables. Prenez rendez-vous chez le vétérinaire.'},{day:28,title:'Nausées matinales (possible)',desc:'Certaines chiennes connaissent des nausées et des changements d\'appétit.'},{day:35,title:'Abdomen s\'agrandit',desc:'Nette augmentation du ventre. Développement des mamelles et début de la lactation.'},{day:45,title:'Radiographie pour compter les chiots',desc:'La radiographie osseuse permet de compter les chiots. Préparez la boîte de mise bas.'},{day:56,title:'Comportement de nidification',desc:'Offrez un espace tranquille et confortable. Réduisez l\'exercice.'},{day:60,title:'Date la plus précoce',desc:'Surveillez la température deux fois par jour. Une chute en dessous de 37,8 °C signale le travail sous 24h.'},{day:63,title:'Date de mise bas prévue',desc:'Jour moyen de mise bas. Préparez-vous pour le travail actif.'},{day:68,title:'Date la plus tardive',desc:'Contactez votre vétérinaire si le travail n\'a pas commencé à cette date.'}]},cat:{name:'Chat',emoji:'🐈',avg:64,min:60,max:70,milestones:[{day:0,title:'Saillie',desc:'Les chats sont à ovulation induite — la saillie déclenche l\'ovulation.'},{day:14,title:'Implantation',desc:'Les embryons s\'implantent dans l\'utérus. Aucun signe visible.'},{day:25,title:'Échographie possible',desc:'Les battements cardiaques fœtaux sont détectables. Confirmation vétérinaire recommandée.'},{day:35,title:'Rosissage des mamelons',desc:'Les mamelons deviennent rosés et proéminents. Signe clair de gestation.'},{day:42,title:'Abdomen s\'agrandit',desc:'Ventre visiblement plus rond. Augmentez la ration avec des croquettes pour chatons.'},{day:49,title:'Préparer la boîte de mise bas',desc:'Installez un espace tranquille, chaud et privé.'},{day:60,title:'Date la plus précoce',desc:'Certaines chattes mettent bas dès le jour 60. Surveillez attentivement.'},{day:64,title:'Date de mise bas prévue',desc:'Jour moyen de mise bas. Signes : vocalises, nidification, refus de nourriture.'},{day:70,title:'Date la plus tardive',desc:'Consultez votre vétérinaire si aucune mise bas avant le jour 70.'}]},rabbit:{name:'Lapin',emoji:'🐇',avg:31,min:28,max:35,milestones:[{day:0,title:'Saillie',desc:'Les lapins sont à ovulation induite. La saillie déclenche l\'ovulation.'},{day:7,title:'Implantation',desc:'Les embryons s\'implantent. Aucun signe visible.'},{day:14,title:'Palpation possible',desc:'Un vétérinaire expérimenté peut palper les fœtus à ce stade.'},{day:21,title:'Construction du nid',desc:'La lapine arrache sa fourrure pour construire un nid. Fournissez du foin et des matériaux.'},{day:28,title:'Date la plus précoce',desc:'Surveillance étroite de la lapine à partir de ce moment.'},{day:31,title:'Date de mise bas prévue',desc:'Jour moyen de mise bas. Les lapines mettent généralement bas en début de matinée.'},{day:35,title:'Date la plus tardive',desc:'Contactez votre vétérinaire si aucune mise bas avant le jour 35.'}]},guinea_pig:{name:'Cochon d\'Inde',emoji:'🐹',avg:68,min:59,max:72,milestones:[{day:0,title:'Saillie',desc:'Les cochons d\'Inde ont une longue gestation par rapport à leur taille.'},{day:21,title:'Prise de poids notable',desc:'La femelle prend du poids régulièrement. Palpation possible pour les manipulateurs expérimentés.'},{day:42,title:'Agrandissement significatif',desc:'Abdomen nettement distendu. Les petits naissent grands et bien développés.'},{day:59,title:'Date la plus précoce',desc:'Surveiller attentivement.'},{day:68,title:'Date de mise bas prévue',desc:'Les petits naissent précoces — complètement velus, yeux ouverts, mobiles immédiatement.'},{day:72,title:'Date la plus tardive',desc:'Consultez votre vétérinaire si aucune mise bas avant le jour 72.'}]},hamster_syrian:{name:'Hamster doré',emoji:'🐹',avg:16,min:15,max:18,milestones:[{day:0,title:'Saillie',desc:'Le hamster doré a l\'une des gestations les plus courtes chez les mammifères.'},{day:8,title:'Prise de poids visible',desc:'La femelle semble nettement plus ronde.'},{day:12,title:'Construction du nid s\'intensifie',desc:'Fournissez de la litière supplémentaire. Séparez le mâle si présent.'},{day:15,title:'Date la plus précoce',desc:'Les petits peuvent arriver dès le jour 15.'},{day:16,title:'Date de mise bas prévue',desc:'Jour moyen de mise bas. Les portées comptent en moyenne 6 à 12 petits.'},{day:18,title:'Date la plus tardive',desc:'Contactez votre vétérinaire si aucune mise bas avant le jour 18.'}]},hamster_dwarf:{name:'Hamster nain',emoji:'🐹',avg:18,min:16,max:21,milestones:[{day:0,title:'Saillie',desc:'Hamster nain. Le père peut aider à s\'occuper des petits.'},{day:9,title:'Abdomen s\'agrandit',desc:'La femelle est visiblement plus ronde. Assurez-vous que du matériel de nid est disponible.'},{day:14,title:'Construction du nid s\'intensifie',desc:'Fournissez du matériel de litière supplémentaire.'},{day:16,title:'Date la plus précoce',desc:'Surveillez attentivement la femelle à partir de ce moment.'},{day:18,title:'Date de mise bas prévue',desc:'Jour moyen de mise bas.'},{day:21,title:'Date la plus tardive',desc:'Contactez votre vétérinaire si aucune mise bas avant le jour 21.'}]}};
+    function addDays(d,n){var r=new Date(d);r.setDate(r.getDate()+n);return r;}
+    function fmtDate(d){return d.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long',year:'numeric'});}
+    function calculate(){
+      var sk=document.getElementById('species').value,ms=document.getElementById('mating-date').value;
+      if(!ms){alert('Veuillez sélectionner la date de saillie.');return;}
+      var sp=SPECIES[sk],mating=new Date(ms),dueAvg=addDays(mating,sp.avg),dueMin=addDays(mating,sp.min),dueMax=addDays(mating,sp.max),today=new Date();today.setHours(0,0,0,0);
+      document.getElementById('res-due-date').textContent=fmtDate(dueAvg);
+      document.getElementById('res-due-range').textContent='Au plus tôt : '+fmtDate(dueMin)+'  ·  Au plus tard : '+fmtDate(dueMax);
+      var html='';
+      sp.milestones.forEach(function(m){var mDate=addDays(mating,m.day);var isPast=mDate<today;var isToday=mDate.toDateString()===today.toDateString();var dc=isToday?'done':(isPast?'past':'upcoming');var dl=m.day===0?'Jour 0':'Jour '+m.day;html+='<div class="milestone-item"><div class="milestone-dot '+dc+'">'+(isPast?'✓':m.day)+'</div><div><div class="milestone-date">'+fmtDate(mDate)+' ('+dl+')</div><div class="milestone-title">'+m.title+'</div><div class="milestone-desc">'+m.desc+'</div></div></div>';});
+      document.getElementById('milestones-list').innerHTML=html;
+      var box=document.getElementById('result-box');box.className='result-box show';box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>

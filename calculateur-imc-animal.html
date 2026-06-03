@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
@@ -133,6 +133,10 @@
       <a href="calculateur-cout-animal.html"><span class="hmb-icon">💰</span>Coût de vie</a>
       <a href="calculateur-imc-animal.html" class="active-page"><span class="hmb-icon">⚖️</span>État corporel</a>
       <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">💧</span>Hydratation</a>
+      <a href="calculateur-thc-animal.html"><span class="hmb-icon">🌿</span>Toxicité THC</a>
+      <a href="calendrier-gestation-animal.html"><span class="hmb-icon">🐣</span>Calendrier de Gestation</a>
+      <a href="calculateur-croissance-animal.html"><span class="hmb-icon">📏</span>Croissance &amp; Poids Adulte</a>
+      <a href="calculateur-macronutriments-animal.html"><span class="hmb-icon">🥩</span>Macronutriments</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -302,7 +306,7 @@
       document.getElementById('res-score').textContent='BCS '+opt.score+' / 9';
       document.getElementById('res-headline').textContent=opt.title;
       const petName=selectedPet==='dog'?'chien':'chat';
-      document.getElementById('res-subtext').textContent=cat==='ideal'?'Votre '+petName+' est en parfait état corporel. Continuez ainsi !':cat==='under'?'Votre '+petName+' est peut-être en sous-poids. Voir le plan d\'action ci-dessous.':'Votre '+petName+' porte peut-être un excès de poids. Voir le plan d\'action ci-dessous.';
+      document.getElementById('res-subtext').innerHTML=cat==='ideal'?'Votre '+petName+' est en parfait état corporel. Continuez ainsi !':cat==='under'?'Votre '+petName+' est peut-être en sous-poids. Voir le plan d\'action ci-dessous.':'Votre '+petName+' porte peut-être un excès de poids. Pour une perte de poids saine, envisagez de réduire l\'apport calorique de 10 à 20 % et consultez votre vétérinaire. Utilisez notre <a href="calculateur-calories.html" style="color:inherit;font-weight:700;text-decoration:underline">Calculateur de calories</a> pour des mesures précises basées sur le BER.';
       const targetEl=document.getElementById('res-target');
       if(weightKg&&cat!=='ideal'){let idealKg=cat==='over'?weightKg/(1+(scoreNum-5)*0.1):weightKg/(1-(5-scoreNum)*0.1);idealKg=Math.max(idealKg,0.5);const diff=Math.abs(weightKg-idealKg);targetEl.style.display='block';targetEl.innerHTML=`🎯 <strong>Poids idéal estimé :</strong> ${idealKg.toFixed(1)} kg — ${cat==='over'?'Perdre':'Prendre'} environ ${diff.toFixed(1)} kg`;}else{targetEl.style.display='none';}
       const pct=((scoreNum-1)/8)*100;document.getElementById('bcs-marker').style.left=Math.min(Math.max(pct,3),97)+'%';

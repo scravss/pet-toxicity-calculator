@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
@@ -132,6 +132,10 @@
       <a href="kostenrechner-haustier.html"><span class="hmb-icon">💰</span>Lebenskosten</a>
       <a href="haustier-bmi-rechner.html" class="active-page"><span class="hmb-icon">⚖️</span>Körperkondition</a>
       <a href="haustier-wasserbedarf-rechner.html"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+      <a href="thc-toxizitaet-rechner.html"><span class="hmb-icon">🌿</span>THC-Toxizität</a>
+      <a href="traechtigkeitskalender-haustier.html"><span class="hmb-icon">🐣</span>Trächtigkeitskalender</a>
+      <a href="haustier-wachstumsrechner.html"><span class="hmb-icon">📏</span>Wachstum &amp; Gewicht</a>
+      <a href="haustier-makronaehrstoff-rechner.html"><span class="hmb-icon">🥩</span>Makronährstoffe</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -298,7 +302,7 @@
       document.getElementById('res-score').textContent='BCS '+opt.score+' / 9';
       document.getElementById('res-headline').textContent=opt.title;
       const petName=selectedPet==='dog'?'Hund':'Katze';
-      document.getElementById('res-subtext').textContent=cat==='ideal'?'Ihr '+petName+' hat einen gesunden Körperzustand. Weiter so!':cat==='under'?'Ihr '+petName+' könnte untergewichtig sein. Siehe Aktionsplan unten.':'Ihr '+petName+' könnte Übergewicht haben. Siehe Aktionsplan unten.';
+      document.getElementById('res-subtext').innerHTML=cat==='ideal'?'Ihr '+petName+' hat einen gesunden Körperzustand. Weiter so!':cat==='under'?'Ihr '+petName+' könnte untergewichtig sein. Siehe Aktionsplan unten.':'Ihr '+petName+' könnte Übergewicht haben. Für eine gesunde Gewichtsabnahme empfiehlt sich eine Reduzierung der täglichen Kalorienzufuhr um 10–20 % – bitte sprechen Sie mit Ihrem Tierarzt. Nutzen Sie unseren <a href="kalorienrechner.html" style="color:inherit;font-weight:700;text-decoration:underline">Kalorienrechner</a> für genaue RER-basierte Berechnungen.';
       const targetEl=document.getElementById('res-target');
       if(weightKg&&cat!=='ideal'){let idealKg=cat==='over'?weightKg/(1+(scoreNum-5)*0.1):weightKg/(1-(5-scoreNum)*0.1);idealKg=Math.max(idealKg,0.5);const diff=Math.abs(weightKg-idealKg);targetEl.style.display='block';targetEl.innerHTML=`🎯 <strong>Geschätztes Idealgewicht:</strong> ${idealKg.toFixed(1)} kg — ${cat==='over'?'Abnehmen':'Zunehmen'} ca. ${diff.toFixed(1)} kg`;}else{targetEl.style.display='none';}
       const pct=((scoreNum-1)/8)*100;document.getElementById('bcs-marker').style.left=Math.min(Math.max(pct,3),97)+'%';

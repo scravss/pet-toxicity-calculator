@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Gestación y Embarazo para Mascotas | Perro, Gato, Conejo</title>
+  <meta name="description" content="Calculadora gratuita de gestación para perros, gatos, conejos, cobayas y hámsteres. Introduce la fecha de monta para obtener la fecha probable de parto y los hitos del embarazo." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/calculadora-gestacion-mascota.html" />
+  <meta property="og:title" content="Calculadora de Gestación para Mascotas" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"¿Cuánto dura la gestación de un perro?","acceptedAnswer":{"@type":"Answer","text":"El período de gestación promedio en perras es de 63 días (rango 58–68 días) desde la fecha de monta. Esto equivale a unas 9 semanas. Los signos de parto inminente incluyen comportamiento de nidificación, descenso de temperatura por debajo de 37,8 °C (100 °F) y producción de leche 24–48 horas antes del parto."}},
+      {"@type":"Question","name":"¿Cuánto dura la gestación de una gata?","acceptedAnswer":{"@type":"Answer","text":"La gestación felina dura un promedio de 63–65 días (rango 60–70 días). Los gatitos nacidos antes del día 58 se consideran prematuros. Los signos de parto incluyen vocalización, nidificación e inquietud 24–48 horas antes del nacimiento."}},
+      {"@type":"Question","name":"¿Cuándo llevar a mi mascota gestante al veterinario?","acceptedAnswer":{"@type":"Answer","text":"Programe una revisión veterinaria 3–4 semanas después de la monta para confirmar la gestación. Una ecografía puede detectar latidos fetales desde el día 25. Alrededor de la semana 6, una radiografía puede contar el número de crías. Contacte a su veterinario de inmediato si el parto tarda más de 2 horas entre nacimientos."}}
+    ]
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-pink:#db2777;--clr-pink-bg:#fdf2f8;--clr-pink-bdr:#fbcfe8;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.7}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;padding:48px 16px 36px}
+    .hero-badge{display:inline-block;background:var(--clr-pink-bg);color:var(--clr-pink);border:1px solid var(--clr-pink-bdr);border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;color:var(--clr-text);line-height:1.2;margin-bottom:14px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:540px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-md);margin-bottom:32px}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .calc-card h2{font-size:1.15rem;font-weight:800;margin-bottom:24px;color:var(--clr-text);letter-spacing:-.02em}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group label{font-size:.82rem;font-weight:700;color:var(--clr-text)}
+    .form-group select,.form-group input{padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color var(--transition)}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--clr-primary)}
+    .form-group .hint{font-size:.75rem;color:var(--clr-muted)}
+    .calc-btn{width:100%;margin-top:22px;padding:15px;background:var(--clr-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity var(--transition),transform var(--transition)}
+    .calc-btn:hover{opacity:.88;transform:translateY(-1px)}
+    .result-box{display:none;margin-top:28px}.result-box.show{display:block}
+    .due-date-card{background:linear-gradient(135deg,#db2777 0%,#9333ea 100%);border-radius:var(--radius-lg);padding:28px 24px;color:#fff;text-align:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(219,39,119,.28)}
+    .due-date-label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.82;margin-bottom:6px}
+    .due-date-value{font-size:1.8rem;font-weight:800;letter-spacing:-.02em}
+    .due-date-range{font-size:.9rem;opacity:.85;margin-top:4px}
+    .milestones{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:24px 24px 8px;box-shadow:var(--shadow-sm)}
+    .milestones h3{font-size:1rem;font-weight:800;color:var(--clr-text);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+    .milestone-item{display:flex;align-items:flex-start;gap:14px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--clr-border)}
+    .milestone-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .milestone-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;flex-shrink:0;color:#fff}
+    .milestone-dot.done{background:var(--clr-green)}.milestone-dot.upcoming{background:var(--clr-primary)}.milestone-dot.past{background:var(--clr-muted)}
+    .milestone-date{font-size:.82rem;font-weight:800;color:var(--clr-primary)}
+    .milestone-title{font-size:.95rem;font-weight:700;color:var(--clr-text);margin-top:1px}
+    .milestone-desc{font-size:.85rem;color:var(--clr-muted);margin-top:3px}
+    .info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm);margin-top:32px}
+    @media(max-width:480px){.info-card{padding:24px 18px}}
+    .info-card h2{font-size:1.2rem;font-weight:800;color:var(--clr-text);margin:28px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--clr-border);letter-spacing:-.02em}
+    .info-card h2:first-child{margin-top:0}.info-card p{color:var(--clr-muted);font-size:.95rem;margin-bottom:12px}.info-card strong{color:var(--clr-text)}
+    .species-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:16px 0}
+    .species-table th{text-align:left;padding:10px 12px;background:var(--clr-bg);color:var(--clr-muted);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--clr-border)}
+    .species-table td{padding:10px 12px;border-bottom:1px solid var(--clr-border);color:var(--clr-text)}
+    .species-table tr:last-child td{border-bottom:none}
+    .warning-box{background:var(--clr-yellow-bg);border:1.5px solid var(--clr-yellow-bdr);border-radius:var(--radius-md);padding:14px 18px;margin:16px 0;font-size:.90rem;color:var(--clr-yellow);font-weight:600}
+    .faq-section{margin-top:40px}.faq-section h2{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--clr-text)}
+    .faq-item{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background var(--transition)}
+    .faq-question:hover{background:var(--clr-bg)}.faq-chevron{font-size:.75rem;color:var(--clr-muted);flex-shrink:0;transition:transform .2s ease}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
+    .faq-item.open .faq-answer{display:block}
+    .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}.site-footer a{color:var(--clr-primary);text-decoration:none}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-pink:#f472b6;--clr-pink-bg:#2d0a1e;--clr-pink-bdr:#831843;--clr-green:#4ade80;--clr-green-bg:#052e16;--clr-green-bdr:#166534;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    html.dark-theme .species-table th,body.dark-theme .species-table th{background:#0f172a}
+    html.dark-theme .milestone-date,body.dark-theme .milestone-date{color:#818cf8}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Navegación principal">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Herramientas</a><button class="hmb-close" onclick="closeMenu()" aria-label="Cerrar">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Calculadora de Toxicidad</a>
+      <a href="calculadora-edad.html"><span class="hmb-icon">🎂</span>Edad de la Mascota</a>
+      <a href="calculadora-calorias.html"><span class="hmb-icon">🥗</span>Calculadora de Calorías</a>
+      <a href="calidad-de-vida-mascotas.html"><span class="hmb-icon">🤍</span>Calidad de Vida</a>
+      <a href="calculadora-costes-mascota.html"><span class="hmb-icon">💶</span>Coste de Mascota</a>
+      <a href="calculadora-imc-mascota.html"><span class="hmb-icon">⚖️</span>Condición Corporal</a>
+      <a href="calculadora-hidratacion-mascota.html"><span class="hmb-icon">💧</span>Hidratación</a>
+      <a href="calculadora-toxicidad-thc.html"><span class="hmb-icon">🌿</span>Toxicidad THC</a>
+      <a href="calculadora-gestacion-mascota.html" class="active-page"><span class="hmb-icon">🐣</span>Gestación</a>
+      <a href="calculadora-crecimiento-mascota.html"><span class="hmb-icon">📏</span>Crecimiento &amp; Peso Adulto</a>
+      <a href="calculadora-macronutrientes-mascota.html"><span class="hmb-icon">🥩</span>Macronutrientes</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Calculadora de Toxicidad</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Modo oscuro">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">🐣 Herramienta de Cría Gratuita</span>
+      <h1>Calculadora de Gestación<br>y Calendario de Embarazo</h1>
+      <p class="hero-lead">Introduce la especie de tu mascota y la fecha de monta para calcular al instante la fecha probable de parto y los hitos clave del embarazo.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🗓️ Datos de la monta</h2>
+      <div class="form-grid">
+        <div class="form-group"><label for="species">Especie</label><select id="species"><option value="dog">Perro (Canis lupus familiaris)</option><option value="cat">Gato (Felis catus)</option><option value="rabbit">Conejo (Oryctolagus cuniculus)</option><option value="guinea_pig">Cobaya / Conejillo de Indias (Cavia porcellus)</option><option value="hamster_syrian">Hámster dorado / sirio</option><option value="hamster_dwarf">Hámster enano</option></select></div>
+        <div class="form-group"><label for="mating-date">Fecha de monta / apareamiento</label><input type="date" id="mating-date" /><span class="hint">Use la primera fecha de monta confirmada</span></div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Calcular fecha de parto y hitos →</button>
+      <div class="result-box" id="result-box">
+        <div class="due-date-card"><div class="due-date-label">🐣 Fecha probable de parto</div><div class="due-date-value" id="res-due-date"></div><div class="due-date-range" id="res-due-range"></div></div>
+        <div class="milestones" id="milestones-card"><h3>📅 Hitos del embarazo</h3><div id="milestones-list"></div></div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Períodos de gestación por especie</h2>
+      <table class="species-table">
+        <thead><tr><th>Especie</th><th>Prom. días</th><th>Rango</th><th>Camada típica</th></tr></thead>
+        <tbody>
+          <tr><td>🐕 Perro</td><td>63</td><td>58–68 días</td><td>1–12 cachorros</td></tr>
+          <tr><td>🐈 Gato</td><td>64</td><td>60–70 días</td><td>2–6 gatitos</td></tr>
+          <tr><td>🐇 Conejo</td><td>31</td><td>28–35 días</td><td>4–12 gazapos</td></tr>
+          <tr><td>🐹 Cobaya</td><td>68</td><td>59–72 días</td><td>1–6 crías</td></tr>
+          <tr><td>🐹 Hámster dorado</td><td>16</td><td>15–18 días</td><td>6–12 crías</td></tr>
+          <tr><td>🐹 Hámster enano</td><td>18</td><td>16–21 días</td><td>4–8 crías</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">⚠️ <strong>Importante:</strong> Esta calculadora proporciona estimaciones basadas en períodos de gestación típicos. Las fechas reales de parto varían. Trabaje siempre con un veterinario para los cuidados prenatales, especialmente con primerizas o razas de riesgo.</div>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Preguntas frecuentes</h2>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Cuánto dura la gestación de un perro?<span class="faq-chevron">▼</span></button><div class="faq-answer">El período de gestación promedio en perras es de <strong>63 días</strong> (rango 58–68 días). Los signos de parto inminente incluyen comportamiento de nidificación, descenso de temperatura por debajo de 37,8 °C y producción de leche 24–48 horas antes del parto.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Cuánto dura la gestación de una gata?<span class="faq-chevron">▼</span></button><div class="faq-answer">La gestación felina dura un promedio de <strong>63–65 días</strong> (rango 60–70 días). Los gatitos nacidos antes del día 58 se consideran prematuros. Los signos de parto incluyen vocalización, nidificación e inquietud 24–48 horas antes del nacimiento.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Cuándo llevar a mi mascota gestante al veterinario?<span class="faq-chevron">▼</span></button><div class="faq-answer">Programe una revisión <strong>3–4 semanas después de la monta</strong> para confirmar la gestación. Una ecografía puede detectar latidos fetales desde el día 25. Alrededor de la semana 6 puede contar las crías por radiografía. Contacte al veterinario si el parto tarda más de 2 horas entre nacimientos.</div></div>
+    </section>
+  </div>
+
+  <footer class="site-footer"><p>🐾 <a href="index.html">Calculadora de Toxicidad para Mascotas</a> — Herramienta de orientación gratuita. No sustituye el consejo de un veterinario profesional.</p></footer>
+
+  <script>
+    var SPECIES={dog:{name:'Perro',emoji:'🐕',avg:63,min:58,max:68,milestones:[{day:0,title:'Monta / Apareamiento',desc:'Día 0 — la fecundación puede ocurrir durante 2–5 días. Anote todas las fechas de monta.'},{day:14,title:'Implantación',desc:'Los embriones se implantan en la pared uterina. Aún no hay signos visibles.'},{day:25,title:'Ecografía posible',desc:'Los latidos fetales son detectables. Reserve una revisión veterinaria.'},{day:28,title:'Náuseas matutinas (posible)',desc:'Algunas perras experimentan náuseas y cambios de apetito.'},{day:35,title:'Abdomen se agranda',desc:'Agrandamiento claro del abdomen. Comienza el desarrollo de las mamas y la producción de leche.'},{day:45,title:'Radiografía para contar cachorros',desc:'La radiografía ósea puede contar los cachorros. Prepare el cajón de parto.'},{day:56,title:'Comportamiento de nidificación',desc:'Proporcione un área tranquila y cómoda. Reduzca el ejercicio.'},{day:60,title:'Fecha más temprana',desc:'Controle la temperatura dos veces al día. Un descenso por debajo de 37,8 °C indica parto en 24h.'},{day:63,title:'Fecha probable de parto',desc:'Día promedio de parto. Prepárese para el trabajo de parto activo.'},{day:68,title:'Fecha más tardía',desc:'Contacte a su veterinario si el parto no ha comenzado para esta fecha.'}]},cat:{name:'Gato',emoji:'🐈',avg:64,min:60,max:70,milestones:[{day:0,title:'Monta',desc:'Los gatos tienen ovulación inducida — la monta desencadena la ovulación.'},{day:14,title:'Implantación',desc:'Los embriones se implantan en el útero. Aún no hay signos visibles.'},{day:25,title:'Ecografía posible',desc:'Los latidos fetales son detectables. Se recomienda confirmación veterinaria.'},{day:35,title:'Rosado de los pezones',desc:'Los pezones se vuelven rosados y prominentes. Signo claro de gestación.'},{day:42,title:'Abdomen se agranda',desc:'El vientre visiblemente más redondeado. Aumente la nutrición con pienso para gatitos.'},{day:49,title:'Preparar cajón de parto',desc:'Instale un espacio tranquilo, cálido y privado para la camada.'},{day:60,title:'Fecha más temprana',desc:'Algunas gatas paren desde el día 60. Vigile de cerca.'},{day:64,title:'Fecha probable de parto',desc:'Día promedio de parto. Signos: vocalización, nidificación, rechazo de comida.'},{day:70,title:'Fecha más tardía',desc:'Consulte a su veterinario si no hay parto antes del día 70.'}]},rabbit:{name:'Conejo',emoji:'🐇',avg:31,min:28,max:35,milestones:[{day:0,title:'Monta',desc:'Los conejos tienen ovulación inducida. La monta desencadena la ovulación.'},{day:7,title:'Implantación',desc:'Los embriones se implantan. Aún no hay signos visibles.'},{day:14,title:'Palpación posible',desc:'Un veterinario experimentado puede palpar fetos en esta etapa.'},{day:21,title:'Construcción del nido',desc:'La coneja arranca pelo para construir el nido. Proporcione heno y materiales.'},{day:28,title:'Fecha más temprana',desc:'Vigile de cerca a la coneja a partir de este momento.'},{day:31,title:'Fecha probable de parto',desc:'Día promedio de parto. Las conejas suelen parir a primera hora de la mañana.'},{day:35,title:'Fecha más tardía',desc:'Contacte a su veterinario si no hay parto antes del día 35.'}]},guinea_pig:{name:'Cobaya',emoji:'🐹',avg:68,min:59,max:72,milestones:[{day:0,title:'Monta',desc:'Las cobayas tienen una gestación larga en relación con su tamaño.'},{day:21,title:'Aumento de peso notable',desc:'La hembra gana peso de forma constante. Palpación posible para personas con experiencia.'},{day:42,title:'Agrandamiento significativo',desc:'Abdomen notablemente distendido. Las crías nacen grandes y bien desarrolladas.'},{day:59,title:'Fecha más temprana',desc:'Vigile de cerca a la hembra.'},{day:68,title:'Fecha probable de parto',desc:'Las crías nacen precoces — completamente cubiertas de pelo, ojos abiertos, móviles.'},{day:72,title:'Fecha más tardía',desc:'Consulte a su veterinario si no hay parto antes del día 72.'}]},hamster_syrian:{name:'Hámster dorado',emoji:'🐹',avg:16,min:15,max:18,milestones:[{day:0,title:'Monta',desc:'El hámster dorado tiene uno de los períodos de gestación más cortos entre los mamíferos.'},{day:8,title:'Aumento de peso visible',desc:'La hembra parece notablemente más redondeada.'},{day:12,title:'Construcción del nido se intensifica',desc:'Proporcione material de nido extra. Separe al macho si está presente.'},{day:15,title:'Fecha más temprana',desc:'Las crías pueden llegar desde el día 15.'},{day:16,title:'Fecha probable de parto',desc:'Día promedio de parto. Las camadas promedian 6–12 crías.'},{day:18,title:'Fecha más tardía',desc:'Contacte a su veterinario si no hay parto antes del día 18.'}]},hamster_dwarf:{name:'Hámster enano',emoji:'🐹',avg:18,min:16,max:21,milestones:[{day:0,title:'Monta',desc:'Hámster enano. El padre puede ayudar a cuidar a las crías.'},{day:9,title:'Abdomen se agranda',desc:'La hembra visiblemente más redondeada. Asegúrese de tener material de nido disponible.'},{day:14,title:'Construcción del nido se intensifica',desc:'Proporcione más material de cama.'},{day:16,title:'Fecha más temprana',desc:'Vigile de cerca a la hembra a partir de este momento.'},{day:18,title:'Fecha probable de parto',desc:'Día promedio de parto.'},{day:21,title:'Fecha más tardía',desc:'Contacte a su veterinario si no hay parto antes del día 21.'}]}};
+    function addDays(d,n){var r=new Date(d);r.setDate(r.getDate()+n);return r;}
+    function fmtDate(d){return d.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'long',year:'numeric'});}
+    function calculate(){
+      var sk=document.getElementById('species').value,ms=document.getElementById('mating-date').value;
+      if(!ms){alert('Por favor, seleccione la fecha de monta.');return;}
+      var sp=SPECIES[sk],mating=new Date(ms),dueAvg=addDays(mating,sp.avg),dueMin=addDays(mating,sp.min),dueMax=addDays(mating,sp.max),today=new Date();today.setHours(0,0,0,0);
+      document.getElementById('res-due-date').textContent=fmtDate(dueAvg);
+      document.getElementById('res-due-range').textContent='Más temprano: '+fmtDate(dueMin)+'  ·  Más tardío: '+fmtDate(dueMax);
+      var html='';
+      sp.milestones.forEach(function(m){var mDate=addDays(mating,m.day);var isPast=mDate<today;var isToday=mDate.toDateString()===today.toDateString();var dc=isToday?'done':(isPast?'past':'upcoming');var dl=m.day===0?'Día 0':'Día '+m.day;html+='<div class="milestone-item"><div class="milestone-dot '+dc+'">'+(isPast?'✓':m.day)+'</div><div><div class="milestone-date">'+fmtDate(mDate)+' ('+dl+')</div><div class="milestone-title">'+m.title+'</div><div class="milestone-desc">'+m.desc+'</div></div></div>';});
+      document.getElementById('milestones-list').innerHTML=html;
+      var box=document.getElementById('result-box');box.className='result-box show';box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>

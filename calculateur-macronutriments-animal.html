@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculateur de Macronutriments Animal — Alimentation Crue & Maison Chien Chat</title>
+  <meta name="description" content="Calculateur gratuit de macronutriments pour chiens et chats. Obtenez les apports journaliers en protéines, graisses et glucides pour un régime cru ou fait maison." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/calculateur-macronutriments-animal.html" />
+  <meta property="og:title" content="Calculateur de Macronutriments Animal" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"De quelle quantité de protéines mon chien a-t-il besoin par jour ?","acceptedAnswer":{"@type":"Answer","text":"Le NRC recommande un minimum de 2,62 g de protéines brutes par kg de poids corporel par jour pour les chiens adultes. Les chiens actifs ont besoin de plus — environ 4–6 g/kg. Ce calculateur utilise l'énergie de repos (BER = 70 × poids_kg^0,75) comme base calorique."}},
+    {"@type":"Question","name":"Les chats ont-ils besoin de glucides dans leur alimentation ?","acceptedAnswer":{"@type":"Answer","text":"Les chats sont des carnivores stricts et ont une capacité très limitée à digérer les glucides. Les recommandations vétérinaires suggèrent que les glucides devraient représenter moins de 10 % de l'apport calorique félin. Ce calculateur attribue aux chats un apport glucidique très faible (5–10 %)."}},
+    {"@type":"Question","name":"Ce calculateur convient-il à un régime BARF ou cru ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les cibles en grammes fournies sont un bon point de départ pour un régime BARF ou fait maison. Consultez toujours un nutritionniste vétérinaire avant de faire des changements alimentaires importants, car les régimes maison peuvent présenter des carences en micronutriments."}}
+  ]}</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.7}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;padding:48px 16px 36px}
+    .hero-badge{display:inline-block;background:var(--clr-green-bg);color:var(--clr-green);border:1px solid var(--clr-green-bdr);border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:560px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-md);margin-bottom:32px}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .calc-card h2{font-size:1.1rem;font-weight:800;margin-bottom:24px;letter-spacing:-.02em}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group label{font-size:.82rem;font-weight:700}
+    .form-group select,.form-group input{padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color var(--transition)}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--clr-primary)}
+    .calc-btn{width:100%;margin-top:22px;padding:15px;background:var(--clr-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity var(--transition),transform var(--transition)}
+    .calc-btn:hover{opacity:.88;transform:translateY(-1px)}
+    .result-box{display:none;margin-top:28px}.result-box.show{display:block}
+    .result-hero{background:linear-gradient(135deg,#16a34a 0%,#0d9488 100%);border-radius:var(--radius-lg);padding:24px;color:#fff;text-align:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(22,163,74,.25)}
+    .result-hero-label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.82;margin-bottom:4px}
+    .result-hero-kcal{font-size:2.2rem;font-weight:800;color:#fff!important;letter-spacing:-.02em}
+    .result-hero-sub{font-size:.88rem;opacity:.85;margin-top:2px;color:#fff!important}
+    .macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+    @media(max-width:480px){.macro-grid{grid-template-columns:1fr}}
+    .macro-card{background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:18px 16px;text-align:center;position:relative;overflow:hidden}
+    .macro-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+    .macro-card.protein::before{background:#4f46e5}.macro-card.fat::before{background:#d97706}.macro-card.carbs::before{background:#0d9488}
+    .macro-icon{font-size:1.6rem;margin-bottom:8px}
+    .macro-name{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--clr-muted);margin-bottom:4px}
+    .macro-grams{font-size:1.7rem;font-weight:800;line-height:1;color:#111827!important}
+    .macro-unit{font-size:.82rem;color:var(--clr-muted);margin-top:2px}
+    .macro-pct{display:inline-block;font-size:.75rem;font-weight:700;background:var(--clr-bg);border-radius:99px;padding:2px 10px;margin-top:6px;color:var(--clr-muted)}
+    .bar-section{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:20px 24px;margin-bottom:20px}
+    .bar-section h4{font-size:.88rem;font-weight:800;margin-bottom:14px}
+    .macro-bar-wrap{margin-bottom:12px}
+    .macro-bar-label{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:4px}
+    .macro-bar-label span:first-child{font-weight:700;color:var(--clr-text)}.macro-bar-label span:last-child{color:var(--clr-muted)}
+    .bar-track{height:10px;background:var(--clr-bg);border-radius:99px;overflow:hidden;border:1px solid var(--clr-border)}
+    .bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
+    .bar-fill.protein{background:#4f46e5}.bar-fill.fat{background:#d97706}.bar-fill.carbs{background:#0d9488}
+    .info-note{background:var(--clr-yellow-bg);border:1.5px solid var(--clr-yellow-bdr);border-radius:var(--radius-md);padding:14px 18px;font-size:.88rem;color:var(--clr-yellow);font-weight:600;margin-bottom:20px}
+    .info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);margin-top:32px}
+    @media(max-width:480px){.info-card{padding:24px 18px}}
+    .info-card h2{font-size:1.1rem;font-weight:800;margin:24px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--clr-border)}
+    .info-card h2:first-child{margin-top:0}.info-card p{color:var(--clr-muted);font-size:.93rem;margin-bottom:10px}.info-card strong{color:var(--clr-text)}
+    .faq-section{margin-top:40px}.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+    .faq-item{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background var(--transition)}
+    .faq-question:hover{background:var(--clr-bg)}.faq-chevron{font-size:.75rem;color:var(--clr-muted);flex-shrink:0;transition:transform .2s ease}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
+    .faq-item.open .faq-answer{display:block}
+    .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}.site-footer a{color:var(--clr-primary);text-decoration:none}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-green:#4ade80;--clr-green-bg:#052e16;--clr-green-bdr:#166534;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    html.dark-theme .macro-grams,body.dark-theme .macro-grams{color:#f1f5f9!important}
+    html.dark-theme .bar-track,body.dark-theme .bar-track{background:#0f172a}
+    html.dark-theme .macro-pct,body.dark-theme .macro-pct{background:#0f172a}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px;overflow-y:auto}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Navigation principale">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Outils Animaux</a><button class="hmb-close" onclick="closeMenu()" aria-label="Fermer">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Calculateur de Toxicité</a>
+      <a href="age-calculateur.html"><span class="hmb-icon">🎂</span>Âge de l'Animal</a>
+      <a href="calculateur-calories.html"><span class="hmb-icon">🥗</span>Calculateur Calories</a>
+      <a href="qualite-de-vie-animal.html"><span class="hmb-icon">🤍</span>Qualité de Vie</a>
+      <a href="calculateur-cout-animal.html"><span class="hmb-icon">💶</span>Coût de l'Animal</a>
+      <a href="calculateur-imc-animal.html"><span class="hmb-icon">⚖️</span>IMC / Condition Corporelle</a>
+      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">💧</span>Hydratation</a>
+      <a href="calculateur-thc-animal.html"><span class="hmb-icon">🌿</span>Toxicité THC</a>
+      <a href="calendrier-gestation-animal.html"><span class="hmb-icon">🐣</span>Calendrier de Gestation</a>
+      <a href="calculateur-croissance-animal.html"><span class="hmb-icon">📏</span>Croissance &amp; Poids Adulte</a>
+      <a href="calculateur-macronutriments-animal.html" class="active-page"><span class="hmb-icon">🥩</span>Macronutriments</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Calculateur de Toxicité</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Mode sombre">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">🥩 Outil Alimentation Crue &amp; Maison</span>
+      <h1>Calculateur de<br>Macronutriments Animal</h1>
+      <p class="hero-lead">Obtenez les apports journaliers recommandés en protéines, graisses et glucides pour votre chien ou chat — basés sur les recommandations vétérinaires pour les régimes crus ou faits maison.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🍽️ Informations sur votre animal</h2>
+      <div class="form-grid">
+        <div class="form-group"><label for="species">Espèce</label><select id="species"><option value="dog">Chien</option><option value="cat">Chat</option></select></div>
+        <div class="form-group"><label for="weight">Poids corporel</label><select id="weight-unit" style="margin-bottom:6px"><option value="kg">kg</option><option value="lbs">lbs</option></select><input type="number" id="weight" min="0.5" step="0.1" placeholder="ex. 15" /></div>
+        <div class="form-group"><label for="activity">Niveau d'activité</label><select id="activity"><option value="low">Faible (sédentaire / senior)</option><option value="moderate" selected>Modéré (adulte typique)</option><option value="high">Élevé (chien de travail / sport)</option></select></div>
+        <div class="form-group"><label for="goal">Objectif alimentaire</label><select id="goal"><option value="loss">Perte de poids</option><option value="maintain" selected>Maintien</option><option value="gain">Prise de poids / Convalescence</option></select></div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Calculer les macronutriments →</button>
+      <div class="result-box" id="result-box">
+        <div class="result-hero"><div class="result-hero-label">Apport Calorique Journalier</div><div class="result-hero-kcal" id="res-kcal"></div><div class="result-hero-sub" id="res-rer"></div></div>
+        <div class="macro-grid">
+          <div class="macro-card protein"><div class="macro-icon">🥩</div><div class="macro-name">Protéines</div><div class="macro-grams" id="res-protein"></div><div class="macro-unit">grammes / jour</div><div class="macro-pct" id="res-protein-pct"></div></div>
+          <div class="macro-card fat"><div class="macro-icon">🥑</div><div class="macro-name">Graisses</div><div class="macro-grams" id="res-fat"></div><div class="macro-unit">grammes / jour</div><div class="macro-pct" id="res-fat-pct"></div></div>
+          <div class="macro-card carbs"><div class="macro-icon">🌾</div><div class="macro-name">Glucides</div><div class="macro-grams" id="res-carbs"></div><div class="macro-unit">grammes / jour</div><div class="macro-pct" id="res-carbs-pct"></div></div>
+        </div>
+        <div class="bar-section"><h4>Répartition des Macronutriments</h4>
+          <div class="macro-bar-wrap"><div class="macro-bar-label"><span>🥩 Protéines</span><span id="bar-protein-lbl"></span></div><div class="bar-track"><div class="bar-fill protein" id="bar-protein" style="width:0%"></div></div></div>
+          <div class="macro-bar-wrap"><div class="macro-bar-label"><span>🥑 Graisses</span><span id="bar-fat-lbl"></span></div><div class="bar-track"><div class="bar-fill fat" id="bar-fat" style="width:0%"></div></div></div>
+          <div class="macro-bar-wrap"><div class="macro-bar-label"><span>🌾 Glucides</span><span id="bar-carbs-lbl"></span></div><div class="bar-track"><div class="bar-fill carbs" id="bar-carbs" style="width:0%"></div></div></div>
+        </div>
+        <div class="info-note">⚠️ Ces valeurs sont des recommandations générales basées sur les normes NRC et AAFCO. Consultez toujours un nutritionniste vétérinaire avant de modifier le régime alimentaire de votre animal.</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Comment ces chiffres sont calculés</h2>
+      <p><strong>Étape 1 — BER :</strong> Besoin Énergétique de Repos = 70 × poids(kg)⁰·⁷⁵ kcal/jour.</p>
+      <p><strong>Étape 2 — BEJ :</strong> Multiplicateur d'activité : Faible = ×1,2, Modéré = ×1,4, Élevé = ×1,8. Objectif : Perte = ×0,8 du BEJ ; Prise = ×1,2.</p>
+      <p><strong>Étape 3 — Macros :</strong> Chiens : Protéines 30–35 %, Graisses 20–25 %, Glucides 40–50 %. Chats (carnivores stricts) : Protéines 50–55 %, Graisses 35–40 %, Glucides 5–10 %. Protéines : 4 kcal/g, Graisses : 9 kcal/g, Glucides : 4 kcal/g.</p>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Questions fréquentes</h2>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">De quelle quantité de protéines mon chien a-t-il besoin ?<span class="faq-chevron">▼</span></button><div class="faq-answer">Le NRC recommande un minimum de <strong>2,62 g de protéines brutes par kg</strong> de poids corporel par jour pour les chiens adultes. Les chiens actifs ont besoin de 4–6 g/kg. Ce calculateur dérive les protéines des besoins caloriques totaux, en allouant 30–35 % à ce macronutriment.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Les chats ont-ils besoin de glucides ?<span class="faq-chevron">▼</span></button><div class="faq-answer">Les chats ont une <strong>capacité très limitée à digérer les glucides</strong> et n'en ont aucun besoin diététique. Les recommandations vétérinaires suggèrent moins de 10 % de l'apport calorique. Ce calculateur fixe les glucides à 5–10 % pour les chats.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Ce calculateur convient-il au régime BARF ?<span class="faq-chevron">▼</span></button><div class="faq-answer">Oui. Les cibles en grammes constituent un <strong>bon point de départ pour le BARF</strong> ou tout régime fait maison. Consultez un nutritionniste vétérinaire pour garantir un équilibre complet en micronutriments.</div></div>
+    </section>
+  </div>
+  <footer class="site-footer"><p>🐾 <a href="index.html">Calculateur de Toxicité pour Animaux</a> — Outil d'orientation gratuit. Ne remplace pas l'avis vétérinaire.</p></footer>
+  <script>
+    var MACROS={dog:{loss:{protPct:.33,fatPct:.22,carbPct:.45,actMult:{low:1.2,moderate:1.4,high:1.8},goalMult:.8},maintain:{protPct:.32,fatPct:.23,carbPct:.45,actMult:{low:1.2,moderate:1.4,high:1.8},goalMult:1.0},gain:{protPct:.35,fatPct:.25,carbPct:.40,actMult:{low:1.2,moderate:1.4,high:1.8},goalMult:1.2}},cat:{loss:{protPct:.52,fatPct:.38,carbPct:.10,actMult:{low:1.0,moderate:1.2,high:1.4},goalMult:.8},maintain:{protPct:.52,fatPct:.40,carbPct:.08,actMult:{low:1.0,moderate:1.2,high:1.4},goalMult:1.0},gain:{protPct:.55,fatPct:.40,carbPct:.05,actMult:{low:1.0,moderate:1.2,high:1.4},goalMult:1.2}}};
+    function toKg(val,unit){return unit==='lbs'?val*0.453592:val;}
+    function calculate(){
+      var sp=document.getElementById('species').value,wRaw=parseFloat(document.getElementById('weight').value),wUnit=document.getElementById('weight-unit').value,act=document.getElementById('activity').value,goal=document.getElementById('goal').value;
+      if(!wRaw||wRaw<=0){alert('Veuillez entrer un poids valide.');return;}
+      var wKg=toKg(wRaw,wUnit),rer=70*Math.pow(wKg,0.75),macro=MACROS[sp][goal],mer=rer*macro.actMult[act]*macro.goalMult;
+      var protKcal=mer*macro.protPct,fatKcal=mer*macro.fatPct,carbKcal=mer*macro.carbPct;
+      var protG=protKcal/4,fatG=fatKcal/9,carbG=carbKcal/4;
+      document.getElementById('res-kcal').textContent=Math.round(mer)+' kcal / jour';
+      document.getElementById('res-rer').textContent='BER : '+Math.round(rer)+' kcal · Activité × '+macro.actMult[act].toFixed(1)+' · Objectif × '+macro.goalMult.toFixed(1);
+      document.getElementById('res-protein').textContent=protG.toFixed(1);
+      document.getElementById('res-fat').textContent=fatG.toFixed(1);
+      document.getElementById('res-carbs').textContent=carbG.toFixed(1);
+      var pPct=Math.round(macro.protPct*100),fPct=Math.round(macro.fatPct*100),cPct=Math.round(macro.carbPct*100);
+      document.getElementById('res-protein-pct').textContent=pPct+'% des calories';
+      document.getElementById('res-fat-pct').textContent=fPct+'% des calories';
+      document.getElementById('res-carbs-pct').textContent=cPct+'% des calories';
+      document.getElementById('bar-protein').style.width=pPct+'%';document.getElementById('bar-fat').style.width=fPct+'%';document.getElementById('bar-carbs').style.width=cPct+'%';
+      document.getElementById('bar-protein-lbl').textContent=protG.toFixed(1)+'g ('+pPct+'%)';document.getElementById('bar-fat-lbl').textContent=fatG.toFixed(1)+'g ('+fPct+'%)';document.getElementById('bar-carbs-lbl').textContent=carbG.toFixed(1)+'g ('+cPct+'%)';
+      var box=document.getElementById('result-box');box.className='result-box show';box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>

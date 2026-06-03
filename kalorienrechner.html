@@ -78,6 +78,17 @@
     .result-unit { font-size: 1rem; font-weight: 700; color: var(--clr-green); margin-top: 4px; }
     .result-breakdown { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
     .result-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; padding: 8px 12px; background: rgba(255,255,255,0.6); border-radius: var(--radius-sm); }
+    .result-row.rer-highlight { background: rgba(255,255,255,0.85); border: 1.5px solid rgba(22,163,74,0.35); }
+    .result-row.rer-highlight .result-row-label { font-weight: 700; color: var(--clr-text) !important; }
+    .result-row.rer-highlight .result-row-value { font-size: 1rem; color: var(--clr-green) !important; }
+    .result-row.rer-highlight .rer-formula { display: block; font-size: 0.75rem; font-weight: 400; color: var(--clr-muted) !important; margin-top: 2px; }
+    html.dark-theme .result-row,body.dark-theme .result-row { background: rgba(0,0,0,0.25) !important; }
+    html.dark-theme .result-row.rer-highlight,body.dark-theme .result-row.rer-highlight { background: rgba(0,0,0,0.35) !important; border-color: rgba(74,222,128,0.3) !important; }
+    html.dark-theme .result-row-label,body.dark-theme .result-row-label { color: #94a3b8 !important; }
+    html.dark-theme .result-row-value,body.dark-theme .result-row-value { color: #f1f5f9 !important; }
+    html.dark-theme .result-row.rer-highlight .result-row-value,body.dark-theme .result-row.rer-highlight .result-row-value { color: #4ade80 !important; }
+    html.dark-theme .result-row.rer-highlight .result-row-label,body.dark-theme .result-row.rer-highlight .result-row-label { color: #f1f5f9 !important; }
+    html.dark-theme .result-note,body.dark-theme .result-note { color: #94a3b8 !important; }
     .result-row-label { color: var(--clr-muted); }
     .result-row-value { font-weight: 700; color: var(--clr-text); }
     .result-note { margin-top: 14px; font-size: 0.82rem; color: var(--clr-muted); text-align: center; line-height: 1.5; }
@@ -125,6 +136,10 @@
       <a href="kostenrechner-haustier.html"><span class="hmb-icon">💰</span>Lebenskosten</a>
       <a href="haustier-bmi-rechner.html"><span class="hmb-icon">⚖️</span>Körperkondition</a>
       <a href="haustier-wasserbedarf-rechner.html"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+      <a href="thc-toxizitaet-rechner.html"><span class="hmb-icon">🌿</span>THC-Toxizität</a>
+      <a href="traechtigkeitskalender-haustier.html"><span class="hmb-icon">🐣</span>Trächtigkeitskalender</a>
+      <a href="haustier-wachstumsrechner.html"><span class="hmb-icon">📏</span>Wachstum &amp; Gewicht</a>
+      <a href="haustier-makronaehrstoff-rechner.html"><span class="hmb-icon">🥩</span>Makronährstoffe</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -201,8 +216,8 @@
           <div class="result-unit">kcal / Tag</div>
         </div>
         <div class="result-breakdown">
-          <div class="result-row">
-            <span class="result-row-label">Ruhestoffwechsel (RER)</span>
+          <div class="result-row rer-highlight">
+            <span class="result-row-label">Ruhestoffwechsel (RER)<em class="rer-formula">70 × Gewicht(kg)<sup>0,75</sup></em></span>
             <span class="result-row-value" id="res-rer">—</span>
           </div>
           <div class="result-row">

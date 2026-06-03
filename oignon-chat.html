@@ -12,6 +12,38 @@
   <meta property="og:title" content="Mon chat a mangé de l'oignon — Est-ce dangereux ?" />
   <meta property="og:description" content="L'oignon est toxique pour les chats. Comprenez le mécanisme de l'anémie à corps de Heinz et agissez en urgence." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Pourquoi les oignons sont-ils toxiques pour les chats ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les oignons contiennent des composés organosouphurés (thiosulfates et disulfures) que les chats ne peuvent pas métaboliser. Ces composés oxydent l'hémoglobine dans les globules rouges, formant des corps de Heinz qui fragilisent les cellules et provoquent leur rupture, entraînant une anémie hémolytique. Toutes les formes d'oignon sont toxiques : cru, cuit, en poudre et déshydraté."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle quantité d'oignon est toxique pour un chat ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aussi peu que 5 grammes d'oignon par kilogramme de poids corporel peuvent provoquer une intoxication chez le chat. La poudre d'oignon est bien plus concentrée et dangereuse en quantité beaucoup plus faible. La toxicité étant cumulative, de petites expositions répétées — bouillons, nourriture pour bébé — peuvent s'accumuler et provoquer une anémie grave. Il n'existe aucune quantité sûre d'oignon pour les chats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels sont les symptômes d'une intoxication à l'oignon chez le chat ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les symptômes apparaissent souvent 1 à 5 jours après l'ingéstion et comprennent la léthargie, la faiblesse, la perte d'appétit, des gencives pâles ou jaunâtres (ictère), une respiration rapide, un rythme cardiaque élevé, un évanouissement et des urines brun-rougeatères. En raison de l'apparition retardée des symptômes, surveillez attentivement votre chat pendant plusieurs jours."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -67,6 +99,16 @@
     .nav-footer-col ul li a:hover { color: var(--clr-primary); }
     .nav-footer-bottom { max-width: 720px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid var(--clr-border); text-align: center; font-size: 0.72rem; color: var(--clr-muted); }
     /* ── Dark Theme ── */
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 14px 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
     .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
@@ -84,7 +126,12 @@
       <a href="qualite-de-vie-animal.html"><span class="hmb-icon">🤍</span>Qualité de vie</a>
       <a href="
       <a href="calculateur-imc-animal.html"><span class="hmb-icon">&#x2696;&#xFE0F;</span>Condition corporelle</a>
-      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">&#x1F4A7;</span>Hydratation</a></div>
+      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">💧</span>Hydratation</a>
+      <a href="calculateur-thc-animal.html"><span class="hmb-icon">🌿</span>Toxicité THC</a>
+      <a href="calendrier-gestation-animal.html"><span class="hmb-icon">🐣</span>Calendrier de Gestation</a>
+      <a href="calculateur-croissance-animal.html"><span class="hmb-icon">📏</span>Croissance &amp; Poids Adulte</a>
+      <a href="calculateur-macronutriments-animal.html"><span class="hmb-icon">🥩</span>Macronutriments</a>
+    </div>
   </nav>
   <nav class="top-bar">
     <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -146,6 +193,32 @@
       <p>Notre outil gratuit applique les mêmes seuils que ceux utilisés par les vétérinaires en clinique. Renseignez le poids de votre chat et la quantité ingérée — le résultat est instantané.</p>
       <a href="index.html" class="cta-btn">Calculer le risque maintenant →</a>
     </div>
+
+    <!-- Section FAQ -->
+    <section class="faq-section" aria-label="Questions fréquentes sur la toxicité de l'oignon chez le chat">
+      <h2>💬 Questions fréquentes</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Pourquoi les oignons sont-ils toxiques pour les chats ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Les oignons contiennent des composés organosouphurés (thiosulfates et disulfures) que les chats ne peuvent pas métaboliser. Ces composés oxydent l'hémoglobine dans les globules rouges, formant des <strong>corps de Heinz</strong> qui fragilisent les cellules et provoquent leur rupture, entraînant une <strong>anémie hémolytique</strong>. Toutes les formes sont toxiques — cru, cuit, en poudre, déshydraté — et la toxicité est cumulative.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quelle quantité d'oignon est toxique pour un chat ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Aussi peu que <strong>5 g d'oignon par kg</strong> de poids corporel peuvent provoquer une intoxication. La poudre d'oignon est bien plus concentrée et dangereuse en très petite quantité. La toxicité étant cumulative, de petites expositions répétées — bouillons, nourriture pour bébés — peuvent s'accumuler. Il n'existe <strong>aucune quantité sûre</strong> d'oignon pour les chats.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quels sont les symptômes d'une intoxication à l'oignon chez le chat ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Les symptômes apparaissent souvent <strong>1 à 5 jours après l'ingéstion</strong> et comprennent la léthargie, la faiblesse, la perte d'appétit, des gencives pâles ou jaunâtres (ictère), une respiration rapide, un rythme cardiaque élevé, un évanouissement et des urines brun-rougeatères. Surveillez attentivement votre chat pendant plusieurs jours et consultez immédiatement votre vétérinaire au moindre signe.</div>
+      </div>
+    </section>
   </div>
 
   <footer>
@@ -177,5 +250,6 @@
     </nav>
   </footer>
   <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 </body>
 </html>

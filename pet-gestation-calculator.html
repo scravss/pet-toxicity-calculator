@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pet Gestation & Pregnancy Calendar Calculator | Dog, Cat & Rabbit Due Date</title>
+  <meta name="description" content="Free pet gestation calculator for dogs, cats, rabbits, guinea pigs and hamsters. Enter the mating date to get the expected due date range and key pregnancy milestones." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/pet-gestation-calculator.html" />
+  <meta property="og:title" content="Pet Gestation & Pregnancy Calendar Calculator" />
+  <meta property="og:description" content="Calculate your pet's due date and pregnancy milestones. Covers dogs, cats, rabbits, guinea pigs and hamsters." />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long is a dog pregnant (gestation period)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The average dog gestation period is 63 days (range 58–68 days) from the date of ovulation or mating. This is approximately 9 weeks. Larger breeds may whelp slightly earlier, and smaller breeds slightly later. Signs of impending labour include nesting behaviour, temperature drop below 37.8°C (100°F), and milk production 24–48 hours before delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long is a cat pregnant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cat gestation averages 63–65 days (range 60–70 days). A queen pregnant for the first time may carry longer. Kittens born before day 58 are considered premature and may have a lower survival rate. Signs of labour include vocalization, nesting, and restlessness 24–48 hours before birth."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I take my pregnant pet to the vet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Schedule a veterinary exam 3–4 weeks after mating to confirm pregnancy. An ultrasound can detect foetal heartbeats as early as day 25. Around week 6, X-rays can count the number of puppies or kittens. Contact your vet immediately if labour lasts more than 2 hours between births, or if your pet shows signs of distress, excessive bleeding, or does not begin labour within 24 hours of the due date."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-pink:#db2777;--clr-pink-bg:#fdf2f8;--clr-pink-bdr:#fbcfe8;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.7}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;padding:48px 16px 36px}
+    .hero-badge{display:inline-block;background:var(--clr-pink-bg);color:var(--clr-pink);border:1px solid var(--clr-pink-bdr);border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;color:var(--clr-text);line-height:1.2;margin-bottom:14px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:540px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-md);margin-bottom:32px}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .calc-card h2{font-size:1.15rem;font-weight:800;margin-bottom:24px;color:var(--clr-text);letter-spacing:-.02em}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group label{font-size:.82rem;font-weight:700;color:var(--clr-text)}
+    .form-group select,.form-group input{padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color var(--transition)}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--clr-primary)}
+    .form-group .hint{font-size:.75rem;color:var(--clr-muted)}
+    .calc-btn{width:100%;margin-top:22px;padding:15px;background:var(--clr-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity var(--transition),transform var(--transition)}
+    .calc-btn:hover{opacity:.88;transform:translateY(-1px)}
+    /* Result */
+    .result-box{display:none;margin-top:28px}
+    .result-box.show{display:block}
+    .due-date-card{background:linear-gradient(135deg,#db2777 0%,#9333ea 100%);border-radius:var(--radius-lg);padding:28px 24px;color:#fff;text-align:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(219,39,119,.28)}
+    .due-date-label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.82;margin-bottom:6px}
+    .due-date-value{font-size:1.8rem;font-weight:800;letter-spacing:-.02em}
+    .due-date-range{font-size:.9rem;opacity:.85;margin-top:4px}
+    .milestones{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:24px 24px 8px;box-shadow:var(--shadow-sm)}
+    .milestones h3{font-size:1rem;font-weight:800;color:var(--clr-text);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+    .milestone-item{display:flex;align-items:flex-start;gap:14px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--clr-border)}
+    .milestone-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .milestone-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;flex-shrink:0;color:#fff}
+    .milestone-dot.done{background:var(--clr-green)}
+    .milestone-dot.upcoming{background:var(--clr-primary)}
+    .milestone-dot.past{background:var(--clr-muted)}
+    .milestone-date{font-size:.82rem;font-weight:800;color:var(--clr-primary)}
+    .milestone-title{font-size:.95rem;font-weight:700;color:var(--clr-text);margin-top:1px}
+    .milestone-desc{font-size:.85rem;color:var(--clr-muted);margin-top:3px}
+    /* Info card */
+    .info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm);margin-top:32px}
+    @media(max-width:480px){.info-card{padding:24px 18px}}
+    .info-card h2{font-size:1.2rem;font-weight:800;color:var(--clr-text);margin:28px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--clr-border);letter-spacing:-.02em}
+    .info-card h2:first-child{margin-top:0}
+    .info-card p{color:var(--clr-muted);font-size:.95rem;margin-bottom:12px}
+    .info-card strong{color:var(--clr-text)}
+    .species-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:16px 0}
+    .species-table th{text-align:left;padding:10px 12px;background:var(--clr-bg);color:var(--clr-muted);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--clr-border)}
+    .species-table td{padding:10px 12px;border-bottom:1px solid var(--clr-border);color:var(--clr-text)}
+    .species-table tr:last-child td{border-bottom:none}
+    .warning-box{background:var(--clr-yellow-bg);border:1.5px solid var(--clr-yellow-bdr);border-radius:var(--radius-md);padding:14px 18px;margin:16px 0;font-size:.90rem;color:var(--clr-yellow);font-weight:600}
+    /* FAQ */
+    .faq-section{margin-top:40px}
+    .faq-section h2{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--clr-text)}
+    .faq-item{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background var(--transition)}
+    .faq-question:hover{background:var(--clr-bg)}
+    .faq-chevron{font-size:.75rem;color:var(--clr-muted);flex-shrink:0;transition:transform .2s ease}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
+    .faq-item.open .faq-answer{display:block}
+    .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}
+    .site-footer a{color:var(--clr-primary);text-decoration:none}
+    /* Dark */
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-pink:#f472b6;--clr-pink-bg:#2d0a1e;--clr-pink-bdr:#831843;--clr-green:#4ade80;--clr-green-bg:#052e16;--clr-green-bdr:#166534;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    html.dark-theme .species-table th,body.dark-theme .species-table th{background:#0f172a}
+    html.dark-theme .milestone-date,body.dark-theme .milestone-date{color:#818cf8}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Main navigation">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Pet Tools</a><button class="hmb-close" onclick="closeMenu()" aria-label="Close menu">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Toxicity Calculator</a>
+      <a href="age-calculator.html"><span class="hmb-icon">🎂</span>Pet Age Calculator</a>
+      <a href="calorie-calculator.html"><span class="hmb-icon">🥗</span>Calorie Calculator</a>
+      <a href="quality-of-life-calculator.html"><span class="hmb-icon">🤍</span>Quality of Life</a>
+      <a href="cost-calculator.html"><span class="hmb-icon">💰</span>Lifetime Cost</a>
+      <a href="pet-bmi-calculator.html"><span class="hmb-icon">⚖️</span>Body Condition Score</a>
+      <a href="pet-hydration-calculator.html"><span class="hmb-icon">💧</span>Hydration Calculator</a>
+      <a href="thc-toxicity-calculator.html"><span class="hmb-icon">🌿</span>THC Toxicity</a>
+      <a href="pet-gestation-calculator.html" class="active-page"><span class="hmb-icon">🐣</span>Gestation Calendar</a>
+      <a href="pet-growth-calculator.html"><span class="hmb-icon">📏</span>Growth Predictor</a>
+      <a href="pet-macronutrient-calculator.html"><span class="hmb-icon">🥩</span>Macronutrients</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Pet Toxicity Calculator</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">🐣 Free Breeding Tool</span>
+      <h1>Pet Gestation &amp; Pregnancy<br>Calendar Calculator</h1>
+      <p class="hero-lead">Enter your pet's species and the mating date to instantly calculate the expected due date range and key pregnancy milestones — from first heartbeat to whelping.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🗓️ Enter Mating Details</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="species">Species</label>
+          <select id="species">
+            <option value="dog">Dog (Canis lupus familiaris)</option>
+            <option value="cat">Cat (Felis catus)</option>
+            <option value="rabbit">Rabbit (Oryctolagus cuniculus)</option>
+            <option value="guinea_pig">Guinea Pig (Cavia porcellus)</option>
+            <option value="hamster_syrian">Hamster — Syrian (Mesocricetus auratus)</option>
+            <option value="hamster_dwarf">Hamster — Dwarf (Phodopus spp.)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mating-date">Date of Mating / Breeding</label>
+          <input type="date" id="mating-date" />
+          <span class="hint">Use the first confirmed mating date</span>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Calculate Due Date &amp; Milestones →</button>
+
+      <div class="result-box" id="result-box">
+        <div class="due-date-card">
+          <div class="due-date-label">🐣 Expected Due Date</div>
+          <div class="due-date-value" id="res-due-date"></div>
+          <div class="due-date-range" id="res-due-range"></div>
+        </div>
+        <div class="milestones" id="milestones-card">
+          <h3>📅 Pregnancy Milestones</h3>
+          <div id="milestones-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Gestation Periods by Species</h2>
+      <table class="species-table">
+        <thead><tr><th>Species</th><th>Avg. Days</th><th>Range</th><th>Typical Litter</th></tr></thead>
+        <tbody>
+          <tr><td>🐕 Dog</td><td>63</td><td>58–68 days</td><td>1–12 puppies</td></tr>
+          <tr><td>🐈 Cat</td><td>64</td><td>60–70 days</td><td>2–6 kittens</td></tr>
+          <tr><td>🐇 Rabbit</td><td>31</td><td>28–35 days</td><td>4–12 kits</td></tr>
+          <tr><td>🐹 Guinea Pig</td><td>68</td><td>59–72 days</td><td>1–6 pups</td></tr>
+          <tr><td>🐹 Hamster (Syrian)</td><td>16</td><td>15–18 days</td><td>6–12 pups</td></tr>
+          <tr><td>🐹 Hamster (Dwarf)</td><td>18</td><td>16–21 days</td><td>4–8 pups</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What to Expect During Pregnancy</h2>
+      <p>Whether you are breeding dogs, cats, or small animals, regular veterinary monitoring is essential throughout pregnancy. Key milestones and what to watch for:</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0">
+        <li style="display:flex;gap:10px;font-size:.93rem;color:var(--clr-text)"><span>🔵</span><span><strong>Week 1–3 (Dog/Cat):</strong> Fertilisation and implantation. No visible signs yet. Maintain normal nutrition.</span></li>
+        <li style="display:flex;gap:10px;font-size:.93rem;color:var(--clr-text)"><span>🔵</span><span><strong>Week 3–4:</strong> Vet can confirm pregnancy via palpation or ultrasound. Foetal heartbeats visible by day 25.</span></li>
+        <li style="display:flex;gap:10px;font-size:.93rem;color:var(--clr-text)"><span>🔵</span><span><strong>Week 5–6:</strong> Abdomen noticeably enlarging. Nipple development and milk production begins. Increase nutrition.</span></li>
+        <li style="display:flex;gap:10px;font-size:.93rem;color:var(--clr-text)"><span>🔵</span><span><strong>Week 6–7:</strong> X-ray can count foetal skeletons. Prepare whelping/kittening box. Begin nesting encouragement.</span></li>
+        <li style="display:flex;gap:10px;font-size:.93rem;color:var(--clr-text)"><span>🟡</span><span><strong>Final 24–48 hours:</strong> Body temperature drops below 37.8°C / 100°F (dogs). Restlessness, nesting, refusal of food.</span></li>
+        <li style="display:flex;gap:10px;font-size:.93rem;color:var(--clr-text)"><span>🔴</span><span><strong>Whelping day:</strong> Active labour. Contact vet if >2 hours between births or mother shows distress.</span></li>
+      </ul>
+      <div class="warning-box">⚠️ <strong>Important:</strong> This calculator provides estimates based on typical gestation periods. Actual delivery dates vary. Always work with a licensed veterinarian for pre-natal care, especially for first-time mothers or high-risk breeds.</div>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How long is a dog pregnant (gestation period)?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">The average dog gestation period is <strong>63 days</strong> (range 58–68 days) from the date of mating. This is approximately 9 weeks. Signs of impending labour include nesting behaviour, temperature drop below 37.8°C (100°F), and milk production 24–48 hours before delivery.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">How long is a cat pregnant?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">Cat gestation averages <strong>63–65 days</strong> (range 60–70 days). Kittens born before day 58 are considered premature. Signs of labour include vocalization, nesting, and restlessness 24–48 hours before birth.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">When should I take my pregnant pet to the vet?<span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">Schedule a vet exam <strong>3–4 weeks after mating</strong> to confirm pregnancy. An ultrasound can detect foetal heartbeats as early as day 25. Around week 6, X-rays can count the number of offspring. Contact your vet immediately if labour lasts more than 2 hours between births.</div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <p>🐾 <a href="index.html">Pet Toxicity Calculator</a> — Free veterinary guidance tool. Not a substitute for professional veterinary advice. Always consult a licensed veterinarian.</p>
+  </footer>
+
+  <script>
+    var SPECIES = {
+      dog:           { name:'Dog', emoji:'🐕', avg:63, min:58, max:68, milestones:[{day:0,title:'Mating / Breeding',desc:'Day 0 — fertilisation may occur over 2–5 days. Keep notes of all mating dates.'},{day:14,title:'Implantation',desc:'Embryos attach to the uterine wall. No visible signs yet.'},{day:25,title:'Ultrasound possible',desc:'Foetal heartbeats detectable. Book a vet check-up.'},{day:28,title:'Morning sickness (possible)',desc:'Some dogs experience nausea and appetite changes.'},{day:35,title:'Abdomen enlarging',desc:'Clear enlargement of the belly. Nipple development and milk production begins.'},{day:45,title:'X-ray for litter count',desc:'Skeletal X-ray can count puppies. Prepare whelping box.'},{day:56,title:'Nesting behaviour',desc:'Provide a quiet, comfortable whelping area. Reduce exercise.'},{day:60,title:'Earliest due date',desc:'Monitor temperature twice daily. A drop below 37.8°C / 100°F signals labour within 24h.'},{day:63,title:'Expected due date',desc:'Average whelping day. Prepare for active labour.'},{day:68,title:'Latest due date',desc:'Contact your vet if labour has not begun by this date.'}]},
+      cat:           { name:'Cat', emoji:'🐈', avg:64, min:60, max:70, milestones:[{day:0,title:'Mating',desc:'Cats are induced ovulators — mating triggers ovulation.'},{day:14,title:'Implantation',desc:'Embryos implant in the uterus. No visible signs yet.'},{day:25,title:'Ultrasound possible',desc:'Foetal heartbeats detectable. Vet confirmation recommended.'},{day:35,title:'Nipple pinking',desc:'"Pinking up" — nipples become rosy and prominent. Clear sign of pregnancy.'},{day:42,title:'Abdomen enlarging',desc:'Belly visibly rounder. Increase nutrition with kitten-formula food.'},{day:49,title:'Prepare kittening box',desc:'Set up a quiet, warm, private nesting area.'},{day:60,title:'Earliest due date',desc:'Some cats deliver from day 60. Monitor closely.'},{day:64,title:'Expected due date',desc:'Average kittening day. Labour signs: vocalisation, restlessness, refusal of food.'},{day:70,title:'Latest due date',desc:'Consult your vet if no labour by day 70.'}]},
+      rabbit:        { name:'Rabbit', emoji:'🐇', avg:31, min:28, max:35, milestones:[{day:0,title:'Mating',desc:'Rabbits are induced ovulators. Mating triggers ovulation.'},{day:7,title:'Implantation',desc:'Embryos implant. No visible signs yet.'},{day:14,title:'Palpation possible',desc:'An experienced vet can palpate foetuses at this stage.'},{day:21,title:'Nesting begins',desc:'Doe pulls fur to build a nest. Provide hay and nesting materials.'},{day:28,title:'Earliest due date',desc:'Earliest expected delivery. Monitor doe closely.'},{day:31,title:'Expected due date',desc:'Average kindling day. Does usually deliver in the early morning.'},{day:35,title:'Latest due date',desc:'Contact your vet if no delivery by day 35.'}]},
+      guinea_pig:    { name:'Guinea Pig', emoji:'🐹', avg:68, min:59, max:72, milestones:[{day:0,title:'Mating',desc:'Guinea pigs have a long gestation relative to their size.'},{day:21,title:'Weight gain noticeable',desc:'Sow gains weight steadily. Palpation possible for experienced handlers.'},{day:42,title:'Significant enlargement',desc:'Abdomen noticeably distended. Pups are large and well-developed at birth.'},{day:59,title:'Earliest due date',desc:'Monitor sow closely.'},{day:68,title:'Expected due date',desc:'Pups are born precocial — fully furred, eyes open, able to move immediately.'},{day:72,title:'Latest due date',desc:'Consult vet if no delivery by day 72.'}]},
+      hamster_syrian:{ name:'Syrian Hamster', emoji:'🐹', avg:16, min:15, max:18, milestones:[{day:0,title:'Mating',desc:'Syrian hamsters have one of the shortest mammalian gestation periods.'},{day:8,title:'Weight gain visible',desc:'Female begins to look noticeably rounder.'},{day:12,title:'Nest building intensifies',desc:'Provide extra bedding. Remove the male if present.'},{day:15,title:'Earliest due date',desc:'Pups can arrive from day 15.'},{day:16,title:'Expected due date',desc:'Average delivery day. Litters average 6–12 pups.'},{day:18,title:'Latest due date',desc:'Contact vet if no delivery by day 18.'}]},
+      hamster_dwarf: { name:'Dwarf Hamster', emoji:'🐹', avg:18, min:16, max:21, milestones:[{day:0,title:'Mating',desc:'Dwarf hamsters. Father may assist with pup care.'},{day:9,title:'Abdomen enlarging',desc:'Female visibly rounder. Ensure extra nesting material available.'},{day:14,title:'Nest building intensifies',desc:'Provide extra bedding material.'},{day:16,title:'Earliest due date',desc:'Monitor female closely from this point.'},{day:18,title:'Expected due date',desc:'Average delivery day.'},{day:21,title:'Latest due date',desc:'Contact vet if no delivery by day 21.'}]}
+    };
+
+    function addDays(date, n) { var d = new Date(date); d.setDate(d.getDate() + n); return d; }
+    function fmtDate(d) { return d.toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'long', year:'numeric'}); }
+
+    function calculate() {
+      var speciesKey = document.getElementById('species').value;
+      var matingStr  = document.getElementById('mating-date').value;
+      if (!matingStr) { alert('Please select the mating date.'); return; }
+
+      var sp = SPECIES[speciesKey];
+      var mating = new Date(matingStr);
+      var dueAvg = addDays(mating, sp.avg);
+      var dueMin = addDays(mating, sp.min);
+      var dueMax = addDays(mating, sp.max);
+      var today  = new Date(); today.setHours(0,0,0,0);
+
+      document.getElementById('res-due-date').textContent = fmtDate(dueAvg);
+      document.getElementById('res-due-range').textContent = 'Earliest: ' + fmtDate(dueMin) + '  ·  Latest: ' + fmtDate(dueMax);
+
+      var html = '';
+      sp.milestones.forEach(function(m) {
+        var mDate = addDays(mating, m.day);
+        var isPast = mDate < today;
+        var isToday = mDate.toDateString() === today.toDateString();
+        var dotClass = isToday ? 'done' : (isPast ? 'past' : 'upcoming');
+        var dayLabel = m.day === 0 ? 'Day 0' : 'Day ' + m.day;
+        html += '<div class="milestone-item">' +
+          '<div class="milestone-dot ' + dotClass + '">' + (isPast ? '✓' : m.day) + '</div>' +
+          '<div class="milestone-info">' +
+          '<div class="milestone-date">' + fmtDate(mDate) + ' (' + dayLabel + ')</div>' +
+          '<div class="milestone-title">' + m.title + '</div>' +
+          '<div class="milestone-desc">' + m.desc + '</div>' +
+          '</div></div>';
+      });
+      document.getElementById('milestones-list').innerHTML = html;
+
+      var box = document.getElementById('result-box');
+      box.className = 'result-box show';
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>

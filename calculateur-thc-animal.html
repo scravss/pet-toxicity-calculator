@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculateur de Toxicité THC pour Animaux | Chien & Chat Cannabis</title>
+  <meta name="description" content="Calculateur gratuit de toxicité THC pour chiens et chats. Entrez le poids, la quantité de THC et le délai depuis l'ingestion pour obtenir une évaluation de gravité et un plan d'urgence." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/calculateur-thc-animal.html" />
+  <meta property="og:title" content="Calculateur de Toxicité THC pour Animaux" />
+  <meta property="og:description" content="Calculez le risque de toxicité THC pour votre chien ou chat. Niveau de gravité instantané, symptômes et plan d'urgence." />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Le cannabis est-il toxique pour les chiens et les chats ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Le THC (tétrahydrocannabinol) est toxique pour les chiens et les chats. Les animaux sont beaucoup plus sensibles au THC que les humains car ils possèdent une densité plus élevée de récepteurs cannabinoïdes dans le cervelet et le tronc cérébral. Même de petites doses peuvent provoquer des symptômes neurologiques significatifs. Les comestibles au cannabis sont particulièrement dangereux car ils contiennent souvent d'autres ingrédients toxiques comme le chocolat, le xylitol ou les raisins."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels sont les symptômes d'une intoxication au THC chez les animaux ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les symptômes apparaissent généralement dans les 30 minutes à 3 heures suivant l'ingestion et comprennent : incoordination (ataxie), pupilles dilatées, salivation excessive, incontinence urinaire, léthargie, bradycardie, vomissements, tremblements musculaires et dans les cas graves, convulsions et coma. Les effets peuvent durer 6 à 24 heures selon la dose."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle quantité de THC est dangereuse pour un chien ou un chat ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les effets modérés commencent généralement vers 3 mg de THC par kg de poids corporel. Une toxicité sévère est observée au-delà de 9 mg/kg. Un seul bonbon comestible haute puissance (10-50 mg de THC) peut être sévèrement toxique pour un petit chien de moins de 5 kg. Consultez toujours votre vétérinaire pour toute ingestion supposée de cannabis."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68M2645EP1');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --clr-bg:#f5f7fa;--clr-surface:#ffffff;--clr-border:#e2e8f0;--clr-text:#1e293b;
+      --clr-muted:#64748b;--clr-primary:#4f46e5;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;
+      --clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;
+      --clr-orange:#c2410c;--clr-orange-bg:#fff7ed;--clr-orange-bdr:#fed7aa;
+      --clr-red:#dc2626;--clr-red-bg:#fef2f2;--clr-red-bdr:#fecaca;
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;
+      --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: var(--clr-bg); color: var(--clr-text); min-height: 100vh; line-height: 1.7; }
+    .top-bar { background: var(--clr-surface); border-bottom: 1px solid var(--clr-border); padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .top-bar a.site-name { font-weight: 800; font-size: 0.95rem; color: var(--clr-primary); text-decoration: none; }
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+    .hero { text-align: center; padding: 48px 16px 36px; }
+    .hero-badge { display: inline-block; background: var(--clr-green-bg); color: var(--clr-green); border: 1px solid var(--clr-green-bdr); border-radius: 99px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(1.7rem,4.5vw,2.4rem); font-weight: 800; letter-spacing: -0.03em; color: var(--clr-text); line-height: 1.2; margin-bottom: 14px; }
+    .hero-lead { font-size: 1rem; color: var(--clr-muted); max-width: 540px; margin: 0 auto; }
+    .calc-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-md); margin-bottom: 32px; }
+    @media (max-width: 480px) { .calc-card { padding: 24px 18px; } }
+    .calc-card h2 { font-size: 1.15rem; font-weight: 800; margin-bottom: 24px; color: var(--clr-text); letter-spacing: -0.02em; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.82rem; font-weight: 700; color: var(--clr-text); }
+    .form-group select, .form-group input { padding: 11px 14px; border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); font-family: inherit; font-size: 0.95rem; background: var(--clr-bg); color: var(--clr-text); transition: border-color var(--transition); }
+    .form-group select:focus, .form-group input:focus { outline: none; border-color: var(--clr-primary); }
+    .form-group .hint { font-size: 0.75rem; color: var(--clr-muted); }
+    .unit-row { display: flex; gap: 8px; }
+    .unit-row input { flex: 1; }
+    .unit-toggle { display: flex; border: 1.5px solid var(--clr-border); border-radius: var(--radius-sm); overflow: hidden; }
+    .unit-toggle button { flex: 1; padding: 11px 10px; border: none; background: none; font-family: inherit; font-size: 0.85rem; font-weight: 600; color: var(--clr-muted); cursor: pointer; transition: background var(--transition), color var(--transition); }
+    .unit-toggle button.active { background: var(--clr-primary); color: #fff; }
+    .calc-btn { width: 100%; margin-top: 22px; padding: 15px; background: var(--clr-primary); color: #fff; border: none; border-radius: var(--radius-sm); font-family: inherit; font-size: 1rem; font-weight: 800; cursor: pointer; transition: opacity var(--transition), transform var(--transition); }
+    .calc-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .result-box { display: none; margin-top: 28px; border-radius: var(--radius-md); overflow: hidden; border: 2px solid var(--clr-border); }
+    .result-box.show { display: block; }
+    .result-header { padding: 20px 24px 16px; display: flex; align-items: center; gap: 14px; }
+    .result-badge { font-size: 2rem; }
+    .result-title { font-size: 1.25rem; font-weight: 800; }
+    .result-subtitle { font-size: 0.88rem; color: var(--clr-muted) !important; margin-top: 2px; }
+    .result-body { padding: 0 24px 24px; }
+    .result-section { margin-top: 18px; }
+    .result-section h3 { font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clr-muted) !important; margin-bottom: 10px; }
+    .result-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .result-section ul li { font-size: 0.93rem; display: flex; align-items: flex-start; gap: 8px; color: var(--clr-text) !important; }
+    .result-section ul li::before { content: '•'; color: var(--clr-primary); font-weight: 800; flex-shrink: 0; }
+    .result-action { margin-top: 20px; padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.92rem; font-weight: 600; }
+    .sev-mild    { background: var(--clr-green-bg);  border-color: var(--clr-green-bdr); }
+    .sev-mild    .result-title { color: var(--clr-green) !important; }
+    .sev-mild    .result-action { background: var(--clr-green-bg); border: 1px solid var(--clr-green-bdr); color: var(--clr-green) !important; }
+    .sev-moderate { background: var(--clr-yellow-bg); border-color: var(--clr-yellow-bdr); }
+    .sev-moderate .result-title { color: var(--clr-yellow) !important; }
+    .sev-moderate .result-action { background: var(--clr-yellow-bg); border: 1px solid var(--clr-yellow-bdr); color: var(--clr-yellow) !important; }
+    .sev-severe  { background: var(--clr-orange-bg); border-color: var(--clr-orange-bdr); }
+    .sev-severe  .result-title { color: var(--clr-orange) !important; }
+    .sev-severe  .result-action { background: var(--clr-orange-bg); border: 1px solid var(--clr-orange-bdr); color: var(--clr-orange) !important; }
+    .sev-er      { background: var(--clr-red-bg); border-color: var(--clr-red-bdr); }
+    .sev-er      .result-title { color: var(--clr-red) !important; }
+    .sev-er      .result-action { background: var(--clr-red-bg); border: 1px solid var(--clr-red-bdr); color: var(--clr-red) !important; }
+    html.dark-theme .result-subtitle, body.dark-theme .result-subtitle { color: #94a3b8 !important; }
+    html.dark-theme .result-section h3, body.dark-theme .result-section h3 { color: #94a3b8 !important; }
+    html.dark-theme .result-section ul li, body.dark-theme .result-section ul li { color: #f1f5f9 !important; }
+    html.dark-theme .sev-mild .result-title,  body.dark-theme .sev-mild .result-title  { color: #4ade80 !important; }
+    html.dark-theme .sev-mild .result-action, body.dark-theme .sev-mild .result-action { color: #4ade80 !important; }
+    html.dark-theme .sev-moderate .result-title, body.dark-theme .sev-moderate .result-title { color: #fbbf24 !important; }
+    html.dark-theme .sev-moderate .result-action,body.dark-theme .sev-moderate .result-action{ color: #fbbf24 !important; }
+    html.dark-theme .sev-severe .result-title,  body.dark-theme .sev-severe .result-title  { color: #fb923c !important; }
+    html.dark-theme .sev-severe .result-action, body.dark-theme .sev-severe .result-action { color: #fb923c !important; }
+    html.dark-theme .sev-er .result-title,  body.dark-theme .sev-er .result-title  { color: #f87171 !important; }
+    html.dark-theme .sev-er .result-action, body.dark-theme .sev-er .result-action { color: #f87171 !important; }
+    .info-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-sm); margin-top: 32px; }
+    @media (max-width: 480px) { .info-card { padding: 24px 18px; } }
+    .info-card h2 { font-size: 1.2rem; font-weight: 800; color: var(--clr-text); margin: 28px 0 10px; padding-bottom: 8px; border-bottom: 2px solid var(--clr-border); letter-spacing: -0.02em; }
+    .info-card h2:first-child { margin-top: 0; }
+    .info-card p { color: var(--clr-muted); font-size: 0.95rem; margin-bottom: 12px; }
+    .info-card strong { color: var(--clr-text); }
+    .warning-box { background: var(--clr-yellow-bg); border: 1.5px solid var(--clr-yellow-bdr); border-radius: var(--radius-md); padding: 14px 18px; margin: 16px 0; font-size: 0.90rem; color: var(--clr-yellow); font-weight: 600; }
+    .danger-box  { background: var(--clr-red-bg); border: 1.5px solid var(--clr-red-bdr); border-radius: var(--radius-md); padding: 14px 18px; margin: 16px 0; font-size: 0.90rem; color: var(--clr-red); font-weight: 600; }
+    .faq-section { margin-top: 40px; }
+    .faq-section h2 { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 10px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 16px 20px; font-family: inherit; font-size: 0.95rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 12px 20px 16px; font-size: 0.92rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
+    .site-footer { text-align: center; padding: 32px 16px; font-size: 0.78rem; color: var(--clr-muted); }
+    .site-footer a { color: var(--clr-primary); text-decoration: none; }
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-green:#4ade80;--clr-green-bg:#052e16;--clr-green-bdr:#166534;--clr-orange:#fb923c;--clr-orange-bg:#1c0a00;--clr-orange-bdr:#9a3412;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Navigation principale">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Outils Animaux</a><button class="hmb-close" onclick="closeMenu()" aria-label="Fermer">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Calculateur de Toxicité</a>
+      <a href="age-calculateur.html"><span class="hmb-icon">🎂</span>Âge de l'Animal</a>
+      <a href="calculateur-calories.html"><span class="hmb-icon">🥗</span>Calculateur Calories</a>
+      <a href="qualite-de-vie-animal.html"><span class="hmb-icon">🤍</span>Qualité de Vie</a>
+      <a href="calculateur-cout-animal.html"><span class="hmb-icon">💶</span>Coût de l'Animal</a>
+      <a href="calculateur-imc-animal.html"><span class="hmb-icon">⚖️</span>IMC / Condition Corporelle</a>
+      <a href="calculateur-hydratation-animal.html"><span class="hmb-icon">💧</span>Hydratation</a>
+      <a href="calculateur-thc-animal.html" class="active-page"><span class="hmb-icon">🌿</span>Toxicité THC</a>
+      <a href="calendrier-gestation-animal.html"><span class="hmb-icon">🐣</span>Calendrier de Gestation</a>
+      <a href="calculateur-croissance-animal.html"><span class="hmb-icon">📏</span>Croissance &amp; Poids Adulte</a>
+      <a href="calculateur-macronutriments-animal.html"><span class="hmb-icon">🥩</span>Macronutriments</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Calculateur de Toxicité</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Mode sombre">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">🌿 Outil Vétérinaire Gratuit</span>
+      <h1>Calculateur de Toxicité THC<br>pour Animaux de Compagnie</h1>
+      <p class="hero-lead">Les chiens et les chats sont bien plus sensibles au THC que les humains. Renseignez les informations ci-dessous pour obtenir une évaluation de gravité, une liste de symptômes et un plan d'action.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🔢 Informations sur votre animal</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="pet-type">Type d'animal</label>
+          <select id="pet-type">
+            <option value="dog">Chien</option>
+            <option value="cat">Chat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Poids de l'animal</label>
+          <div class="unit-row">
+            <input type="number" id="weight-val" min="0.1" step="0.1" placeholder="ex. 10" />
+            <div class="unit-toggle">
+              <button id="btn-kg" class="active" onclick="setWeightUnit('kg')">kg</button>
+              <button id="btn-lbs" onclick="setWeightUnit('lbs')">lbs</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-type">Substance ingérée</label>
+          <select id="input-type" onchange="updateInputLabel()">
+            <option value="thc_mg">THC pur / Huile / Concentré (mg THC)</option>
+            <option value="edible_g">Comestible au cannabis (grammes de produit)</option>
+            <option value="flower_g">Fleur / Herbe séchée (grammes)</option>
+            <option value="edible_mg">Comestible — mg THC indiqués sur l'emballage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label id="amount-label">Quantité (mg THC)</label>
+          <input type="number" id="amount-val" min="0" step="0.1" placeholder="ex. 10" />
+          <span class="hint" id="amount-hint">Entrez le total de mg de THC consommés</span>
+        </div>
+        <div class="form-group">
+          <label for="time-since">Délai depuis l'ingestion</label>
+          <select id="time-since">
+            <option value="0">Moins de 30 minutes</option>
+            <option value="1">30 min – 2 heures</option>
+            <option value="2">2 – 6 heures</option>
+            <option value="3">6 – 12 heures</option>
+            <option value="4">Plus de 12 heures</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="edible-flag">Autres ingrédients présents ?</label>
+          <select id="edible-flag">
+            <option value="no">Non / Inconnu</option>
+            <option value="chocolate">Oui — Chocolat</option>
+            <option value="xylitol">Oui — Xylitol (sans sucre)</option>
+            <option value="raisins">Oui — Raisins / Raisins secs</option>
+            <option value="multiple">Oui — Plusieurs toxines</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Calculer le risque THC →</button>
+
+      <div class="result-box" id="result-box">
+        <div class="result-header">
+          <span class="result-badge" id="res-badge">⚠️</span>
+          <div>
+            <div class="result-title" id="res-title"></div>
+            <div class="result-subtitle" id="res-subtitle"></div>
+          </div>
+        </div>
+        <div class="result-body">
+          <div class="result-section">
+            <h3>Symptômes à surveiller</h3>
+            <ul id="res-symptoms"></ul>
+          </div>
+          <div class="result-section">
+            <h3>Plan d'action immédiat</h3>
+            <ul id="res-actions"></ul>
+          </div>
+          <div class="result-action" id="res-action-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Pourquoi les animaux sont-ils plus sensibles au THC ?</h2>
+      <p>Les chiens possèdent <strong>bien plus de récepteurs cannabinoïdes (CB1)</strong> dans leur cerveau — notamment dans le cervelet et le tronc cérébral — que les humains. Cela rend la même dose beaucoup plus puissante et désorientante. Les chats sont affectés de façon similaire. Contrairement aux humains qui consomment volontairement du cannabis, les animaux n'ont pas conscience de ce qui leur arrive, ce qui amplifie la détresse.</p>
+      <div class="warning-box">⚠️ <strong>Les comestibles sont particulièrement dangereux</strong> car ils contiennent souvent d'autres toxines : chocolat (théobromine), xylitol (provoque une insuffisance hépatique chez les chiens), raisins ou noix de macadamia. Vérifiez toujours les ingrédients.</div>
+
+      <h2>Signes d'une intoxication au THC chez le chien et le chat</h2>
+      <p>Les symptômes commencent généralement <strong>30 minutes à 3 heures</strong> après l'ingestion et peuvent durer 6 à 24 heures :</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin:12px 0;">
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Ataxie (démarche chancelante, perte de coordination)</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Pupilles dilatées, regard vitreux</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Salivation excessive ou bouche sèche</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Incontinence urinaire</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Léthargie, désorientation, incapacité à se tenir debout</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Bradycardie (rythme cardiaque lent)</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Vomissements (risque d'aspiration si sédaté)</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Tremblements musculaires</span></li>
+        <li style="display:flex;gap:10px;font-size:.95rem;color:var(--clr-text)"><span>⚠️</span><span>Convulsions et coma (cas graves)</span></li>
+      </ul>
+      <div class="danger-box">🚨 Si votre animal est inconscient, en convulsions ou a un rythme cardiaque très lent — c'est une urgence vitale. Rendez-vous immédiatement chez un vétérinaire d'urgence.</div>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Questions fréquentes</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Le cannabis est-il toxique pour les chiens et les chats ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Oui. Le THC est toxique pour les chiens et les chats. Les animaux sont <strong>bien plus sensibles</strong> au THC que les humains en raison d'une densité plus élevée de récepteurs cannabinoïdes dans leur cerveau. Les comestibles sont particulièrement dangereux car ils contiennent souvent d'autres toxines comme le chocolat, le xylitol ou les raisins.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quels sont les symptômes d'une intoxication au THC chez les animaux ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Les symptômes apparaissent généralement dans les <strong>30 minutes à 3 heures</strong> et comprennent incoordination, pupilles dilatées, salivation, incontinence urinaire, léthargie, bradycardie, vomissements, tremblements et dans les cas graves, convulsions ou coma. Les effets peuvent durer 6 à 24 heures.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Quelle quantité de THC est dangereuse pour un chien ou un chat ?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Les effets modérés commencent généralement vers <strong>3 mg de THC par kg</strong> de poids corporel. Une toxicité sévère est observée au-delà de 9 mg/kg. Un seul bonbon comestible haute puissance (10–50 mg THC) peut être sévèrement toxique pour un petit chien. Consultez toujours votre vétérinaire pour toute ingestion supposée de cannabis.</div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <p>🐾 <a href="index.html">Calculateur de Toxicité pour Animaux</a> — Outil d'orientation gratuit. Ne remplace pas l'avis d'un vétérinaire agréé.</p>
+  </footer>
+
+  <script>
+    var weightUnit = 'kg';
+    function setWeightUnit(u) { weightUnit = u; document.getElementById('btn-kg').classList.toggle('active', u==='kg'); document.getElementById('btn-lbs').classList.toggle('active', u==='lbs'); }
+    function updateInputLabel() {
+      var type = document.getElementById('input-type').value;
+      var labels = { thc_mg:['Quantité (mg THC)','Entrez le total de mg THC consommés'], edible_g:['Quantité (grammes de produit)','Environ 10 % de THC supposé pour les comestibles'], flower_g:['Quantité (grammes de fleur)','Environ 15 % de THC supposé pour la fleur séchée'], edible_mg:['Quantité (mg THC sur l\'emballage)','Entrez les mg de THC indiqués sur l\'emballage'] };
+      document.getElementById('amount-label').textContent = labels[type][0];
+      document.getElementById('amount-hint').textContent = labels[type][1];
+    }
+    function getTHCmg() { var raw=parseFloat(document.getElementById('amount-val').value)||0; var type=document.getElementById('input-type').value; if(type==='thc_mg'||type==='edible_mg') return raw; if(type==='edible_g') return raw*1000*0.10; if(type==='flower_g') return raw*1000*0.15; return raw; }
+    function calculate() {
+      var weightVal=parseFloat(document.getElementById('weight-val').value); if(!weightVal||weightVal<=0){alert('Veuillez entrer le poids de votre animal.');return;}
+      var weightKg=weightUnit==='lbs'?weightVal*0.4536:weightVal;
+      var thcMg=getTHCmg(); if(thcMg<0){alert('Veuillez entrer une quantité valide.');return;}
+      var mgPerKg=thcMg/weightKg; var time=parseInt(document.getElementById('time-since').value); var edible=document.getElementById('edible-flag').value;
+      var sev,badge,title,subtitle;
+      if(mgPerKg<0.5){sev='mild';badge='🟢';title='Léger / Surveillance à domicile';subtitle='Dose THC : '+mgPerKg.toFixed(2)+' mg/kg — risque faible, mais surveiller';}
+      else if(mgPerKg<3){sev='moderate';badge='🟡';title='Modéré — Contactez votre vétérinaire';subtitle='Dose THC : '+mgPerKg.toFixed(2)+' mg/kg — avis vétérinaire recommandé';}
+      else if(mgPerKg<9){sev='severe';badge='🟠';title='Sévère — Consultation vétérinaire requise';subtitle='Dose THC : '+mgPerKg.toFixed(2)+' mg/kg — toxicité significative attendue';}
+      else{sev='er';badge='🔴';title='Urgence — Vétérinaire d\'urgence maintenant';subtitle='Dose THC : '+mgPerKg.toFixed(2)+' mg/kg — état critique';}
+      if(edible!=='no'&&sev==='mild') sev='moderate'; if(edible!=='no'&&sev==='moderate') sev='severe'; if(edible==='xylitol'||edible==='multiple') sev='er';
+      var symptoms={mild:['Légère sédation ou somnolence','Légère démarche chancelante','Salivation','Pupilles dilatées'],moderate:['Ataxie notable (chancelant)','Regard vitreux','Incontinence urinaire','Léthargie et désorientation','Vomissements possibles'],severe:['Incoordination sévère, incapacité à se tenir debout','Bradycardie marquée','Sédation profonde','Tremblements musculaires','Risque d\'aspiration en cas de vomissements'],er:['Inconscience ou absence de réponse','Convulsions','Rythme cardiaque et respiration très déprimés','Effondrement complet','Coma potentiel']};
+      var actions={mild:['Gardez votre animal calme, au chaud, dans un espace sécurisé','Retirez tout accès aux produits restants','Ne laissez pas sans surveillance — vérifiez toutes les 30 minutes','Appelez votre vétérinaire pour signaler l\'incident',time<=1?'Ingestion récente — votre vétérinaire peut conseiller l\'induction de vomissements':'L\'induction de vomissements n\'est plus utile à ce stade'],moderate:['Appelez votre vétérinaire ou un centre antipoison immédiatement','NE provoquez PAS de vomissements si des signes neurologiques sont présents','Gardez l\'animal au chaud, au calme, sous surveillance','Notez le produit exact, le % de THC et l\'heure d\'ingestion','Soyez prêt à aller en clinique pour perfusion et soins de soutien'],severe:['Allez immédiatement chez votre vétérinaire ou une clinique d\'urgence','N\'essayez pas de provoquer des vomissements à domicile','Mettez l\'animal en position latérale s\'il est sédaté','Apportez l\'emballage du produit','Une perfusion IV et des soins de soutien seront probablement nécessaires'],er:['🚨 Rendez-vous immédiatement dans une clinique vétérinaire d\'urgence','Ne provoquez pas de vomissements — risque d\'aspiration','Dégagez les voies respiratoires — position latérale si inconscient','Apportez tous les emballages et informations sur les ingrédients',edible!=='no'?'⚠️ Toxine supplémentaire présente ('+edible+') — informez le vétérinaire immédiatement':'Toxicité THC sévère nécessitant hospitalisation']};
+      var actionMsg={mild:'✅ Surveillance à domicile mais appelez votre vétérinaire. Si les symptômes s\'aggravent, consultez immédiatement.',moderate:'📞 Appelez votre vétérinaire maintenant. Une évaluation vétérinaire est fortement recommandée.',severe:'🏥 Allez chez le vétérinaire maintenant. Une perfusion et une surveillance sont nécessaires.',er:'🚨 Vétérinaire d\'urgence immédiatement. Situation potentiellement mortelle — n\'attendez pas.'};
+      var box=document.getElementById('result-box'); box.className='result-box show sev-'+sev;
+      document.getElementById('res-badge').textContent=badge; document.getElementById('res-title').textContent=title; document.getElementById('res-subtitle').textContent=subtitle;
+      document.getElementById('res-symptoms').innerHTML=symptoms[sev].map(function(s){return'<li>'+s+'</li>';}).join('');
+      document.getElementById('res-actions').innerHTML=actions[sev].map(function(a){return'<li>'+a+'</li>';}).join('');
+      document.getElementById('res-action-box').textContent=actionMsg[sev];
+      box.scrollIntoView({behavior:'smooth',block:'nearest'});
+    }
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>

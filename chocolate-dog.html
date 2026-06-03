@@ -13,6 +13,38 @@
   <meta property="og:title" content="My Dog Ate Chocolate — Is It Dangerous?" />
   <meta property="og:description" content="Learn why chocolate is toxic to dogs and what to do immediately if your pet has ingested it." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much chocolate is toxic to a dog?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Toxicity depends on the type of chocolate and the dog's weight. Dark chocolate and baking chocolate contain the most theobromine (16–26 mg/g) and are the most dangerous. Symptoms typically begin above 20 mg of theobromine per kg of body weight. Even a small amount of dark chocolate can be dangerous for a small dog. Use our free toxicity calculator for a precise risk assessment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the symptoms of chocolate poisoning in dogs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Symptoms of chocolate toxicity in dogs usually appear within 6 to 12 hours of ingestion and may include vomiting, diarrhea, restlessness, excessive thirst, rapid heartbeat, muscle tremors, and in severe cases, seizures or collapse. If your dog shows any of these signs after eating chocolate, contact your vet immediately."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do if my dog ate chocolate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Act quickly: identify the type and amount of chocolate consumed, note the time of ingestion, and call your vet or the ASPCA Animal Poison Control Center (+1-888-426-4435) immediately. Do not induce vomiting unless a veterinarian explicitly instructs you to. Use our chocolate toxicity calculator to assess the risk level and share the result with your vet."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -321,6 +353,16 @@
 
     .site-footer a { color: var(--clr-primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 0 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); padding-top: 14px; }
+    .faq-item.open .faq-answer { display: block; }
     /* ── Dark Theme ── */
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
@@ -360,6 +402,10 @@
       <a href="cost-calculator.html"><span class="hmb-icon">⚖️</span>Lifetime Cost</a>
       <a href="pet-bmi-calculator.html"><span class="hmb-icon">⚖️</span>Body Condition Score</a>
       <a href="pet-hydration-calculator.html"><span class="hmb-icon">💧</span>Hydration Calculator</a>
+      <a href="thc-toxicity-calculator.html"><span class="hmb-icon">🌿</span>THC Toxicity</a>
+      <a href="pet-gestation-calculator.html"><span class="hmb-icon">🐣</span>Gestation Calendar</a>
+      <a href="pet-growth-calculator.html"><span class="hmb-icon">📏</span>Growth Predictor</a>
+      <a href="pet-macronutrient-calculator.html"><span class="hmb-icon">🥩</span>Macronutrients</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -443,11 +489,38 @@
       <a href="index.html" class="cta-btn">Calculate My Dog's Risk →</a>
     </div>
 
+    <!-- FAQ Section -->
+    <section class="faq-section" aria-label="Frequently asked questions about chocolate toxicity in dogs">
+      <h2>💬 Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          How much chocolate is toxic to a dog?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Toxicity depends on the chocolate type and your dog's weight. Dark chocolate and baking chocolate contain the most theobromine (16–26 mg/g) and are the most dangerous. Symptoms typically begin above <strong>20 mg of theobromine per kg</strong> of body weight. Even a small amount of dark chocolate can be dangerous for a small dog. Use our free calculator above for a precise, weight-based risk assessment.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          What are the symptoms of chocolate poisoning in dogs?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Symptoms usually appear within <strong>6–12 hours</strong> of ingestion and can include vomiting, diarrhea, restlessness, excessive thirst, rapid or irregular heartbeat, muscle tremors, and — in severe cases — seizures or collapse. If your dog shows any of these signs after eating chocolate, contact your vet immediately.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          What should I do if my dog ate chocolate?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Act quickly: identify the type and amount consumed, note the time of ingestion, and call your vet or the <strong>ASPCA Poison Control (+1-888-426-4435)</strong> immediately. Do <em>not</em> induce vomiting unless a vet explicitly tells you to. Use our calculator to document the risk level and share it with your vet during triage.</div>
+      </div>
+    </section>
+
   </div>
 
   <footer class="site-footer">
     <p>🐾 <a href="index.html">Pet Toxicity Calculator</a> — Free veterinary guidance tool. Not a substitute for professional advice. Always consult a licensed veterinarian.</p>
   </footer>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 
 </body>
 </html>

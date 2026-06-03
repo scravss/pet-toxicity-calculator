@@ -13,6 +13,38 @@
   <meta property="og:title" content="Mein Hund hat Schokolade gefressen — Ist das gefährlich?" />
   <meta property="og:description" content="Warum ist Schokolade für Hunde gefährlich? Was tun im Notfall? Alle wichtigen Informationen verständlich erklärt." />
   <meta property="og:type" content="article" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ab welcher Menge ist Schokolade für Hunde gefährlich?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Toxizität hängt von der Schokoladenart und dem Körpergewicht des Hundes ab. Zartbitterschokolade und Backschokolade enthalten das meiste Theobromin (16\u201326 mg/g) und sind am gefährlichsten. Symptome treten typischerweise ab 20 mg Theobromin pro kg Körpergewicht auf. Selbst kleine Mengen Zartbitterschokolade können für kleine Hunde gefährlich sein. Nutzen Sie unseren kostenlosen Rechner für eine gewichtsbasierte Risikoeinschätzung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welche Symptome hat eine Schokoladen-Vergiftung beim Hund?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Symptome erscheinen häufig innerhalb von 6 bis 12 Stunden nach der Aufnahme und können Erbrechen, Durchfall, Unruhe, übermäßigen Durst, erhöhten Herzschlag, Muskelzittern und im schlimmsten Fall Krampfanfälle oder Kollaps umfassen. Zeigt Ihr Hund nach dem Verzehr von Schokolade eines dieser Zeichen, wenden Sie sich sofort an Ihren Tierärzt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was soll ich tun, wenn mein Hund Schokolade gefressen hat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Handeln Sie schnell: Bestimmen Sie die Schokoladenart und -menge, notieren Sie den Aufnahmezeitpunkt und rufen Sie sofort Ihren Tierärzt an. Lösen Sie kein Erbrechen aus, es sei denn, ein Tierärzt weist Sie ausdrücklich dazu an. Nutzen Sie unseren Rechner, um das Risikoniveau zu dokumentieren und es Ihrem Tierärzt mitzuteilen."
+        }
+      }
+    ]
+  }
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
   <script>
@@ -275,6 +307,16 @@
     .site-footer a { color: var(--clr-primary); text-decoration: none; }
     .site-footer a:hover { text-decoration: underline; }
     /* ── Dark Theme ── */
+    /* ── FAQ Section ── */
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--clr-text); }
+    .faq-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); margin-bottom: 12px; overflow: hidden; }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 18px 20px; font-family: inherit; font-size: 0.97rem; font-weight: 700; color: var(--clr-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background var(--transition); }
+    .faq-question:hover { background: var(--clr-bg); }
+    .faq-chevron { font-size: 0.75rem; color: var(--clr-muted); flex-shrink: 0; transition: transform 0.2s ease; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer { display: none; padding: 14px 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); }
+    .faq-item.open .faq-answer { display: block; }
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
     .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
@@ -294,6 +336,10 @@
       <a href="kostenrechner-haustier.html"><span class="hmb-icon">💰</span>Lebenskosten</a>
       <a href="haustier-bmi-rechner.html"><span class="hmb-icon">⚖️</span>Körperkondition</a>
       <a href="haustier-wasserbedarf-rechner.html"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+      <a href="thc-toxizitaet-rechner.html"><span class="hmb-icon">🌿</span>THC-Toxizität</a>
+      <a href="traechtigkeitskalender-haustier.html"><span class="hmb-icon">🐣</span>Trächtigkeitskalender</a>
+      <a href="haustier-wachstumsrechner.html"><span class="hmb-icon">📏</span>Wachstum &amp; Gewicht</a>
+      <a href="haustier-makronaehrstoff-rechner.html"><span class="hmb-icon">🥩</span>Makronährstoffe</a>
     </div>
   </nav>
   <nav class="top-bar">
@@ -375,11 +421,38 @@
       <a href="index.html" class="cta-btn">Risiko meines Hundes berechnen →</a>
     </div>
 
+    <!-- Häufig gestellte Fragen -->
+    <section class="faq-section" aria-label="Häufig gestellte Fragen zur Schokoladen-Vergiftung beim Hund">
+      <h2>💬 Häufig gestellte Fragen</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Ab welcher Menge ist Schokolade für Hunde gefährlich?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Die Toxizität hängt von der Schokoladenart und dem Körpergewicht ab. Zartbitterschokolade und Backschokolade enthalten das meiste Theobromin (<strong>16–26 mg/g</strong>) und sind am gefährlichsten. Symptome treten typischerweise ab <strong>20 mg Theobromin pro kg</strong> Körpergewicht auf. Schon kleine Mengen können für kleine Hunde gefährlich sein. Nutzen Sie unseren kostenlosen Rechner für eine genaue Einschätzung.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Welche Symptome hat eine Schokoladen-Vergiftung beim Hund?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Symptome erscheinen häufig innerhalb von <strong>6 bis 12 Stunden</strong> und können Erbrechen, Durchfall, Unruhe, übermäßigen Durst, erhöhten oder unregelmäßigen Herzschlag, Muskelzittern und im schlimmsten Fall Krampfanfälle oder Kollaps umfassen. Wenden Sie sich sofort an Ihren Tierärzt, wenn Ihr Hund eines dieser Zeichen zeigt.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          Was soll ich tun, wenn mein Hund Schokolade gefressen hat?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">Handeln Sie schnell: Bestimmen Sie Schokoladenart und -menge, notieren Sie den Aufnahmezeitpunkt und rufen Sie sofort Ihren <strong>Tierärzt</strong> an. Lösen Sie <em>kein</em> Erbrechen aus, es sei denn, ein Tierärzt weist Sie ausdrücklich dazu an. Nutzen Sie unseren Rechner, um das Risikoniveau zu dokumentieren und es Ihrem Tierärzt beim Triage-Gespräch mitzuteilen.</div>
+      </div>
+    </section>
+
   </div>
 
   <footer class="site-footer">
     <p>🐾 <a href="index.html">Haustiergift-Rechner</a> — Kostenloses Orientierungstool für Tiergesundheit. Kein Ersatz für professionellen tierärztlichen Rat. Konsultieren Sie stets einen zugelassenen Tierarzt.</p>
   </footer>
+  <script>function toggleFaq(btn){const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>b.setAttribute('aria-expanded','false'));if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}</script>
 
 </body>
 </html>

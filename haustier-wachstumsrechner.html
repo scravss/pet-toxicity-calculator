@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haustier Wachstumsrechner — Erwachsenengewicht Welpe & Kätzchen Vorhersage</title>
+  <meta name="description" content="Kostenloser Wachstumsrechner für Welpen und Kätzchen. Aktuelles Alter und Gewicht eingeben — sofortige Schätzung des Erwachsenengewichts und der Reifedauer." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/haustier-wachstumsrechner.html" />
+  <meta property="og:title" content="Haustier Wachstumsrechner — Erwachsenengewicht Vorhersage" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Wie kann ich das Erwachsenengewicht meines Welpen vorhersagen?","acceptedAnswer":{"@type":"Answer","text":"Die gebräuchlichste Formel lautet: Erwachsenengewicht ≈ (Aktuelles Gewicht ÷ Alter in Wochen) × Reife-Wochen. Kleine Rassen reifen um Woche 40, große Rassen um Woche 84. Dieser Rechner passt das Reifefenster automatisch an die gewählte Rassengrößenkategorie an."}},
+    {"@type":"Question","name":"Wann ist eine Katze ausgewachsen?","acceptedAnswer":{"@type":"Answer","text":"Die meisten Hauskatzen erreichen ihr Erwachsenengewicht mit 12 Monaten. Große Rassen wie Maine Coon und Ragdoll wachsen bis zu 3–4 Jahren. Dieser Rechner verwendet 52 Wochen als Standard-Reifezeitpunkt."}},
+    {"@type":"Question","name":"Wie genau ist dieser Rechner?","acceptedAnswer":{"@type":"Answer","text":"Er liefert eine Schätzung basierend auf anerkannten tierärztlichen Wachstumsformeln. Die Genauigkeit ist am höchsten, wenn das Tier noch aktiv wächst (unter 50 % seines Reifealters). Konsultieren Sie immer Ihren Tierarzt für eine individuelle Wachstumsbeurteilung."}}
+  ]}</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-orange:#ea580c;--clr-orange-bg:#fff7ed;--clr-orange-bdr:#fed7aa;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.7}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;padding:48px 16px 36px}
+    .hero-badge{display:inline-block;background:var(--clr-orange-bg);color:var(--clr-orange);border:1px solid var(--clr-orange-bdr);border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:540px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-md);margin-bottom:32px}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .calc-card h2{font-size:1.1rem;font-weight:800;margin-bottom:24px;letter-spacing:-.02em}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group label{font-size:.82rem;font-weight:700}
+    .form-group select,.form-group input{padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color var(--transition)}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--clr-primary)}
+    .form-group .hint{font-size:.75rem;color:var(--clr-muted)}
+    .breed-row{display:none;margin-top:4px}.breed-row.visible{display:flex;flex-direction:column;gap:6px}
+    .calc-btn{width:100%;margin-top:22px;padding:15px;background:var(--clr-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity var(--transition),transform var(--transition)}
+    .calc-btn:hover{opacity:.88;transform:translateY(-1px)}
+    .result-box{display:none;margin-top:28px}.result-box.show{display:block}
+    .result-hero{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);border-radius:var(--radius-lg);padding:28px 24px;color:#fff;text-align:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(79,70,229,.28)}
+    .result-hero-label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.82;margin-bottom:6px}
+    .result-hero-value{font-size:2rem;font-weight:800;letter-spacing:-.02em;color:#fff!important}
+    .result-hero-sub{font-size:.9rem;opacity:.85;margin-top:4px;color:#fff!important}
+    .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+    @media(max-width:440px){.result-grid{grid-template-columns:1fr}}
+    .stat-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:18px 20px}
+    .stat-label{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--clr-muted);margin-bottom:6px}
+    .stat-value{font-size:1.25rem;font-weight:800;color:var(--clr-primary)!important}
+    .stat-note{font-size:.8rem;color:var(--clr-muted);margin-top:4px}
+    .maturity-bar-wrap{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);padding:20px 24px;margin-bottom:20px}
+    .maturity-bar-wrap h4{font-size:.85rem;font-weight:800;margin-bottom:12px}
+    .bar-track{height:12px;background:var(--clr-bg);border-radius:99px;overflow:hidden;border:1px solid var(--clr-border)}
+    .bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#4f46e5,#7c3aed);transition:width .6s ease}
+    .bar-labels{display:flex;justify-content:space-between;font-size:.75rem;color:var(--clr-muted);margin-top:8px}
+    .info-note{background:var(--clr-yellow-bg);border:1.5px solid var(--clr-yellow-bdr);border-radius:var(--radius-md);padding:14px 18px;font-size:.88rem;color:var(--clr-yellow);font-weight:600;margin-bottom:20px}
+    .info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);margin-top:32px}
+    @media(max-width:480px){.info-card{padding:24px 18px}}
+    .info-card h2{font-size:1.1rem;font-weight:800;margin:24px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--clr-border)}
+    .info-card h2:first-child{margin-top:0}.info-card p{color:var(--clr-muted);font-size:.93rem;margin-bottom:10px}.info-card strong{color:var(--clr-text)}
+    .breed-table{width:100%;border-collapse:collapse;font-size:.87rem;margin:12px 0}
+    .breed-table th{text-align:left;padding:9px 12px;background:var(--clr-bg);color:var(--clr-muted);font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--clr-border)}
+    .breed-table td{padding:9px 12px;border-bottom:1px solid var(--clr-border);color:var(--clr-text)}
+    .breed-table tr:last-child td{border-bottom:none}
+    .faq-section{margin-top:40px}.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+    .faq-item{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background var(--transition)}
+    .faq-question:hover{background:var(--clr-bg)}.faq-chevron{font-size:.75rem;color:var(--clr-muted);flex-shrink:0;transition:transform .2s ease}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
+    .faq-item.open .faq-answer{display:block}
+    .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}.site-footer a{color:var(--clr-primary);text-decoration:none}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-orange:#fb923c;--clr-orange-bg:#1c0a00;--clr-orange-bdr:#7c2d12;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    html.dark-theme .breed-table th,body.dark-theme .breed-table th{background:#0f172a}
+    html.dark-theme .stat-value,body.dark-theme .stat-value{color:#818cf8!important}
+    html.dark-theme .bar-track,body.dark-theme .bar-track{background:#0f172a}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px;overflow-y:auto}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Hauptnavigation">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Tier-Tools</a><button class="hmb-close" onclick="closeMenu()" aria-label="Schließen">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Giftstoffrechner</a>
+      <a href="alter-rechner.html"><span class="hmb-icon">🎂</span>Tieralter-Rechner</a>
+      <a href="kalorienrechner.html"><span class="hmb-icon">🥗</span>Kalorienrechner</a>
+      <a href="lebensqualitaet-rechner.html"><span class="hmb-icon">🤍</span>Lebensqualität</a>
+      <a href="kostenrechner-haustier.html"><span class="hmb-icon">💶</span>Kostenrechner</a>
+      <a href="haustier-bmi-rechner.html"><span class="hmb-icon">⚖️</span>Körperkondition</a>
+      <a href="haustier-wasserbedarf-rechner.html"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+      <a href="thc-toxizitaet-rechner.html"><span class="hmb-icon">🌿</span>THC-Toxizität</a>
+      <a href="traechtigkeitskalender-haustier.html"><span class="hmb-icon">🐣</span>Trächtigkeitskalender</a>
+      <a href="haustier-wachstumsrechner.html" class="active-page"><span class="hmb-icon">📏</span>Wachstum &amp; Gewicht</a>
+      <a href="haustier-makronaehrstoff-rechner.html"><span class="hmb-icon">🥩</span>Makronährstoffe</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Haustiergift-Rechner</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Dark Mode">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">📏 Kostenloses Wachstums-Tool</span>
+      <h1>Wachstumsrechner &amp;<br>Gewichtsvorhersage</h1>
+      <p class="hero-lead">Geben Sie Alter und aktuelles Gewicht Ihres Welpen oder Kätzchens ein — sofortige Schätzung des Erwachsenengewichts und der Reifezeit.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🐾 Angaben zu Ihrem Tier</h2>
+      <div class="form-grid">
+        <div class="form-group"><label for="species">Tierart</label><select id="species" onchange="onSpeciesChange()"><option value="dog">Hund (Welpe)</option><option value="cat">Katze (Kätzchen)</option></select></div>
+        <div class="form-group"><label for="age-unit">Alterseinheit</label><select id="age-unit"><option value="weeks">Wochen</option><option value="months">Monate</option></select></div>
+        <div class="form-group"><label for="current-age">Aktuelles Alter</label><input type="number" id="current-age" min="1" max="200" placeholder="z. B. 12" /></div>
+        <div class="form-group"><label for="current-weight">Aktuelles Gewicht</label><select id="weight-unit" style="margin-bottom:6px"><option value="kg">kg</option><option value="lbs">lbs</option></select><input type="number" id="current-weight" min="0.1" step="0.1" placeholder="z. B. 3,5" /></div>
+      </div>
+      <div class="form-group breed-row" id="breed-row">
+        <label for="breed-size">Rassengrößenkategorie (Hund)</label>
+        <select id="breed-size">
+          <option value="toy">Toy (&lt;4 kg) — Chihuahua, Pomeranian</option>
+          <option value="small">Klein (4–10 kg) — Beagle, Mops</option>
+          <option value="medium">Mittel (10–25 kg) — Border Collie, Cocker Spaniel</option>
+          <option value="large">Groß (25–45 kg) — Labrador, Golden Retriever</option>
+          <option value="giant">Riesig (&gt;45 kg) — Deutsche Dogge, Mastiff</option>
+        </select>
+        <span class="hint">Erwartete Erwachsenengröße Ihrer Rasse auswählen</span>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Erwachsenengewicht vorhersagen →</button>
+      <div class="result-box" id="result-box">
+        <div class="result-hero"><div class="result-hero-label">🎯 Geschätztes Erwachsenengewicht</div><div class="result-hero-value" id="res-weight"></div><div class="result-hero-sub" id="res-weight-sub"></div></div>
+        <div class="result-grid">
+          <div class="stat-card"><div class="stat-label">Reifezeit</div><div class="stat-value" id="res-maturity"></div><div class="stat-note" id="res-maturity-note"></div></div>
+          <div class="stat-card"><div class="stat-label">Wachstumsphase</div><div class="stat-value" id="res-stage"></div><div class="stat-note" id="res-stage-note"></div></div>
+        </div>
+        <div class="maturity-bar-wrap"><h4>Wachstumsfortschritt</h4><div class="bar-track"><div class="bar-fill" id="growth-bar" style="width:0%"></div></div><div class="bar-labels"><span>Geburt</span><span id="bar-mid"></span><span>Ausgewachsen</span></div></div>
+        <div class="info-note">⚠️ Dies ist eine Schätzung. Genetik, Ernährung und Gesundheit beeinflussen das tatsächliche Erwachsenengewicht. Konsultieren Sie Ihren Tierarzt für eine individuelle Beurteilung.</div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Rassengrößen-Referenz</h2>
+      <table class="breed-table">
+        <thead><tr><th>Größe</th><th>Erwachsenengewicht</th><th>Volle Reife</th><th>Beispiele</th></tr></thead>
+        <tbody>
+          <tr><td>🐕 Toy</td><td>&lt;4 kg</td><td>8–10 Monate</td><td>Chihuahua, Pomeranian, Yorkshire Terrier</td></tr>
+          <tr><td>🐕 Klein</td><td>4–10 kg</td><td>10–12 Monate</td><td>Beagle, Mops, Shih Tzu</td></tr>
+          <tr><td>🐕 Mittel</td><td>10–25 kg</td><td>12–15 Monate</td><td>Border Collie, Cocker Spaniel, Bulldogge</td></tr>
+          <tr><td>🐕 Groß</td><td>25–45 kg</td><td>18–24 Monate</td><td>Labrador, Golden Retriever, Husky</td></tr>
+          <tr><td>🐕 Riesig</td><td>&gt;45 kg</td><td>18–30 Monate</td><td>Deutsche Dogge, Mastiff, Bernhardiner</td></tr>
+          <tr><td>🐈 Katze</td><td>3,5–6 kg</td><td>12 Monate (die meisten Rassen)</td><td>Maine Coon / Ragdoll bis zu 3–4 Jahre</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Häufig gestellte Fragen</h2>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wie kann ich das Erwachsenengewicht meines Welpen vorhersagen?<span class="faq-chevron">▼</span></button><div class="faq-answer">Die zuverlässigste Methode ist die Formel: <strong>Erwachsenengewicht ≈ (Aktuelles Gewicht ÷ Alter in Wochen) × Reife-Wochen</strong>. Kleine Rassen reifen um Woche 40, große um Woche 84. Dieser Rechner wählt automatisch das richtige Fenster basierend auf der gewählten Größenkategorie.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wann ist eine Katze ausgewachsen?<span class="faq-chevron">▼</span></button><div class="faq-answer">Die meisten Hauskatzen erreichen ihr <strong>Erwachsenengewicht mit 12 Monaten</strong>. Große Rassen wie Maine Coon und Ragdoll wachsen bis zu 3–4 Jahre. Dieser Rechner verwendet 52 Wochen als Standardreifepunkt.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wie genau ist dieser Rechner?<span class="faq-chevron">▼</span></button><div class="faq-answer">Er liefert eine <strong>wissenschaftsbasierte Schätzung</strong> aus tierärztlichen Wachstumsformeln. Die Genauigkeit ist am höchsten, wenn das Tier aktiv wächst (unter 50 % seines Reifealters). Fragen Sie Ihren Tierarzt für eine individuelle Einschätzung.</div></div>
+    </section>
+  </div>
+  <footer class="site-footer"><p>🐾 <a href="index.html">Haustiergift-Rechner</a> — Kostenloses Orientierungstool. Kein Ersatz für tierärztlichen Rat.</p></footer>
+  <script>
+    var BREED={toy:{maturityWks:40,label:'8–10 Monate',desc:'Toy-Rassen werden schnell ausgewachsen.'},small:{maturityWks:48,label:'10–12 Monate',desc:'Kleine Rassen sind mit 1 Jahr meist ausgewachsen.'},medium:{maturityWks:60,label:'12–15 Monate',desc:'Mittlere Rassen entwickeln sich über ihr erstes Jahr.'},large:{maturityWks:84,label:'18–24 Monate',desc:'Große Rassen wachsen über 1 Jahr hinaus.'},giant:{maturityWks:104,label:'18–30 Monate',desc:'Riesenrassen benötigen bis zu 2+ Jahre.'},cat:{maturityWks:52,label:'12 Monate',desc:'Die meisten Katzen sind mit 1 Jahr ausgewachsen.'}};
+    function onSpeciesChange(){var sp=document.getElementById('species').value;var br=document.getElementById('breed-row');if(sp==='dog'){br.classList.add('visible');}else{br.classList.remove('visible');}}
+    onSpeciesChange();
+    function toKg(val,unit){return unit==='lbs'?val*0.453592:val;}
+    function fromKg(val,unit){return unit==='lbs'?val/0.453592:val;}
+    function calculate(){
+      var sp=document.getElementById('species').value,ageRaw=parseFloat(document.getElementById('current-age').value),ageUnit=document.getElementById('age-unit').value,wRaw=parseFloat(document.getElementById('current-weight').value),wUnit=document.getElementById('weight-unit').value;
+      if(!ageRaw||ageRaw<=0||!wRaw||wRaw<=0){alert('Bitte geben Sie ein gültiges Alter und Gewicht ein.');return;}
+      var ageWks=ageUnit==='months'?ageRaw*4.33:ageRaw,wKg=toKg(wRaw,wUnit),breedKey=sp==='cat'?'cat':document.getElementById('breed-size').value,breed=BREED[breedKey];
+      var adultKg=(wKg/ageWks)*breed.maturityWks,adultLow=adultKg*0.9,adultHigh=adultKg*1.1,progressPct=Math.min(100,Math.round((ageWks/breed.maturityWks)*100));
+      var adultDisplay,rangeDisplay;
+      if(wUnit==='lbs'){adultDisplay=fromKg(adultKg,'lbs').toFixed(1)+' lbs';rangeDisplay=fromKg(adultLow,'lbs').toFixed(1)+'–'+fromKg(adultHigh,'lbs').toFixed(1)+' lbs (±10 %)';}
+      else{adultDisplay=adultKg.toFixed(2)+' kg';rangeDisplay=adultLow.toFixed(2)+'–'+adultHigh.toFixed(2)+' kg (±10 %)';}
+      var stage,stageNote;
+      if(progressPct<30){stage='Starkes Wachstum';stageNote='Intensive Entwicklungsphase.';}
+      else if(progressPct<60){stage='Aktives Wachstum';stageNote='Muskel- und Knochenaufbau.';}
+      else if(progressPct<85){stage='Verlangsamung';stageNote='Wachstum nimmt ab.';}
+      else if(progressPct<100){stage='Fast ausgewachsen';stageNote='Kurz vor voller Größe.';}
+      else{stage='Ausgewachsen';stageNote='Wachstum abgeschlossen.';}
+      document.getElementById('res-weight').textContent=adultDisplay;
+      document.getElementById('res-weight-sub').textContent=rangeDisplay;
+      document.getElementById('res-maturity').textContent=breed.label;
+      document.getElementById('res-maturity-note').textContent=breed.desc;
+      document.getElementById('res-stage').textContent=stage;
+      document.getElementById('res-stage-note').textContent=stageNote;
+      document.getElementById('growth-bar').style.width=progressPct+'%';
+      document.getElementById('bar-mid').textContent='50 % ('+Math.round(breed.maturityWks/2/4.33)+' Mo.)';
+      var box=document.getElementById('result-box');box.className='result-box show';box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>

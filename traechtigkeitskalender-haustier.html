@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark-theme');}else{document.documentElement.classList.remove('dark-theme');}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trächtigkeitskalender Haustiere — Hund, Katze, Kaninchen | Wurftermin Rechner</title>
+  <meta name="description" content="Kostenloser Trächtigkeitskalender für Hunde, Katzen, Kaninchen, Meerschweinchen und Hamster. Paarungsdatum eingeben — sofortiger Wurftermin und Trächtigkeitsmeilensteine." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="canonical" href="https://pettoxicitycalc.com/traechtigkeitskalender-haustier.html" />
+  <meta property="og:title" content="Trächtigkeitskalender für Haustiere" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Wie lange ist ein Hund trächtig?","acceptedAnswer":{"@type":"Answer","text":"Die durchschnittliche Trächtigkeitsdauer bei Hündinnen beträgt 63 Tage (Bereich 58–68 Tage) ab dem Paarungsdatum. Das entspricht ungefähr 9 Wochen. Zeichen einer bevorstehenden Geburt sind Nestbauverhalten, Temperaturabfall unter 37,8 °C und Milchproduktion 24–48 Stunden vor der Geburt."}},
+      {"@type":"Question","name":"Wie lange ist eine Katze trächtig?","acceptedAnswer":{"@type":"Answer","text":"Die Trächtigkeit bei Katzen dauert durchschnittlich 63–65 Tage (Bereich 60–70 Tage). Kätzchen, die vor Tag 58 geboren werden, gelten als Frühgeburten. Geburtszeichen sind Vokalisation, Nestbau und Unruhe 24–48 Stunden vor der Geburt."}},
+      {"@type":"Question","name":"Wann soll ich mein trächtiges Tier zum Tierarzt bringen?","acceptedAnswer":{"@type":"Answer","text":"Planen Sie 3–4 Wochen nach der Paarung eine tierärztliche Untersuchung zur Trächtigkeitsbestätigung. Eine Ultraschalluntersuchung kann ab Tag 25 fetale Herzschläge nachweisen. Um die 6. Woche herum kann eine Röntgenaufnahme die Welpenanzahl ermitteln. Kontaktieren Sie Ihren Tierarzt sofort, wenn mehr als 2 Stunden zwischen zwei Geburten vergehen."}}
+    ]
+  }
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68M2645EP1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-68M2645EP1');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--clr-bg:#f5f7fa;--clr-surface:#fff;--clr-border:#e2e8f0;--clr-text:#1e293b;--clr-muted:#64748b;--clr-primary:#4f46e5;--clr-pink:#db2777;--clr-pink-bg:#fdf2f8;--clr-pink-bdr:#fbcfe8;--clr-green:#16a34a;--clr-green-bg:#f0fdf4;--clr-green-bdr:#bbf7d0;--clr-yellow:#b45309;--clr-yellow-bg:#fffbeb;--clr-yellow-bdr:#fde68a;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.08);--transition:0.18s ease}
+    html{scroll-behavior:smooth}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:var(--clr-bg);color:var(--clr-text);min-height:100vh;line-height:1.7}
+    .top-bar{background:var(--clr-surface);border-bottom:1px solid var(--clr-border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+    .top-bar a.site-name{font-weight:800;font-size:.95rem;color:var(--clr-primary);text-decoration:none}
+    .page-wrap{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+    .hero{text-align:center;padding:48px 16px 36px}
+    .hero-badge{display:inline-block;background:var(--clr-pink-bg);color:var(--clr-pink);border:1px solid var(--clr-pink-bdr);border-radius:99px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.03em;color:var(--clr-text);line-height:1.2;margin-bottom:14px}
+    .hero-lead{font-size:1rem;color:var(--clr-muted);max-width:540px;margin:0 auto}
+    .calc-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-md);margin-bottom:32px}
+    @media(max-width:480px){.calc-card{padding:24px 18px}}
+    .calc-card h2{font-size:1.15rem;font-weight:800;margin-bottom:24px;color:var(--clr-text);letter-spacing:-.02em}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group label{font-size:.82rem;font-weight:700;color:var(--clr-text)}
+    .form-group select,.form-group input{padding:11px 14px;border:1.5px solid var(--clr-border);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;background:var(--clr-bg);color:var(--clr-text);transition:border-color var(--transition)}
+    .form-group select:focus,.form-group input:focus{outline:none;border-color:var(--clr-primary)}
+    .form-group .hint{font-size:.75rem;color:var(--clr-muted)}
+    .calc-btn{width:100%;margin-top:22px;padding:15px;background:var(--clr-primary);color:#fff;border:none;border-radius:var(--radius-sm);font-family:inherit;font-size:1rem;font-weight:800;cursor:pointer;transition:opacity var(--transition),transform var(--transition)}
+    .calc-btn:hover{opacity:.88;transform:translateY(-1px)}
+    .result-box{display:none;margin-top:28px}.result-box.show{display:block}
+    .due-date-card{background:linear-gradient(135deg,#db2777 0%,#9333ea 100%);border-radius:var(--radius-lg);padding:28px 24px;color:#fff;text-align:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(219,39,119,.28)}
+    .due-date-label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;opacity:.82;margin-bottom:6px}
+    .due-date-value{font-size:1.8rem;font-weight:800;letter-spacing:-.02em}
+    .due-date-range{font-size:.9rem;opacity:.85;margin-top:4px}
+    .milestones{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:24px 24px 8px;box-shadow:var(--shadow-sm)}
+    .milestones h3{font-size:1rem;font-weight:800;color:var(--clr-text);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+    .milestone-item{display:flex;align-items:flex-start;gap:14px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--clr-border)}
+    .milestone-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .milestone-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;flex-shrink:0;color:#fff}
+    .milestone-dot.done{background:var(--clr-green)}.milestone-dot.upcoming{background:var(--clr-primary)}.milestone-dot.past{background:var(--clr-muted)}
+    .milestone-date{font-size:.82rem;font-weight:800;color:var(--clr-primary)}
+    .milestone-title{font-size:.95rem;font-weight:700;color:var(--clr-text);margin-top:1px}
+    .milestone-desc{font-size:.85rem;color:var(--clr-muted);margin-top:3px}
+    .info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm);margin-top:32px}
+    @media(max-width:480px){.info-card{padding:24px 18px}}
+    .info-card h2{font-size:1.2rem;font-weight:800;color:var(--clr-text);margin:28px 0 10px;padding-bottom:8px;border-bottom:2px solid var(--clr-border);letter-spacing:-.02em}
+    .info-card h2:first-child{margin-top:0}.info-card p{color:var(--clr-muted);font-size:.95rem;margin-bottom:12px}.info-card strong{color:var(--clr-text)}
+    .species-table{width:100%;border-collapse:collapse;font-size:.88rem;margin:16px 0}
+    .species-table th{text-align:left;padding:10px 12px;background:var(--clr-bg);color:var(--clr-muted);font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--clr-border)}
+    .species-table td{padding:10px 12px;border-bottom:1px solid var(--clr-border);color:var(--clr-text)}
+    .species-table tr:last-child td{border-bottom:none}
+    .warning-box{background:var(--clr-yellow-bg);border:1.5px solid var(--clr-yellow-bdr);border-radius:var(--radius-md);padding:14px 18px;margin:16px 0;font-size:.90rem;color:var(--clr-yellow);font-weight:600}
+    .faq-section{margin-top:40px}.faq-section h2{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;margin-bottom:16px;color:var(--clr-text)}
+    .faq-item{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-md);margin-bottom:10px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;background:none;border:none;padding:16px 20px;font-family:inherit;font-size:.95rem;font-weight:700;color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:background var(--transition)}
+    .faq-question:hover{background:var(--clr-bg)}.faq-chevron{font-size:.75rem;color:var(--clr-muted);flex-shrink:0;transition:transform .2s ease}
+    .faq-item.open .faq-chevron{transform:rotate(180deg)}
+    .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
+    .faq-item.open .faq-answer{display:block}
+    .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}.site-footer a{color:var(--clr-primary);text-decoration:none}
+    html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-pink:#f472b6;--clr-pink-bg:#2d0a1e;--clr-pink-bdr:#831843;--clr-green:#4ade80;--clr-green-bg:#052e16;--clr-green-bdr:#166534;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
+    html.dark-theme .species-table th,body.dark-theme .species-table th{background:#0f172a}
+    html.dark-theme .milestone-date,body.dark-theme .milestone-date{color:#818cf8}
+    .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
+    .theme-toggle:hover{border-color:var(--clr-primary);transform:rotate(20deg)}
+  </style>
+</head>
+<body>
+  <style>.hmb-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;border-radius:var(--radius-sm);transition:background var(--transition);flex-shrink:0}.hmb-btn:hover{background:var(--clr-bg)}.hmb-btn span{display:block;width:22px;height:2px;background:var(--clr-text);border-radius:2px;transition:transform .25s ease,opacity .25s ease}.hmb-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hmb-btn.open span:nth-child(2){opacity:0}.hmb-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.hmb-menu{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80vw;background:var(--clr-surface);box-shadow:4px 0 24px rgba(0,0,0,.13);z-index:9999;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0 0 32px}.hmb-menu.open{transform:translateX(0)}.hmb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);z-index:9998;opacity:0;pointer-events:none;transition:opacity .28s ease}.hmb-overlay.open{opacity:1;pointer-events:all}.hmb-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--clr-border);margin-bottom:8px}.hmb-header .hmb-logo{font-weight:800;font-size:.9rem;color:var(--clr-primary);text-decoration:none}.hmb-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--clr-muted);padding:4px;line-height:1}.hmb-nav{display:flex;flex-direction:column}.hmb-nav a{display:flex;align-items:center;gap:12px;padding:13px 20px;font-size:.9rem;font-weight:600;color:var(--clr-text);text-decoration:none;transition:background var(--transition),color var(--transition);border-left:3px solid transparent}.hmb-nav a:hover{background:var(--clr-bg);color:var(--clr-primary);border-left-color:var(--clr-primary)}.hmb-nav a.active-page{background:#eef2ff;color:var(--clr-primary);border-left-color:var(--clr-primary);font-weight:700}.hmb-nav .hmb-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}</style>
+  <div class="hmb-overlay" id="hmb-overlay" onclick="closeMenu()"></div>
+  <nav class="hmb-menu" id="hmb-menu" aria-label="Hauptnavigation">
+    <div class="hmb-header"><a href="index.html" class="hmb-logo">🐾 Tier-Tools</a><button class="hmb-close" onclick="closeMenu()" aria-label="Schließen">✕</button></div>
+    <div class="hmb-nav">
+      <a href="index.html"><span class="hmb-icon">🧪</span>Toxizitäts-Rechner</a>
+      <a href="alter-rechner.html"><span class="hmb-icon">🎂</span>Haustier-Alter</a>
+      <a href="kalorienrechner.html"><span class="hmb-icon">🥗</span>Kalorienrechner</a>
+      <a href="lebensqualitaet-rechner.html"><span class="hmb-icon">🤍</span>Lebensqualität</a>
+      <a href="kostenrechner-haustier.html"><span class="hmb-icon">💶</span>Kostenrechner</a>
+      <a href="haustier-bmi-rechner.html"><span class="hmb-icon">⚖️</span>Körperkondition</a>
+      <a href="haustier-wasserbedarf-rechner.html"><span class="hmb-icon">💧</span>Wasserbedarf</a>
+      <a href="thc-toxizitaet-rechner.html"><span class="hmb-icon">🌿</span>THC-Toxizität</a>
+      <a href="traechtigkeitskalender-haustier.html" class="active-page"><span class="hmb-icon">🐣</span>Trächtigkeitskalender</a>
+      <a href="haustier-wachstumsrechner.html"><span class="hmb-icon">📏</span>Wachstum &amp; Gewicht</a>
+      <a href="haustier-makronaehrstoff-rechner.html"><span class="hmb-icon">🥩</span>Makronährstoffe</a>
+    </div>
+  </nav>
+  <nav class="top-bar">
+    <button class="hmb-btn" id="hmb-btn" onclick="openMenu()" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="index.html" class="site-name">🐾 Haustiergift-Rechner</a>
+    <button class="theme-toggle" id="btn-theme" onclick="toggleDarkMode()" aria-label="Dark Mode">🌙</button>
+  </nav>
+  <script>function openMenu(){document.getElementById('hmb-menu').classList.add('open');document.getElementById('hmb-overlay').classList.add('open');document.getElementById('hmb-btn').classList.add('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','true');}function closeMenu(){document.getElementById('hmb-menu').classList.remove('open');document.getElementById('hmb-overlay').classList.remove('open');document.getElementById('hmb-btn').classList.remove('open');document.getElementById('hmb-btn').setAttribute('aria-expanded','false');}document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});(function(){var d=localStorage.getItem('theme')==='dark';document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);document.getElementById('btn-theme').textContent=d?'☀️':'🌙';})();function toggleDarkMode(){var d=!document.body.classList.contains('dark-theme');document.body.classList.toggle('dark-theme',d);document.documentElement.classList.toggle('dark-theme',d);localStorage.setItem('theme',d?'dark':'light');document.getElementById('btn-theme').textContent=d?'☀️':'🌙';}</script>
+
+  <div class="page-wrap">
+    <div class="hero">
+      <span class="hero-badge">🐣 Kostenloses Züchtungs-Tool</span>
+      <h1>Trächtigkeitskalender<br>für Haustiere</h1>
+      <p class="hero-lead">Geben Sie die Tierart und das Paarungsdatum ein — sofortiger Wurftermin, Trächtigkeitsbereich und alle wichtigen Meilensteine der Trächtigkeit.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🗓️ Paarungsdaten eingeben</h2>
+      <div class="form-grid">
+        <div class="form-group"><label for="species">Tierart</label><select id="species"><option value="dog">Hund (Canis lupus familiaris)</option><option value="cat">Katze (Felis catus)</option><option value="rabbit">Kaninchen (Oryctolagus cuniculus)</option><option value="guinea_pig">Meerschweinchen (Cavia porcellus)</option><option value="hamster_syrian">Hamster — Goldhamster (Mesocricetus auratus)</option><option value="hamster_dwarf">Hamster — Zwerghamster (Phodopus spp.)</option></select></div>
+        <div class="form-group"><label for="mating-date">Paarungsdatum</label><input type="date" id="mating-date" /><span class="hint">Erstes bestätigtes Paarungsdatum verwenden</span></div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Wurftermin und Meilensteine berechnen →</button>
+      <div class="result-box" id="result-box">
+        <div class="due-date-card"><div class="due-date-label">🐣 Voraussichtlicher Wurftermin</div><div class="due-date-value" id="res-due-date"></div><div class="due-date-range" id="res-due-range"></div></div>
+        <div class="milestones" id="milestones-card"><h3>📅 Trächtigkeitsmeilensteine</h3><div id="milestones-list"></div></div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2>Trächtigkeitsdauern nach Tierart</h2>
+      <table class="species-table">
+        <thead><tr><th>Tierart</th><th>Ø Tage</th><th>Bereich</th><th>Typische Wurfgröße</th></tr></thead>
+        <tbody>
+          <tr><td>🐕 Hund</td><td>63</td><td>58–68 Tage</td><td>1–12 Welpen</td></tr>
+          <tr><td>🐈 Katze</td><td>64</td><td>60–70 Tage</td><td>2–6 Kätzchen</td></tr>
+          <tr><td>🐇 Kaninchen</td><td>31</td><td>28–35 Tage</td><td>4–12 Jungtiere</td></tr>
+          <tr><td>🐹 Meerschweinchen</td><td>68</td><td>59–72 Tage</td><td>1–6 Jungtiere</td></tr>
+          <tr><td>🐹 Goldhamster</td><td>16</td><td>15–18 Tage</td><td>6–12 Jungtiere</td></tr>
+          <tr><td>🐹 Zwerghamster</td><td>18</td><td>16–21 Tage</td><td>4–8 Jungtiere</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">⚠️ <strong>Wichtig:</strong> Dieser Rechner liefert Schätzwerte basierend auf typischen Trächtigkeitsdauern. Tatsächliche Geburtstermine können abweichen. Arbeiten Sie stets mit einem Tierarzt zusammen — insbesondere bei Erstgebärenden oder Risikotieren.</div>
+    </div>
+
+    <section class="faq-section">
+      <h2>💬 Häufig gestellte Fragen</h2>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wie lange ist ein Hund trächtig?<span class="faq-chevron">▼</span></button><div class="faq-answer">Die durchschnittliche Trächtigkeitsdauer bei Hündinnen beträgt <strong>63 Tage</strong> (Bereich 58–68 Tage). Geburtszeichen sind Nestbauverhalten, Temperaturabfall unter 37,8 °C und Milchproduktion 24–48 Stunden vor der Geburt.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wie lange ist eine Katze trächtig?<span class="faq-chevron">▼</span></button><div class="faq-answer">Die Trächtigkeit bei Katzen dauert durchschnittlich <strong>63–65 Tage</strong> (Bereich 60–70 Tage). Kätzchen vor Tag 58 gelten als Frühgeburten. Geburtszeichen sind Vokalisation, Nestbau und Unruhe 24–48 Stunden vor der Geburt.</div></div>
+      <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">Wann soll ich mein trächtiges Tier zum Tierarzt bringen?<span class="faq-chevron">▼</span></button><div class="faq-answer">Planen Sie <strong>3–4 Wochen nach der Paarung</strong> eine tierärztliche Untersuchung. Ein Ultraschall kann ab Tag 25 fetale Herzschläge nachweisen. Um Woche 6 kann eine Röntgenaufnahme die Welpenanzahl ermitteln. Kontaktieren Sie Ihren Tierarzt sofort, wenn mehr als 2 Stunden zwischen Geburten vergehen.</div></div>
+    </section>
+  </div>
+
+  <footer class="site-footer"><p>🐾 <a href="index.html">Haustiergift-Rechner</a> — Kostenloses Orientierungstool. Kein Ersatz für tierärztlichen Rat.</p></footer>
+
+  <script>
+    var SPECIES={dog:{name:'Hund',emoji:'🐕',avg:63,min:58,max:68,milestones:[{day:0,title:'Paarung',desc:'Tag 0 — Befruchtung kann über 2–5 Tage erfolgen. Alle Paarungsdaten notieren.'},{day:14,title:'Implantation',desc:'Embryonen heften sich an die Gebärmutterwand. Noch keine sichtbaren Zeichen.'},{day:25,title:'Ultraschall möglich',desc:'Fetale Herzschläge nachweisbar. Tierarzttermin vereinbaren.'},{day:28,title:'Morgendliche Übelkeit (möglich)',desc:'Manche Hündinnen zeigen Übelkeit und Appetitveränderungen.'},{day:35,title:'Bauch vergrößert sich',desc:'Deutliche Bauchvergrößerung. Zitzenentwicklung und Milchproduktion beginnen.'},{day:45,title:'Röntgen für Welpenanzahl',desc:'Knöchernes Röntgenbild zählt Welpen. Wurfkiste vorbereiten.'},{day:56,title:'Nestbauverhalten',desc:'Ruhigen, gemütlichen Geburtsort bereitstellen. Bewegung reduzieren.'},{day:60,title:'Frühester Geburtstermin',desc:'Temperatur zweimal täglich messen. Abfall unter 37,8 °C signalisiert Geburt in 24h.'},{day:63,title:'Voraussichtlicher Wurftermin',desc:'Durchschnittlicher Geburtstag. Auf aktive Wehen vorbereiten.'},{day:68,title:'Spätester Geburtstermin',desc:'Tierarzt kontaktieren, wenn bis zu diesem Datum keine Geburt begonnen hat.'}]},cat:{name:'Katze',emoji:'🐈',avg:64,min:60,max:70,milestones:[{day:0,title:'Paarung',desc:'Katzen sind Reflexovulierer — Paarung löst Eisprung aus.'},{day:14,title:'Implantation',desc:'Embryonen implantieren in der Gebärmutter. Noch keine sichtbaren Zeichen.'},{day:25,title:'Ultraschall möglich',desc:'Fetale Herzschläge nachweisbar. Tierärztliche Bestätigung empfohlen.'},{day:35,title:'Rosafärbung der Zitzen',desc:'„Rosing up" — Zitzen werden rosa und prominent. Klares Trächtigkeitszeichen.'},{day:42,title:'Bauch vergrößert sich',desc:'Deutlich runderer Bauch. Ernährung mit Kitten-Futter erhöhen.'},{day:49,title:'Wurfkiste vorbereiten',desc:'Ruhigen, warmen, privaten Nesplatz einrichten.'},{day:60,title:'Frühester Geburtstermin',desc:'Manche Katzen gebären ab Tag 60. Engmaschig beobachten.'},{day:64,title:'Voraussichtlicher Wurftermin',desc:'Durchschnittlicher Geburtstag. Geburtszeichen: Vokalisation, Nestbau, Futterverweigerung.'},{day:70,title:'Spätester Geburtstermin',desc:'Tierarzt aufsuchen, wenn bis Tag 70 keine Geburt.'}]},rabbit:{name:'Kaninchen',emoji:'🐇',avg:31,min:28,max:35,milestones:[{day:0,title:'Paarung',desc:'Kaninchen sind Reflexovulierer. Paarung löst Eisprung aus.'},{day:7,title:'Implantation',desc:'Embryonen implantieren. Noch keine sichtbaren Zeichen.'},{day:14,title:'Palpation möglich',desc:'Erfahrener Tierarzt kann Feten ab diesem Stadium tasten.'},{day:21,title:'Nestbau beginnt',desc:'Häsin rupft Fell für Nestbau. Heu und Nestmaterial bereitstellen.'},{day:28,title:'Frühester Geburtstermin',desc:'Ab diesem Zeitpunkt engmaschige Überwachung der Häsin.'},{day:31,title:'Voraussichtlicher Wurftermin',desc:'Durchschnittlicher Jungtiergeburtstag. Häsinnen gebären meist früh morgens.'},{day:35,title:'Spätester Geburtstermin',desc:'Tierarzt kontaktieren, wenn bis Tag 35 keine Geburt.'}]},guinea_pig:{name:'Meerschweinchen',emoji:'🐹',avg:68,min:59,max:72,milestones:[{day:0,title:'Paarung',desc:'Meerschweinchen haben eine für ihre Größe lange Trächtigkeit.'},{day:21,title:'Sichtbare Gewichtszunahme',desc:'Weibchen nimmt stetig zu. Palpation für erfahrene Halter möglich.'},{day:42,title:'Deutliche Vergrößerung',desc:'Bauch stark aufgebläht. Jungtiere werden groß und gut entwickelt geboren.'},{day:59,title:'Frühester Geburtstermin',desc:'Weibchen engmaschig beobachten.'},{day:68,title:'Voraussichtlicher Wurftermin',desc:'Jungtiere werden präkozial geboren — vollständig behaart, Augen offen, sofort mobil.'},{day:72,title:'Spätester Geburtstermin',desc:'Tierarzt aufsuchen, wenn bis Tag 72 keine Geburt.'}]},hamster_syrian:{name:'Goldhamster',emoji:'🐹',avg:16,min:15,max:18,milestones:[{day:0,title:'Paarung',desc:'Goldhamster haben eine der kürzesten Trächtigkeiten unter Säugetieren.'},{day:8,title:'Sichtbare Gewichtszunahme',desc:'Weibchen wirkt deutlich runder.'},{day:12,title:'Nestbau intensiviert sich',desc:'Zusätzliches Einstreumaterial bereitstellen. Männchen trennen.'},{day:15,title:'Frühester Geburtstermin',desc:'Jungtiere können ab Tag 15 kommen.'},{day:16,title:'Voraussichtlicher Wurftermin',desc:'Durchschnittlicher Geburtstag. Würfe haben durchschnittlich 6–12 Jungtiere.'},{day:18,title:'Spätester Geburtstermin',desc:'Tierarzt kontaktieren, wenn bis Tag 18 keine Geburt.'}]},hamster_dwarf:{name:'Zwerghamster',emoji:'🐹',avg:18,min:16,max:21,milestones:[{day:0,title:'Paarung',desc:'Zwerghamster. Vater kann bei der Jungtierpflege helfen.'},{day:9,title:'Bauch vergrößert sich',desc:'Weibchen sichtlich runder. Zusätzliches Nestmaterial bereitstellen.'},{day:14,title:'Nestbau intensiviert sich',desc:'Weiteres Einstreumaterial bereitstellen.'},{day:16,title:'Frühester Geburtstermin',desc:'Ab diesem Zeitpunkt engmaschige Beobachtung.'},{day:18,title:'Voraussichtlicher Wurftermin',desc:'Durchschnittlicher Geburtstag.'},{day:21,title:'Spätester Geburtstermin',desc:'Tierarzt kontaktieren, wenn bis Tag 21 keine Geburt.'}]}};
+    function addDays(d,n){var r=new Date(d);r.setDate(r.getDate()+n);return r;}
+    function fmtDate(d){return d.toLocaleDateString('de-DE',{weekday:'short',day:'numeric',month:'long',year:'numeric'});}
+    function calculate(){
+      var sk=document.getElementById('species').value,ms=document.getElementById('mating-date').value;
+      if(!ms){alert('Bitte wählen Sie das Paarungsdatum.');return;}
+      var sp=SPECIES[sk],mating=new Date(ms),dueAvg=addDays(mating,sp.avg),dueMin=addDays(mating,sp.min),dueMax=addDays(mating,sp.max),today=new Date();today.setHours(0,0,0,0);
+      document.getElementById('res-due-date').textContent=fmtDate(dueAvg);
+      document.getElementById('res-due-range').textContent='Frühester Termin: '+fmtDate(dueMin)+'  ·  Spätester Termin: '+fmtDate(dueMax);
+      var html='';
+      sp.milestones.forEach(function(m){var mDate=addDays(mating,m.day);var isPast=mDate<today;var isToday=mDate.toDateString()===today.toDateString();var dc=isToday?'done':(isPast?'past':'upcoming');var dl=m.day===0?'Tag 0':'Tag '+m.day;html+='<div class="milestone-item"><div class="milestone-dot '+dc+'">'+(isPast?'✓':m.day)+'</div><div><div class="milestone-date">'+fmtDate(mDate)+' ('+dl+')</div><div class="milestone-title">'+m.title+'</div><div class="milestone-desc">'+m.desc+'</div></div></div>';});
+      document.getElementById('milestones-list').innerHTML=html;
+      var box=document.getElementById('result-box');box.className='result-box show';box.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    function toggleFaq(btn){var item=btn.closest('.faq-item');var isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});document.querySelectorAll('.faq-question').forEach(function(b){b.setAttribute('aria-expanded','false');});if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}}
+  </script>
+</body>
+</html>
