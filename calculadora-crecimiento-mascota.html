@@ -8,6 +8,11 @@
   <meta name="description" content="Calculadora gratuita de crecimiento para cachorros y gatitos. Introduce la edad y el peso actuales para predecir el peso adulto y el tiempo hasta la madurez completa." />
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="alternate" hreflang="en"        href="https://pettoxicitycalc.com/pet-growth-calculator.html" />
+  <link rel="alternate" hreflang="fr"        href="https://pettoxicitycalc.com/calculateur-croissance-animal.html" />
+  <link rel="alternate" hreflang="de"        href="https://pettoxicitycalc.com/haustier-wachstumsrechner.html" />
+  <link rel="alternate" hreflang="es"        href="https://pettoxicitycalc.com/calculadora-crecimiento-mascota.html" />
+  <link rel="alternate" hreflang="x-default" href="https://pettoxicitycalc.com/pet-growth-calculator.html" />
   <link rel="canonical" href="https://pettoxicitycalc.com/calculadora-crecimiento-mascota.html" />
   <meta property="og:title" content="Calculadora de Crecimiento de Mascotas — Peso Adulto Estimado" />
   <meta property="og:type" content="website" />
@@ -76,6 +81,17 @@
     .faq-answer{display:none;padding:12px 20px 16px;font-size:.92rem;color:var(--clr-muted);line-height:1.7;border-top:1px solid var(--clr-border)}
     .faq-item.open .faq-answer{display:block}
     .site-footer{text-align:center;padding:32px 16px;font-size:.78rem;color:var(--clr-muted)}.site-footer a{color:var(--clr-primary);text-decoration:none}
+    /* ── Related Tools Widget ── */
+    .related-tools{margin:48px 0 8px}
+    .related-tools h2{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--clr-muted);margin-bottom:16px}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media(max-width:540px){.related-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:340px){.related-grid{grid-template-columns:1fr}}
+    .related-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:16px 14px 14px;text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+    .related-card:hover{border-color:var(--clr-primary);box-shadow:0 4px 14px rgba(79,70,229,.13);transform:translateY(-2px)}
+    .related-card-icon{font-size:1.5rem;line-height:1}
+    .related-card-name{font-size:.82rem;font-weight:800;color:var(--clr-text);line-height:1.3}
+    .related-card-desc{font-size:.75rem;color:var(--clr-muted);line-height:1.4}
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-orange:#fb923c;--clr-orange-bg:#1c0a00;--clr-orange-bdr:#7c2d12;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     html.dark-theme .breed-table th,body.dark-theme .breed-table th{background:#0f172a}
     html.dark-theme .stat-value,body.dark-theme .stat-value{color:#818cf8!important}
@@ -170,6 +186,27 @@
       <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Es precisa esta calculadora?<span class="faq-chevron">▼</span></button><div class="faq-answer">Proporciona una <strong>estimación basada en fórmulas veterinarias</strong>. La precisión es mayor cuando el animal aún está creciendo activamente (menos del 50 % de su edad de madurez). Consulta siempre a tu veterinario para una evaluación personalizada.</div></div>
     </section>
   </div>
+  <section class="related-tools" aria-label="También te puede interesar">
+    <h2>También te puede interesar</h2>
+    <div class="related-grid">
+      <a href="calculadora-gestacion-mascota.html" class="related-card">
+        <span class="related-card-icon">🐾</span>
+        <span class="related-card-name">Calculadora de Gestación</span>
+        <span class="related-card-desc">Fecha de parto estimada</span>
+      </a>
+      <a href="calculadora-macronutrientes-mascota.html" class="related-card">
+        <span class="related-card-icon">🥩</span>
+        <span class="related-card-name">Macronutrientes</span>
+        <span class="related-card-desc">Proteína, grasa &amp; carbohidratos</span>
+      </a>
+      <a href="calculadora-calorias.html" class="related-card">
+        <span class="related-card-icon">🥗</span>
+        <span class="related-card-name">Calculadora de Calorías</span>
+        <span class="related-card-desc">Necesidades energéticas</span>
+      </a>
+    </div>
+  </section>
+
   <footer class="site-footer"><p>🐾 <a href="index.html">Calculadora de Toxicidad para Mascotas</a> — Herramienta de orientación gratuita. No sustituye el consejo veterinario profesional.</p></footer>
   <script>
     var BREED={toy:{maturityWks:40,label:'8–10 meses',desc:'Las razas Toy alcanzan su tamaño rápidamente.'},small:{maturityWks:48,label:'10–12 meses',desc:'Las razas pequeñas son casi adultas al año.'},medium:{maturityWks:60,label:'12–15 meses',desc:'Las razas medianas se desarrollan durante su primer año.'},large:{maturityWks:84,label:'18–24 meses',desc:'Las razas grandes siguen creciendo después de 1 año.'},giant:{maturityWks:104,label:'18–30 meses',desc:'Las razas gigantes pueden tardar más de 2 años.'},cat:{maturityWks:52,label:'12 meses',desc:'La mayoría de los gatos alcanzan su talla adulta al año.'}};

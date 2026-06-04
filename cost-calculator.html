@@ -7,6 +7,11 @@
   <title>Pet Lifetime Cost Calculator — How Much Does a Dog or Cat Cost?</title>
   <meta name="description" content="Calculate the true lifetime cost of owning a dog or cat. Enter lifespan, initial costs, and annual expenses to see your pet's total lifetime financial commitment." />
   <meta name="robots" content="index, follow" />
+    <link rel="alternate" hreflang="en"        href="https://pettoxicitycalc.com/cost-calculator.html" />
+  <link rel="alternate" hreflang="fr"        href="https://pettoxicitycalc.com/calculateur-cout-animal.html" />
+  <link rel="alternate" hreflang="de"        href="https://pettoxicitycalc.com/kostenrechner-haustier.html" />
+  <link rel="alternate" hreflang="es"        href="https://pettoxicitycalc.com/calculadora-costes-mascota.html" />
+  <link rel="alternate" hreflang="x-default" href="https://pettoxicitycalc.com/cost-calculator.html" />
   <link rel="canonical" href="https://pettoxicitycalc.com/cost-calculator.html" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta property="og:title" content="Pet Lifetime Cost Calculator — True Cost of Owning a Dog or Cat" />
@@ -143,6 +148,17 @@
     .nav-footer-col ul li a:hover { color: var(--clr-primary); }
     .nav-footer-bottom { max-width: 620px; margin: 24px auto 0; padding-top: 20px; border-top: 1px solid var(--clr-border); text-align: center; font-size: 0.72rem; color: var(--clr-muted); }
 
+    /* ── Related Tools Widget ── */
+    .related-tools{margin:48px 0 8px}
+    .related-tools h2{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--clr-muted);margin-bottom:16px}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media(max-width:540px){.related-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:340px){.related-grid{grid-template-columns:1fr}}
+    .related-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:16px 14px 14px;text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+    .related-card:hover{border-color:var(--clr-primary);box-shadow:0 4px 14px rgba(79,70,229,.13);transform:translateY(-2px)}
+    .related-card-icon{font-size:1.5rem;line-height:1}
+    .related-card-name{font-size:.82rem;font-weight:800;color:var(--clr-text);line-height:1.3}
+    .related-card-desc{font-size:.75rem;color:var(--clr-muted);line-height:1.4}
     /* Dark theme */
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
@@ -299,6 +315,27 @@
       <a href="index.html" class="cta-btn">Open Toxicity Calculator →</a>
     </div>
   </div>
+
+  <section class="related-tools" aria-label="You Might Also Like">
+    <h2>You Might Also Like</h2>
+    <div class="related-grid">
+      <a href="calorie-calculator.html" class="related-card">
+        <span class="related-card-icon">🥗</span>
+        <span class="related-card-name">Calorie Calculator</span>
+        <span class="related-card-desc">Optimise food budget</span>
+      </a>
+      <a href="quality-of-life-calculator.html" class="related-card">
+        <span class="related-card-icon">🤍</span>
+        <span class="related-card-name">Quality of Life</span>
+        <span class="related-card-desc">Assess senior wellbeing</span>
+      </a>
+      <a href="pet-bmi-calculator.html" class="related-card">
+        <span class="related-card-icon">⚖️</span>
+        <span class="related-card-name">Body Condition Score</span>
+        <span class="related-card-desc">Check healthy weight</span>
+      </a>
+    </div>
+  </section>
 
   <footer>
     <nav class="nav-footer" aria-label="Site navigation">

@@ -8,6 +8,11 @@
   <meta name="description" content="Dog ate chocolate? Find out why theobromine is toxic, how much is dangerous by breed and weight, what symptoms to watch for, and the emergency steps to take right now." />
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="alternate" hreflang="en"        href="https://pettoxicitycalc.com/chocolate-dog.html" />
+  <link rel="alternate" hreflang="fr"        href="https://pettoxicitycalc.com/chocolat-chien.html" />
+  <link rel="alternate" hreflang="de"        href="https://pettoxicitycalc.com/schokolade-hund.html" />
+  <link rel="alternate" hreflang="es"        href="https://pettoxicitycalc.com/chocolate-perro.html" />
+  <link rel="alternate" hreflang="x-default" href="https://pettoxicitycalc.com/chocolate-dog.html" />
   <link rel="canonical" href="chocolate-dog.html" />
   <!-- Open Graph -->
   <meta property="og:title" content="My Dog Ate Chocolate — Is It Dangerous?" />
@@ -363,6 +368,17 @@
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
     .faq-answer { display: none; padding: 0 20px 18px; font-size: 0.93rem; color: var(--clr-muted); line-height: 1.7; border-top: 1px solid var(--clr-border); padding-top: 14px; }
     .faq-item.open .faq-answer { display: block; }
+    /* ── Related Tools Widget ── */
+    .related-tools{margin:48px 0 8px}
+    .related-tools h2{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--clr-muted);margin-bottom:16px}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media(max-width:540px){.related-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:340px){.related-grid{grid-template-columns:1fr}}
+    .related-card{display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--clr-surface);border:1.5px solid var(--clr-border);border-radius:var(--radius-md);padding:16px 14px 14px;text-decoration:none;transition:border-color var(--transition),box-shadow var(--transition),transform var(--transition)}
+    .related-card:hover{border-color:var(--clr-primary);box-shadow:0 4px 14px rgba(79,70,229,.13);transform:translateY(-2px)}
+    .related-card-icon{font-size:1.5rem;line-height:1}
+    .related-card-name{font-size:.82rem;font-weight:800;color:var(--clr-text);line-height:1.3}
+    .related-card-desc{font-size:.75rem;color:var(--clr-muted);line-height:1.4}
     /* ── Dark Theme ── */
     html.dark-theme body,body.dark-theme{--clr-bg:#0f172a;--clr-surface:#1e293b;--clr-border:#334155;--clr-text:#f1f5f9;--clr-muted:#94a3b8;--clr-red:#f87171;--clr-red-bg:#1c0000;--clr-red-bdr:#991b1b;--clr-yellow:#fbbf24;--clr-yellow-bg:#1c1200;--clr-yellow-bdr:#854d0e;--shadow-sm:0 1px 3px rgba(0,0,0,.4);--shadow-md:0 4px 16px rgba(0,0,0,.5)}
     .theme-toggle{background:none;border:1.5px solid var(--clr-border);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--transition),transform var(--transition);flex-shrink:0}
@@ -516,6 +532,27 @@
     </section>
 
   </div>
+
+  <section class="related-tools" aria-label="You Might Also Like">
+    <h2>You Might Also Like</h2>
+    <div class="related-grid">
+      <a href="grape-dog.html" class="related-card">
+        <span class="related-card-icon">🍇</span>
+        <span class="related-card-name">Grape &amp; Raisin Toxicity</span>
+        <span class="related-card-desc">Risk assessment for dogs</span>
+      </a>
+      <a href="onion-cat.html" class="related-card">
+        <span class="related-card-icon">🧅</span>
+        <span class="related-card-name">Onion &amp; Garlic Toxicity</span>
+        <span class="related-card-desc">Thiosulfate risk in cats</span>
+      </a>
+      <a href="thc-toxicity-calculator.html" class="related-card">
+        <span class="related-card-icon">🌿</span>
+        <span class="related-card-name">THC Toxicity</span>
+        <span class="related-card-desc">Cannabis ingestion risk</span>
+      </a>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <p>🐾 <a href="index.html">Pet Toxicity Calculator</a> — Free veterinary guidance tool. Not a substitute for professional advice. Always consult a licensed veterinarian.</p>
