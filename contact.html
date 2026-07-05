@@ -60,6 +60,7 @@
     .btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
     .btn-submit:active { transform: translateY(0); }
     .success-msg { display: none; margin-top: 16px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: var(--radius-md); padding: 14px 18px; color: #16a34a; font-size: 0.92rem; font-weight: 600; text-align: center; }
+    .error-msg { display: none; margin-top: 16px; background: #fef2f2; border: 1.5px solid #fecaca; border-radius: var(--radius-md); padding: 14px 18px; color: #dc2626; font-size: 0.92rem; font-weight: 600; text-align: center; }
     .info-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 0.92rem; color: var(--clr-muted); }
     .info-row .info-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
     .divider { height: 1px; background: var(--clr-border); border: none; margin: 28px 0; }
@@ -140,6 +141,7 @@
         </div>
         <button type="submit" class="btn-submit">✉️ Send Message</button>
         <div class="success-msg" id="success-msg">✅ Thank you! Your message has been received. We'll be in touch soon.</div>
+        <div class="error-msg" id="error-msg"></div>
       </form>
     </div>
   </div>
@@ -172,10 +174,39 @@
   </footer>
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
-      document.getElementById('success-msg').style.display = 'block';
-      e.target.reset();
+      var form = e.target;
+      var btn = form.querySelector('.btn-submit');
+      var successMsg = document.getElementById('success-msg');
+      var errorMsg = document.getElementById('error-msg');
+
+      btn.disabled = true;
+      btn.textContent = '⏳ Sending…';
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      try {
+        var res = await fetch('https://formspree.io/f/mgojdpnb', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+        } else {
+          var data = await res.json();
+          errorMsg.textContent = (data.errors && data.errors.map(function(x){return x.message;}).join(', ')) || '❌ Something went wrong. Please try again.';
+          errorMsg.style.display = 'block';
+        }
+      } catch (err) {
+        errorMsg.textContent = '❌ Network error. Please check your connection and try again.';
+        errorMsg.style.display = 'block';
+      }
+
+      btn.disabled = false;
+      btn.textContent = '✉️ Send Message';
     }
   </script>
 </body>
